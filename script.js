@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const backTop = document.getElementById("backTop");
   const year = document.getElementById("year");
   const toast = document.getElementById("toast");
+  const header = document.querySelector(".site-header");
 
   // Beautiful entrance loader.
   window.setTimeout(() => loader.classList.add("hide"), 1150);
@@ -41,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Back to top.
   window.addEventListener("scroll", () => {
     backTop.classList.toggle("show", window.scrollY > 700);
+    header.classList.toggle("scrolled", window.scrollY > 24);
   });
   backTop.addEventListener("click", () => window.scrollTo({top: 0, behavior: "smooth"}));
 
@@ -52,12 +54,46 @@ document.addEventListener("DOMContentLoaded", () => {
     link.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(baseMessage)}`;
   });
 
-  // Concern cards: give the visitor useful context without pretending stock exists.
+  // The Revive Edit: give visitors a small, tactile way to choose the feeling they want help with.
+  const moodChoices = document.querySelectorAll(".edit-choice");
+  const stage = document.getElementById("editStage");
+  if (moodChoices.length && stage) {
+    const moods = {
+      soft: {number:"01", title:"Soft Reset", word:"soft<br>reset", label:"YOUR DAILY CARE", copy:"Give your skin, scent and thoughts a gentler place to land."},
+      glow: {number:"02", title:"Golden Hour", word:"golden<br>hour", label:"WARM · LUMINOUS · YOU", copy:"For days that call for a little more glow and a little more presence."},
+      clean: {number:"03", title:"Clean Muse", word:"clean<br>muse", label:"FRESH · POLISHED · EASY", copy:"A clear, clean feeling—simple enough to become your signature."}
+    };
+    moodChoices.forEach(choice => choice.addEventListener("click", () => {
+      const mood = choice.dataset.mood;
+      const detail = moods[mood];
+      moodChoices.forEach(item => item.classList.toggle("active", item === choice));
+      stage.className = `edit-stage mood-${mood}`;
+      document.getElementById("stageNumber").textContent = detail.number;
+      document.getElementById("stageTitle").textContent = detail.title;
+      document.getElementById("stageWord").innerHTML = detail.word;
+      document.getElementById("stageLabel").textContent = detail.label;
+      document.getElementById("stageCopy").textContent = detail.copy;
+      const moodLink = stage.querySelector(".whatsapp-link");
+      moodLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi Revive! I'm drawn to the ${detail.title} mood and would love a personalised recommendation.`)}`;
+    }));
+  }
+
+  // Concern cards now lead directly to the matching shop collection.
   document.querySelectorAll(".concern-card").forEach(card => {
     card.addEventListener("click", () => {
-      showToast(card.dataset.message);
+      const categoryMap = {"Face":"face","Body":"body","Uneven Tone":"targeted","Breakout Care":"targeted","Underarms":"targeted","Hands & Legs":"body","Shaving Care":"men","Hair & Scalp":"hair"};
+      const category = categoryMap[card.querySelector("h3").textContent] || "all";
+      window.location.href = `shop.html?category=${encodeURIComponent(category)}`;
     });
   });
+
+  const shopFilters = document.querySelectorAll(".shop-filter");
+  const productCards = document.querySelectorAll(".product-card");
+  function filterShop(category) {
+    shopFilters.forEach(button => button.classList.toggle("active", button.dataset.filter === category));
+    productCards.forEach(card => card.classList.toggle("hidden", category !== "all" && card.dataset.category !== category));
+  }
+  shopFilters.forEach(button => button.addEventListener("click", () => filterShop(button.dataset.filter)));
 
   function showToast(message) {
     toast.textContent = message;

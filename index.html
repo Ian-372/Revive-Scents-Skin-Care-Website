@@ -43,7 +43,7 @@
       <a href="#consultations">Consultations</a>
       <a href="#scents">Scents</a>
       <a href="#more">More</a>
-      <a class="nav-cta" href="#coming-soon">Shop Soon</a>
+      <a class="nav-cta" href="shop.html">Shop the Edit</a>
     </nav>
   </header>
 
@@ -76,13 +76,12 @@
 
       <div class="hero-visual reveal">
         <div class="visual-ring"></div>
-        <div class="poster-frame">
-          <div class="poster-label">THE REVIVE WAY</div>
-          <img src="assets/brand-poster.jpg" alt="Revive Scents and Skin Care Solutions brand flyer">
-          <div class="poster-caption">
-            <span>From concerns</span>
-            <b>to confidence.</b>
-          </div>
+        <div class="hero-editorial" aria-label="A Revive self-care arrangement">
+          <div class="editorial-sun"></div><div class="editorial-arch"></div><div class="editorial-shadow"></div>
+          <div class="editorial-bottle serum"><i></i><span>REVIVE</span><small>GLOW SERUM</small></div>
+          <div class="editorial-bottle cream"><i></i><span>REVIVE</span><small>SKIN CREAM</small></div>
+          <div class="editorial-note"><b>THE DAILY CARE</b><span>Slow down.<br>Glow on.</span></div>
+          <div class="editorial-petal petal-one"></div><div class="editorial-petal petal-two"></div><div class="editorial-petal petal-three"></div>
         </div>
         <div class="floating-card card-top">
           <span>✦</span>
@@ -108,6 +107,23 @@
         <span>FACE CARE</span><i>✦</i>
       </div>
     </div>
+
+    <section class="care-bar">
+      <div><span>01</span><p><b>Discover</b> your skin story</p></div>
+      <div><span>02</span><p><b>Choose</b> care with intention</p></div>
+      <div><span>03</span><p><b>Feel</b> at home in your skin</p></div>
+      <div class="care-seal">RS<small>EST. WITH CARE</small></div>
+    </section>
+
+    <section class="skin-stories section" aria-label="The Revive visual story">
+      <div class="stories-copy reveal"><span class="eyebrow">REAL CARE, BEAUTIFULLY SEEN</span><h2>Skin, scent and<br><em>the confidence between.</em></h2><p>Every face has a different story. Revive is here for the small moments that help you feel more like yourself.</p><a class="btn btn-soft" href="shop.html">Explore the shop <span>↘</span></a></div>
+      <div class="stories-gallery reveal">
+        <figure class="story-photo photo-tall"><img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Beauty portrait reference image"></figure>
+        <figure class="story-photo photo-top"><img src="https://images.unsplash.com/photo-1741896136331-10375875eff4?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Skincare products reference image"></figure>
+        <figure class="story-photo photo-bottom"><img src="https://assets.lummi.ai/assets/QmTNRyjuNBWMsvHv5qsxfEy9gpkYrGWz9hBhTKqwaPK3E1?auto=format&amp;w=640" alt="Perfume reference image"></figure>
+        <div class="story-tag">YOUR SKIN<br>YOUR CARE</div>
+      </div>
+    </section>
 
     <!-- Brand promise -->
     <section class="promise section" id="about">
@@ -135,6 +151,27 @@
           <h3>Revive your confidence</h3>
           <p>Healthy-looking skin is the goal. Feeling comfortable, cared for and confident is the bigger picture.</p>
         </article>
+      </div>
+    </section>
+
+    <section class="revive-edit section" id="revive-edit" hidden>
+      <div class="edit-top reveal">
+        <div><span class="eyebrow">THE REVIVE EDIT</span><h2>Self-care should feel like<br><em>a little luxury.</em></h2></div>
+        <p>Choose the feeling you are dressing your day in. This is not a catalogue—it is a softer, more personal way to start the conversation.</p>
+      </div>
+      <div class="edit-layout reveal">
+        <div class="edit-selector" role="tablist" aria-label="Choose a Revive mood">
+          <button class="edit-choice active" type="button" data-mood="soft"><span>01</span><b>Soft Reset</b><small>Quiet, hydrated, unhurried</small></button>
+          <button class="edit-choice" type="button" data-mood="glow"><span>02</span><b>Golden Hour</b><small>Warm, luminous, memorable</small></button>
+          <button class="edit-choice" type="button" data-mood="clean"><span>03</span><b>Clean Muse</b><small>Fresh, polished, effortless</small></button>
+        </div>
+        <div class="edit-stage mood-soft" id="editStage">
+          <div class="stage-word" id="stageWord">soft<br>reset</div>
+          <div class="stage-orb"></div><div class="stage-grid"></div>
+          <div class="stage-vessel"><i></i><span>REVIVE</span><small id="stageLabel">YOUR DAILY CARE</small></div>
+          <div class="stage-tile"><span id="stageNumber">01</span><b id="stageTitle">Soft Reset</b><p id="stageCopy">Give your skin, scent and thoughts a gentler place to land.</p></div>
+          <a class="stage-link whatsapp-link" href="#" target="_blank" rel="noopener">Ask Revive about this mood <span>↗</span></a>
+        </div>
       </div>
     </section>
 
@@ -333,6 +370,12 @@
       </div>
     </section>
 
+    <section class="care-manifesto section">
+      <div class="manifesto-mark">RS</div>
+      <div class="manifesto-copy reveal"><span class="eyebrow">CARE, BUT MAKE IT PERSONAL</span><h2>We are not here to sell you<br><em>an impossible routine.</em></h2><p>Just a more thoughtful next step. One that meets your actual skin, your actual budget and your actual life—not an algorithm's idea of you.</p><div class="manifesto-points"><span>✦ No overcomplication</span><span>✦ No pressure</span><span>✦ No shame in starting small</span></div></div>
+      <div class="manifesto-stamp reveal"><b>FROM CONCERNS<br>TO CONFIDENCE</b><span>REVIVE · SKIN · SCENT · SELF CARE</span></div>
+    </section>
+
     <!-- More than skincare -->
     <section class="more-section section" id="more">
       <div class="section-heading center reveal">
@@ -365,11 +408,11 @@
     </section>
 
     <!-- Coming soon shop -->
-    <section class="shop-section section" id="coming-soon">
+    <section class="shop-section section" id="shop" hidden>
       <div class="shop-shell reveal">
-        <div class="shop-badge">COMING SOON</div>
-        <span class="eyebrow">THE REVIVE SHOP</span>
-        <h2>Your skin shelf is about to get<br><em>a serious upgrade.</em></h2>
+        <div class="shop-badge">THE REVIVE SHOP</div>
+        <span class="eyebrow">BROWSE BY WHAT YOU NEED</span>
+        <h2>Find your next<br><em>little obsession.</em></h2>
         <p>
           We are preparing the full product catalogue with real stock, sizes, prices, availability
           and payment options. No imaginary products. No made-up prices. Just the actual Revive stock when it is ready.
@@ -382,6 +425,16 @@
           <div><span>04</span><b>Scents</b><small>Perfumes · body mists · fragrance oils</small></div>
           <div><span>05</span><b>Men's Care</b><small>Face · beard · shaving · body · scents</small></div>
           <div><span>06</span><b>Hair &amp; Style</b><small>Hair care · bonnets · deràs</small></div>
+        </div>
+
+        <div class="shop-filters" role="tablist" aria-label="Shop categories"><button class="shop-filter active" data-filter="all">All</button><button class="shop-filter" data-filter="face">Face</button><button class="shop-filter" data-filter="body">Body</button><button class="shop-filter" data-filter="targeted">Targeted care</button><button class="shop-filter" data-filter="scent">Scents</button><button class="shop-filter" data-filter="men">Men</button><button class="shop-filter" data-filter="hair">Hair &amp; style</button></div>
+        <div class="product-grid" id="productGrid">
+          <article class="product-card" data-category="face"><img src="https://images.unsplash.com/photo-1741896136331-10375875eff4?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Face care product reference"><div><span>FACE CARE</span><h3>Daily glow essentials</h3><p>Cleansers · serums · SPF</p><a class="whatsapp-link" href="#" target="_blank" rel="noopener">Ask about face care ↗</a></div></article>
+          <article class="product-card" data-category="body"><img src="https://media.scholieren.net/media/250801/conversions/skincare-producten-roze-achtergrond-1-hero-square.webp" alt="Body care product reference"><div><span>BODY CARE</span><h3>Soft skin essentials</h3><p>Washes · scrubs · body oils</p><a class="whatsapp-link" href="#" target="_blank" rel="noopener">Ask about body care ↗</a></div></article>
+          <article class="product-card" data-category="targeted"><img src="https://images.unsplash.com/photo-1741896136331-10375875eff4?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Targeted skincare reference"><div><span>TARGETED CARE</span><h3>Care with a focus</h3><p>Breakouts · tone · underarms</p><a class="whatsapp-link" href="#" target="_blank" rel="noopener">Ask about targeted care ↗</a></div></article>
+          <article class="product-card" data-category="scent"><img src="https://assets.lummi.ai/assets/QmTNRyjuNBWMsvHv5qsxfEy9gpkYrGWz9hBhTKqwaPK3E1?auto=format&amp;w=640" alt="Scent product reference"><div><span>SCENTS</span><h3>Wear the memory</h3><p>Perfumes · mists · fragrance oils</p><a class="whatsapp-link" href="#" target="_blank" rel="noopener">Ask about scents ↗</a></div></article>
+          <article class="product-card" data-category="men"><img src="https://images.unsplash.com/photo-1567722353464-dbe5a69b57c5?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Men's grooming product reference"><div><span>MEN'S CARE</span><h3>The sharp routine</h3><p>Face · beard · shaving</p><a class="whatsapp-link" href="#" target="_blank" rel="noopener">Ask about men's care ↗</a></div></article>
+          <article class="product-card" data-category="hair"><img src="https://i.etsystatic.com/22742100/r/il/3413d8/5852567178/il_fullxfull.5852567178_dll5.jpg" alt="Hair bonnet reference"><div><span>HAIR &amp; STYLE</span><h3>Protect your crown</h3><p>Bonnets · hair care · deràs</p><a class="whatsapp-link" href="#" target="_blank" rel="noopener">Ask about hair care ↗</a></div></article>
         </div>
 
         <div class="shop-actions">
@@ -448,7 +501,7 @@
         <a href="#quiz">Skin quiz</a>
         <a href="#consultations">Consultations</a>
         <a href="#scents">Scents</a>
-        <a href="#coming-soon">Shop coming soon</a>
+        <a href="shop.html">Shop the edit</a>
       </div>
 
       <div>
