@@ -10,7 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".site-header");
 
   // Beautiful entrance loader.
-  window.setTimeout(() => loader.classList.add("hide"), 1150);
+  window.setTimeout(() => {
+    loader.classList.add("hide");
+    document.body.classList.add("ready");
+  }, 1150);
 
   // Mobile menu.
   menuToggle.addEventListener("click", () => {
