@@ -1,3 +1,4 @@
+import { auth, db } from "./js/firebase-config.js";
 const WHATSAPP_NUMBER = "254701743478";
 
 document.addEventListener("DOMContentLoaded", () => {

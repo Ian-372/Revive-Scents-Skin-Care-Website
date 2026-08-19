@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email | REVIVE</title>
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+
+<body>
+
+<main class="auth-page">
+
+    <div class="auth-card">
+
+        <a href="../index.html" class="auth-logo">
+            <span>RS</span>
+            <strong>REVIVE</strong>
+            <small>SCENTS &amp; SKIN CARE SOLUTIONS</small>
+        </a>
+
+        <div class="auth-heading">
+            <span>ONE MORE STEP</span>
+            <h1>Verify your email</h1>
+
+            <p>
+                We've sent a verification link to your email address.
+                Verify it before continuing to your REVIVE account.
+            </p>
+        </div>
+
+        <div class="verification-icon">
+            ✉
+        </div>
+
+        <p class="form-message" id="verifyMessage"></p>
+
+        <button class="auth-button" id="checkVerification">
+            I've verified my email
+        </button>
+
+        <button class="text-button" id="resendVerification">
+            Resend verification email
+        </button>
+
+        <a class="back-link" href="../index.html">
+            ← Back to REVIVE
+        </a>
+
+    </div>
+
+</main>
+
+<script type="module">
+
+import {
+    onAuthStateChanged,
+    sendEmailVerification,
+    reload
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import { auth } from "../js/firebase-config.js";
+
+
+const message = document.getElementById("verifyMessage");
+const checkButton = document.getElementById("checkVerification");
+const resendButton = document.getElementById("resendVerification");
+
+
+let currentUser = null;
+
+
+onAuthStateChanged(auth, (user) => {
+
+    if (!user) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    currentUser = user;
+
+});
+
+
+checkButton.addEventListener("click", async () => {
+
+    if (!currentUser) return;
+
+    try {
+
+        await reload(currentUser);
+
+        if (currentUser.emailVerified) {
+
+            message.textContent =
+                "Email verified successfully. Welcome to REVIVE!";
+
+            message.className = "form-message success";
+
+            setTimeout(() => {
+                window.location.href = "../account/dashboard.html";
+            }, 1200);
+
+        } else {
+
+            message.textContent =
+                "Your email is not verified yet. Please click the link in your email first.";
+
+            message.className = "form-message error";
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+            "Unable to check verification status. Please try again.";
+
+        message.className = "form-message error";
+
+    }
+
+});
+
+
+resendButton.addEventListener("click", async () => {
+
+    if (!currentUser) return;
+
+    try {
+
+        await sendEmailVerification(currentUser);
+
+        message.textContent =
+            "A new verification email has been sent.";
+
+        message.className = "form-message success";
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+            "Unable to resend the email right now.";
+
+        message.className = "form-message error";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
