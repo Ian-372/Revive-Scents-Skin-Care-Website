@@ -16,20 +16,22 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("ready");
   }, 1150);
 
-  // Mobile menu.
-  menuToggle.addEventListener("click", () => {
-    const open = mainNav.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(open));
-    document.body.classList.toggle("no-scroll", open);
-  });
-
-  document.querySelectorAll(".main-nav a").forEach(link => {
-    link.addEventListener("click", () => {
-      mainNav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("no-scroll");
+  // Mobile menu is shared by all storefront pages.
+  if (!header.dataset.navReady) {
+    menuToggle.addEventListener("click", () => {
+      const open = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(open));
+      document.body.classList.toggle("no-scroll", open);
     });
-  });
+
+    document.querySelectorAll(".main-nav a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("no-scroll");
+      });
+    });
+  }
 
   // Scroll reveal.
   const observer = new IntersectionObserver((entries) => {

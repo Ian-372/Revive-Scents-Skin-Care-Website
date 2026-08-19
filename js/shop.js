@@ -1,8 +1,6 @@
 import {
     collection,
-    getDocs,
-    query,
-    where
+    getDocs
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 import { db } from "./firebase-config.js";
@@ -19,6 +17,7 @@ const filters =
 
 
 let products = [];
+let activeCategory = "all";
 
 
 // =====================================================
@@ -61,22 +60,17 @@ async function loadProducts() {
     if (!productGrid) return;
 
 
-    productGrid.innerHTML = `
-        <div class="shop-loading">
-            <p>Loading Revive products...</p>
+    productGrid.innerHTML = Array.from({ length: 4 }, () => `
+        <div class="product-skeleton" aria-hidden="true">
+            <span></span><span></span><span></span>
         </div>
-    `;
+    `).join("");
 
 
     try {
-        const productsQuery = query(
-            collection(db, "products"),
-            where("active", "==", true)
+        const snapshot = await getDocs(
+            collection(db, "products")
         );
-
-
-        const snapshot =
-            await getDocs(productsQuery);
 
 
         products = snapshot.docs.map(
@@ -87,7 +81,7 @@ async function loadProducts() {
                 ...documentSnapshot.data()
 
             })
-        );
+        ).filter(product => product.active !== false);
 
 
         console.log(
@@ -96,7 +90,7 @@ async function loadProducts() {
         );
 
 
-        renderProducts("all");
+        renderProducts(activeCategory);
 
 
     } catch (error) {
@@ -140,6 +134,8 @@ async function loadProducts() {
 
 function renderProducts(category = "all") {
 
+    activeCategory = category;
+
     const filteredProducts =
         category === "all"
 
@@ -147,7 +143,10 @@ function renderProducts(category = "all") {
 
             : products.filter(
                 product =>
-                    product.category === category
+                String(product.category || "")
+                    .trim()
+                    .toLowerCase()
+                    .replace(/\s+/g, "-") === category
             );
 
 
@@ -341,6 +340,13 @@ filters.forEach(filter => {
             filter.classList.add(
                 "active"
             );
+
+            filters.forEach(button => {
+                button.setAttribute(
+                    "aria-selected",
+                    String(button === filter)
+                );
+            });
 
 
             renderProducts(

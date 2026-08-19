@@ -179,3 +179,95 @@
     }
 
 }
+
+
+/* =========================
+   REVIVE CART FINISH
+========================= */
+
+.cart-page {
+    width: min(1240px, 92%);
+    padding: 145px 0 110px;
+}
+
+.cart-heading {
+    position: relative;
+    margin-bottom: 38px;
+    padding: 42px clamp(24px, 5vw, 60px);
+    overflow: hidden;
+    border: 1px solid #f0d5e1;
+    border-radius: 30px;
+    background: radial-gradient(circle at 88% 24%, rgba(231,45,121,.16), transparent 22%), linear-gradient(120deg, #fff8fb, #fff0f6);
+}
+
+.cart-heading::after {
+    content: "YOUR REVIVE";
+    position: absolute;
+    right: clamp(18px, 5vw, 65px);
+    bottom: -15px;
+    color: rgba(194, 48, 108, .08);
+    font: italic clamp(3.5rem, 9vw, 7rem)/1 "Cormorant Garamond", serif;
+    pointer-events: none;
+}
+
+.cart-heading > * { position: relative; z-index: 1; }
+.cart-heading h1 { color: #37212d; font-size: clamp(3.3rem, 6vw, 5.5rem); }
+.cart-heading p { max-width: 500px; color: #7c5a68; }
+
+.cart-items-section {
+    padding: 8px 28px;
+    border: 1px solid #f0dbe4;
+    border-radius: 24px;
+    background: rgba(255,255,255,.88);
+    box-shadow: 0 18px 48px rgba(138, 33, 79, .06);
+}
+
+.cart-item { border-color: #f1dfe6; }
+.cart-item:last-child { border-bottom: 0; }
+.cart-item-image { border-radius: 17px; background: #f8e6ee; box-shadow: 0 10px 22px rgba(123, 33, 72, .1); }
+.cart-item-info h3 { color: #34222b; font-size: clamp(1.55rem, 2.4vw, 2rem); }
+.cart-item-category { color: #c53d77; font-weight: 700; opacity: 1; }
+.cart-item-price { color: #a62d61; }
+.cart-item-total { color: #38212d; font-size: 1.05rem; }
+
+.cart-controls { width: max-content; padding: 4px; border: 1px solid #f1d6e1; border-radius: 999px; background: #fff7fb; }
+.cart-controls button { border-color: #ecc6d7; border-radius: 50%; color: #b72f69; transition: .2s ease; }
+.cart-controls button:not(:disabled):hover { border-color: #d72d75; background: #d72d75; color: #fff; }
+.cart-controls button:disabled { cursor: not-allowed; opacity: .45; }
+.cart-controls strong { min-width: 22px; text-align: center; color: #66384c; }
+.cart-remove { color: #a85475; font-size: .75rem; font-weight: 700; text-decoration-color: #e7bad0; transition: color .2s ease; }
+.cart-remove:hover { color: #c22164; }
+
+.cart-summary {
+    border-color: #efcada;
+    border-radius: 24px;
+    background: linear-gradient(155deg, #fff8fb, #ffeaf3);
+    box-shadow: 0 22px 55px rgba(158, 31, 86, .13);
+}
+.cart-summary h2 { color: #39232e; font-size: 2.6rem; }
+.summary-row { color: #765665; }
+.summary-row strong { color: #432632; }
+.summary-total { border-color: #efcfdd; color: #4a2636; }
+.summary-total strong { color: #c22f6c; }
+#checkoutButton:not(:disabled) { box-shadow: 0 13px 25px rgba(210, 42, 111, .25); }
+#checkoutButton:disabled { cursor: not-allowed; opacity: .55; box-shadow: none; }
+.continue-shopping { color: #a22c60; font-size: .78rem; font-weight: 700; }
+.continue-shopping:hover { color: #d62972; }
+
+.empty-cart { padding: 95px 20px; border-radius: 24px; background: #fff; }
+.empty-cart h2 { color: #432633; font-size: 3rem; }
+.cart-loading { padding: 80px 20px; color: #a22c60; }
+
+@media (max-width: 800px) {
+    .cart-page { padding-top: 122px; }
+    .cart-summary { position: static; }
+}
+
+@media (max-width: 600px) {
+    .cart-page { width: min(100% - 24px, 1240px); padding-top: 105px; padding-bottom: 82px; }
+    .cart-heading { padding: 31px 22px; border-radius: 22px; }
+    .cart-heading::after { display: none; }
+    .cart-items-section { padding: 7px 15px; border-radius: 20px; }
+    .cart-item { gap: 14px; padding: 17px 0; }
+    .cart-summary { padding: 24px 20px; border-radius: 20px; }
+}

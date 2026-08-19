@@ -1345,3 +1345,12 @@ button {
         width: 100%;
     }
 }
+
+/* Live account dashboard activity */
+.account-order-list { display: grid; gap: 10px; }
+.account-order-row { display: grid; grid-template-columns: 1.2fr .8fr auto; align-items: center; gap: 18px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 15px; background: var(--white); transition: transform .2s ease, box-shadow .2s ease; }
+.account-order-row:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.account-order-row span:first-child { display: grid; gap: 2px; }
+.account-order-row small { color: var(--muted); font-size: .72rem; }
+.account-order-status { justify-self: start; padding: 5px 9px; border-radius: 999px; background: var(--rose-pale); color: var(--rose-dark); font-size: .68rem; font-weight: 700; }
+@media (max-width: 600px) { .account-order-row { grid-template-columns: 1fr auto; gap: 9px; padding: 14px; } .account-order-status { grid-column: 1; grid-row: 2; } }
