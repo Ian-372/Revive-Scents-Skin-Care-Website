@@ -2,50 +2,95 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Manage your REVIVE profile and personal information.">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Manage your REVIVE profile and personal information."
+    >
 
     <title>My Profile | REVIVE</title>
 
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"
+    >
 
-    <link rel="stylesheet" href="../css/profile.css">
+    <link
+        rel="stylesheet"
+        href="../css/profile.css"
+    >
+
 </head>
+
 
 <body>
 
     <div class="profile-page">
 
-        <!-- TOP NAV -->
+
+        <!-- =========================================
+             HEADER
+        ========================================== -->
 
         <header class="profile-header">
 
-            <a href="../index.html" class="profile-brand">
-                <span class="profile-brand-symbol">RS</span>
+            <a
+                href="../index.html"
+                class="profile-brand"
+            >
+
+                <span class="profile-brand-symbol">
+                    RS
+                </span>
 
                 <span>
-                    <strong>REVIVE</strong>
-                    <small>SCENTS &amp; SKIN CARE SOLUTIONS</small>
+
+                    <strong>
+                        REVIVE
+                    </strong>
+
+                    <small>
+                        SCENTS &amp; SKIN CARE SOLUTIONS
+                    </small>
+
                 </span>
+
             </a>
 
-            <a href="dashboard.html" class="back-dashboard">
+
+            <a
+                href="dashboard.html"
+                class="back-dashboard"
+            >
                 ← Dashboard
             </a>
 
         </header>
 
 
-        <!-- MAIN -->
+
+        <!-- =========================================
+             MAIN
+        ========================================== -->
 
         <main class="profile-main">
+
 
             <div class="profile-intro">
 
@@ -66,49 +111,81 @@
             </div>
 
 
+
             <section class="profile-layout">
 
-                <!-- PROFILE SUMMARY -->
+
+                <!-- =================================
+                     PROFILE SIDEBAR
+                ================================== -->
 
                 <aside class="profile-sidebar">
 
-                    <div class="profile-avatar" id="profileAvatar">
-                        <span>R</span>
+                    <div
+                        class="profile-avatar"
+                        id="profileAvatar"
+                    >
+                        <span>
+                            R
+                        </span>
                     </div>
+
 
                     <h2 id="profileDisplayName">
                         My Profile
                     </h2>
 
+
                     <p id="profileEmail">
                         Your REVIVE account
                     </p>
 
+
                     <div class="profile-divider"></div>
+
 
                     <nav class="account-links">
 
-                        <a href="dashboard.html" class="account-link">
+                        <a
+                            href="dashboard.html"
+                            class="account-link"
+                        >
                             <span>⌂</span>
                             Dashboard
                         </a>
 
-                        <a href="profile.html" class="account-link active">
+
+                        <a
+                            href="profile.html"
+                            class="account-link active"
+                        >
                             <span>♡</span>
                             My Profile
                         </a>
 
-                        <a href="wishlist.html" class="account-link">
+
+                        <a
+                            href="wishlist.html"
+                            class="account-link"
+                        >
                             <span>♡</span>
                             Wishlist
                         </a>
 
-                        <a href="addresses.html" class="account-link">
+
+                        <a
+                            href="addresses.html"
+                            class="account-link"
+                        >
                             <span>⌖</span>
                             Addresses
                         </a>
 
-                        <a href="orders.html" class="account-link">
+
+                        <a
+                            href="orders.html"
+                            class="account-link"
+                        >
                             <span>▤</span>
                             My Orders
                         </a>
@@ -118,9 +195,13 @@
                 </aside>
 
 
-                <!-- PROFILE FORM -->
+
+                <!-- =================================
+                     PROFILE FORM
+                ================================== -->
 
                 <section class="profile-card">
+
 
                     <div class="profile-card-heading">
 
@@ -137,6 +218,7 @@
 
                         </div>
 
+
                         <span class="profile-card-icon">
                             ♡
                         </span>
@@ -144,9 +226,12 @@
                     </div>
 
 
+
                     <form id="profileForm">
 
+
                         <div class="profile-form-grid">
+
 
                             <label class="profile-field">
 
@@ -154,10 +239,16 @@
                                     First name
                                 </span>
 
-                                <input type="text" id="firstName" placeholder="Your first name"
-                                    autocomplete="given-name" required>
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    placeholder="Your first name"
+                                    autocomplete="given-name"
+                                    required
+                                >
 
                             </label>
+
 
 
                             <label class="profile-field">
@@ -166,10 +257,16 @@
                                     Last name
                                 </span>
 
-                                <input type="text" id="lastName" placeholder="Your last name" autocomplete="family-name"
-                                    required>
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    placeholder="Your last name"
+                                    autocomplete="family-name"
+                                    required
+                                >
 
                             </label>
+
 
 
                             <label class="profile-field full">
@@ -178,7 +275,12 @@
                                     Email address
                                 </span>
 
-                                <input type="email" id="email" autocomplete="email" disabled>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    autocomplete="email"
+                                    disabled
+                                >
 
                                 <small>
                                     Your email address is connected to
@@ -188,46 +290,74 @@
                             </label>
 
 
+
                             <label class="profile-field full">
 
                                 <span>
                                     Phone number
                                 </span>
 
-                                <input type="tel" id="phone" placeholder="e.g. 0701 743 478" autocomplete="tel">
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    placeholder="e.g. 0701 743 478"
+                                    autocomplete="tel"
+                                >
 
                             </label>
 
+
                         </div>
+
 
 
                         <div class="profile-form-footer">
 
                             <p id="profileMessage"></p>
 
-                            <button type="submit" id="saveProfile" class="profile-save-button">
+
+                            <button
+                                type="submit"
+                                id="saveProfile"
+                                class="profile-save-button"
+                            >
+
                                 Save changes
-                                <span>→</span>
+
+                                <span>
+                                    →
+                                </span>
+
                             </button>
 
                         </div>
 
+
                     </form>
 
                 </section>
+
 
             </section>
 
         </main>
 
 
-        <!-- FOOTER -->
+
+        <!-- =========================================
+             FOOTER
+        ========================================== -->
 
         <footer class="profile-footer">
 
             <span>
-                © <span id="year"></span> REVIVE
+
+                ©
+                <span id="year"></span>
+                REVIVE
+
             </span>
+
 
             <span>
                 From concerns to confidence ♡
@@ -235,287 +365,20 @@
 
         </footer>
 
+
     </div>
 
 
-    <script type="module">
 
-        import {
-            onAuthStateChanged,
-            updateProfile
-        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+    <!-- =========================================
+         PROFILE SCRIPT
+    ========================================== -->
 
-        import {
-            doc,
-            getDoc,
-            setDoc,
-            updateDoc,
-            serverTimestamp
-        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+    <script
+        type="module"
+        src="../js/profile.js"
+    ></script>
 
-        import { auth, db }
-            from "../js/firebase-config.js";
-
-
-        const form =
-            document.getElementById("profileForm");
-
-        const message =
-            document.getElementById("profileMessage");
-
-        const saveButton =
-            document.getElementById("saveProfile");
-
-
-        const firstNameInput =
-            document.getElementById("firstName");
-
-        const lastNameInput =
-            document.getElementById("lastName");
-
-        const phoneInput =
-            document.getElementById("phone");
-
-        const emailInput =
-            document.getElementById("email");
-
-        const profileDisplayName =
-            document.getElementById("profileDisplayName");
-
-        const profileEmail =
-            document.getElementById("profileEmail");
-
-        const profileAvatar =
-            document.getElementById("profileAvatar");
-
-
-        onAuthStateChanged(auth, async (user) => {
-
-            if (!user) {
-
-                window.location.href =
-                    "../auth/login.html";
-
-                return;
-            }
-
-
-            if (!user.emailVerified) {
-
-                window.location.href =
-                    "../auth/verify-email.html";
-
-                return;
-            }
-
-
-            emailInput.value =
-                user.email || "";
-
-
-            profileEmail.textContent =
-                user.email || "REVIVE account";
-
-
-            const userRef =
-                doc(db, "users", user.uid);
-
-
-            const snapshot =
-                await getDoc(userRef);
-
-
-            if (snapshot.exists()) {
-
-                const data =
-                    snapshot.data();
-
-
-                firstNameInput.value =
-                    data.firstName || "";
-
-
-                lastNameInput.value =
-                    data.lastName || "";
-
-
-                phoneInput.value =
-                    data.phone || "";
-
-
-                updateProfilePreview(
-                    data.firstName,
-                    data.lastName
-                );
-
-            } else {
-
-                await setDoc(
-                    userRef,
-                    {
-                        firstName: "",
-                        lastName: "",
-                        email: user.email,
-                        phone: "",
-                        role: "customer",
-                        emailVerified:
-                            user.emailVerified,
-                        createdAt:
-                            serverTimestamp(),
-                        updatedAt:
-                            serverTimestamp()
-                    }
-                );
-
-            }
-
-        });
-
-
-        function updateProfilePreview(
-            firstName,
-            lastName
-        ) {
-
-            const first =
-                (firstName || "").trim();
-
-            const last =
-                (lastName || "").trim();
-
-
-            const fullName =
-                `${first} ${last}`.trim();
-
-
-            if (fullName) {
-
-                profileDisplayName.textContent =
-                    fullName;
-
-                profileAvatar.innerHTML =
-                    `<span>${first.charAt(0).toUpperCase()}</span>`;
-
-            }
-
-        }
-
-
-        form.addEventListener(
-            "submit",
-            async (event) => {
-
-                event.preventDefault();
-
-
-                const user =
-                    auth.currentUser;
-
-
-                if (!user) return;
-
-
-                const firstName =
-                    firstNameInput.value.trim();
-
-
-                const lastName =
-                    lastNameInput.value.trim();
-
-
-                const phone =
-                    phoneInput.value.trim();
-
-
-                if (!firstName || !lastName) {
-
-                    message.textContent =
-                        "Please enter your first and last name.";
-
-                    message.className =
-                        "error";
-
-                    return;
-
-                }
-
-
-                try {
-
-                    saveButton.disabled =
-                        true;
-
-                    saveButton.innerHTML =
-                        "Saving...";
-
-
-                    await updateDoc(
-                        doc(
-                            db,
-                            "users",
-                            user.uid
-                        ),
-                        {
-                            firstName,
-                            lastName,
-                            phone,
-                            updatedAt:
-                                serverTimestamp()
-                        }
-                    );
-
-
-                    await updateProfile(
-                        user,
-                        {
-                            displayName:
-                                `${firstName} ${lastName}`
-                        }
-                    );
-
-
-                    updateProfilePreview(
-                        firstName,
-                        lastName
-                    );
-
-
-                    message.textContent =
-                        "Your profile has been updated successfully.";
-
-                    message.className =
-                        "success";
-
-
-                } catch (error) {
-
-                    console.error(error);
-
-
-                    message.textContent =
-                        "Unable to update your profile.";
-
-                    message.className =
-                        "error";
-
-                } finally {
-
-                    saveButton.disabled =
-                        false;
-
-                    saveButton.innerHTML =
-                        `Save changes <span>→</span>`;
-
-                }
-
-            }
-        );
-
-
-        document.getElementById("year").textContent =
-            new Date().getFullYear();
-
-    </script>
 
 </body>
 

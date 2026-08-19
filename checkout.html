@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Complete your REVIVE order securely."
+    >
+
+    <title>Checkout | REVIVE</title>
+
+
+    <!-- FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/checkout.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="checkout-page">
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="checkout-header">
+
+        <a
+            href="index.html"
+            class="checkout-brand"
+        >
+
+            <span class="brand-mark">
+                RS
+            </span>
+
+            <span class="brand-text">
+
+                <strong>
+                    REVIVE
+                </strong>
+
+                <small>
+                    SCENTS &amp; SKIN CARE SOLUTIONS
+                </small>
+
+            </span>
+
+        </a>
+
+
+        <div class="checkout-security">
+
+            <span>
+                ♡
+            </span>
+
+            Secure checkout
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="checkout-main">
+
+
+        <!-- PAGE INTRO -->
+
+        <div class="checkout-intro">
+
+            <span class="checkout-eyebrow">
+                YOUR REVIVE ORDER
+            </span>
+
+            <h1>
+                Almost
+                <em>yours.</em>
+            </h1>
+
+            <p>
+                Complete your details below and we'll
+                prepare your REVIVE order with care.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CHECKOUT LAYOUT
+        ================================================== -->
+
+        <div class="checkout-layout">
+
+
+            <!-- =================================================
+                 LEFT SIDE
+            ================================================== -->
+
+            <section class="checkout-details">
+
+
+                <!-- DELIVERY -->
+
+                <article class="checkout-card">
+
+                    <div class="checkout-card-heading">
+
+                        <div>
+
+                            <span class="step-number">
+                                01
+                            </span>
+
+                            <div>
+
+                                <span class="section-eyebrow">
+                                    DELIVERY
+                                </span>
+
+                                <h2>
+                                    Where should we
+                                    <em>send it?</em>
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ADDRESS SELECTOR -->
+
+                    <div
+                        class="address-section"
+                        id="addressSection"
+                    >
+
+                        <div class="field-heading">
+
+                            <label>
+                                Delivery address
+                            </label>
+
+                            <a
+                                href="account/addresses.html"
+                                class="manage-addresses"
+                            >
+                                Manage addresses
+                            </a>
+
+                        </div>
+
+
+                        <div
+                            id="addressList"
+                            class="checkout-address-list"
+                        >
+
+                            <div class="checkout-loading">
+                                Loading your addresses...
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="addNewAddress"
+                            class="add-address-button"
+                        >
+                            + Add a new address
+                        </button>
+
+                    </div>
+
+
+                    <!-- DELIVERY NOTE -->
+
+                    <div class="checkout-field">
+
+                        <label for="deliveryNote">
+                            Delivery note
+                            <span>Optional</span>
+                        </label>
+
+                        <textarea
+                            id="deliveryNote"
+                            rows="3"
+                            placeholder="Anything our delivery team should know?"
+                        ></textarea>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PAYMENT -->
+
+                <article class="checkout-card">
+
+                    <div class="checkout-card-heading">
+
+                        <div>
+
+                            <span class="step-number">
+                                02
+                            </span>
+
+                            <div>
+
+                                <span class="section-eyebrow">
+                                    PAYMENT
+                                </span>
+
+                                <h2>
+                                    How would you like
+                                    to <em>pay?</em>
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="payment-methods">
+
+
+                        <!-- MPESA -->
+
+                        <label
+                            class="payment-method selected"
+                            data-method="mpesa"
+                        >
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="mpesa"
+                                checked
+                            >
+
+                            <span class="payment-radio"></span>
+
+                            <span class="payment-content">
+
+                                <strong>
+                                    M-Pesa
+                                </strong>
+
+                                <small>
+                                    Pay securely using your M-Pesa number.
+                                </small>
+
+                            </span>
+
+                            <span class="payment-logo mpesa-logo">
+                                M-PESA
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- PAYPAL -->
+
+                        <label
+                            class="payment-method"
+                            data-method="paypal"
+                        >
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="paypal"
+                            >
+
+                            <span class="payment-radio"></span>
+
+                            <span class="payment-content">
+
+                                <strong>
+                                    PayPal
+                                </strong>
+
+                                <small>
+                                    Pay using your PayPal account.
+                                </small>
+
+                            </span>
+
+                            <span class="payment-logo paypal-logo">
+                                PayPal
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- MPESA PHONE -->
+
+                    <div
+                        id="mpesaDetails"
+                        class="payment-extra"
+                    >
+
+                        <label for="mpesaPhone">
+                            M-Pesa phone number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="mpesaPhone"
+                            placeholder="e.g. 0712 345 678"
+                            autocomplete="tel"
+                        >
+
+                        <small>
+                            You'll receive an M-Pesa prompt
+                            on this number.
+                        </small>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CONTACT -->
+
+                <article class="checkout-card">
+
+                    <div class="checkout-card-heading">
+
+                        <div>
+
+                            <span class="step-number">
+                                03
+                            </span>
+
+                            <div>
+
+                                <span class="section-eyebrow">
+                                    CONTACT
+                                </span>
+
+                                <h2>
+                                    Stay in the
+                                    <em>loop.</em>
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="checkout-contact">
+
+                        <div class="checkout-field">
+
+                            <label for="checkoutEmail">
+                                Email address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="checkoutEmail"
+                                disabled
+                            >
+
+                            <small>
+                                Your order confirmation will
+                                be associated with this email.
+                            </small>
+
+                        </div>
+
+                        <div class="checkout-field">
+
+                            <label for="checkoutPhone">
+                                Phone number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="checkoutPhone"
+                                placeholder="e.g. 0712 345 678"
+                                autocomplete="tel"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="checkoutMessage"
+                    class="checkout-message"
+                    aria-live="polite"
+                ></div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RIGHT SIDE — ORDER SUMMARY
+            ================================================== -->
+
+            <aside class="order-summary">
+
+
+                <div class="summary-header">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            YOUR BAG
+                        </span>
+
+                        <h2>
+                            Order
+                            <em>summary.</em>
+                        </h2>
+
+                    </div>
+
+                    <span
+                        id="cartItemCount"
+                        class="cart-count"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+
+                <!-- CART ITEMS -->
+
+                <div
+                    id="checkoutItems"
+                    class="checkout-items"
+                >
+
+                    <div class="checkout-loading">
+                        Loading your bag...
+                    </div>
+
+                </div>
+
+
+
+                <!-- TOTALS -->
+
+                <div class="summary-divider"></div>
+
+
+                <div class="summary-line">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="checkoutSubtotal">
+                        KSh 0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <strong id="checkoutDelivery">
+                        KSh 0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line total-line">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="checkoutTotal">
+                        KSh 0
+                    </strong>
+
+                </div>
+
+
+
+                <!-- PLACE ORDER -->
+
+                <button
+                    type="button"
+                    id="placeOrderButton"
+                    class="place-order-button"
+                    disabled
+                >
+
+                    <span>
+                        Place order
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+                <div class="checkout-assurance">
+
+                    <span>
+                        ♡
+                    </span>
+
+                    <p>
+                        Your information is securely
+                        processed and your order is
+                        protected by REVIVE.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="index.html"
+                    class="continue-shopping"
+                >
+                    ← Continue shopping
+                </a>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="checkout-footer">
+
+        <span>
+            © <span id="year"></span>
+            REVIVE Scents &amp; Skin Care Solutions.
+        </span>
+
+        <span>
+            From concerns to confidence ♡
+        </span>
+
+    </footer>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     NEW ADDRESS MODAL
+====================================================== -->
+
+<div
+    class="address-modal"
+    id="addressModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal-overlay"
+        id="modalOverlay"
+    ></div>
+
+
+    <div class="address-modal-card">
+
+        <button
+            type="button"
+            class="modal-close"
+            id="closeAddressModal"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-heading">
+
+            <span class="section-eyebrow">
+                NEW DELIVERY ADDRESS
+            </span>
+
+            <h2>
+                Add an
+                <em>address.</em>
+            </h2>
+
+        </div>
+
+
+        <form id="checkoutAddressForm">
+
+
+            <div class="modal-grid">
+
+
+                <div class="checkout-field">
+
+                    <label for="newAddressLabel">
+                        Address label
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newAddressLabel"
+                        placeholder="Home, Campus, Work..."
+                        required
+                    >
+
+                </div>
+
+
+                <div class="checkout-field">
+
+                    <label for="newAddressPhone">
+                        Phone number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="newAddressPhone"
+                        placeholder="0712 345 678"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="checkout-field">
+
+                    <label for="newAddressFirstName">
+                        First name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newAddressFirstName"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="checkout-field">
+
+                    <label for="newAddressLastName">
+                        Last name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newAddressLastName"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="checkout-field">
+
+                    <label for="newAddressCounty">
+                        County
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newAddressCounty"
+                        placeholder="e.g. Kakamega"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="checkout-field">
+
+                    <label for="newAddressTown">
+                        Town / City
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newAddressTown"
+                        placeholder="e.g. Kakamega"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="checkout-field full">
+
+                    <label for="newAddressArea">
+                        Area / Estate
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newAddressArea"
+                        placeholder="e.g. Milimani"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="checkout-field full">
+
+                    <label for="newAddressBuilding">
+                        Building / House
+                        <span>Optional</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newAddressBuilding"
+                        placeholder="Apartment, house number..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <p
+                id="addressFormMessage"
+                class="checkout-message"
+            ></p>
+
+
+            <button
+                type="submit"
+                class="save-address-button"
+                id="saveCheckoutAddress"
+            >
+                Save address
+                <span>→</span>
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script
+    type="module"
+    src="js/checkout.js"
+></script>
+
+</body>
+
+</html>

@@ -15,12 +15,16 @@
     <header class="account-header">
 
         <a href="../index.html" class="account-brand">
-            <span class="brand-symbol">RS</span>
+
+            <span class="brand-symbol">
+                RS
+            </span>
 
             <span>
                 <strong>REVIVE</strong>
-                <small>SCENTS & SKIN CARE</small>
+                <small>SCENTS &amp; SKIN CARE</small>
             </span>
+
         </a>
 
         <nav>
@@ -67,13 +71,18 @@
         </section>
 
 
-        <div id="wishlistMessage"></div>
+        <div
+            id="wishlistMessage"
+            class="wishlist-message"
+        ></div>
 
 
         <section id="wishlistContainer">
 
             <div class="account-loading">
+
                 Loading your wishlist...
+
             </div>
 
         </section>
@@ -84,8 +93,12 @@
     <footer class="account-footer">
 
         <span>
-            © <span id="year"></span>
+
+            ©
+            <span id="year"></span>
+
             Revive Scents and Skin Care Solutions.
+
         </span>
 
         <span>
@@ -95,499 +108,10 @@
     </footer>
 
 
-    <script type="module">
-
-        import {
-            onAuthStateChanged
-        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-        import {
-            doc,
-            getDoc,
-            setDoc,
-            serverTimestamp
-        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-        import {
-            auth,
-            db
-        } from "../js/firebase-config.js";
-
-
-        const wishlistContainer =
-            document.getElementById(
-                "wishlistContainer"
-            );
-
-
-        const wishlistMessage =
-            document.getElementById(
-                "wishlistMessage"
-            );
-
-
-        let currentUser = null;
-
-
-        // ==========================================
-        // AUTH
-        // ==========================================
-
-        onAuthStateChanged(
-            auth,
-            async (user) => {
-
-                if (!user) {
-
-                    window.location.href =
-                        "../auth/login.html";
-
-                    return;
-
-                }
-
-
-                if (!user.emailVerified) {
-
-                    window.location.href =
-                        "../auth/verify-email.html";
-
-                    return;
-
-                }
-
-
-                currentUser = user;
-
-                await loadWishlist();
-
-            }
-        );
-
-
-        // ==========================================
-        // LOAD WISHLIST
-        // ==========================================
-
-        async function loadWishlist() {
-
-            try {
-
-                const wishlistRef =
-                    doc(
-                        db,
-                        "wishlists",
-                        currentUser.uid
-                    );
-
-
-                const wishlistSnapshot =
-                    await getDoc(
-                        wishlistRef
-                    );
-
-
-                if (
-                    !wishlistSnapshot.exists()
-                ) {
-
-                    renderEmptyWishlist();
-
-                    return;
-
-                }
-
-
-                const data =
-                    wishlistSnapshot.data();
-
-
-                const items =
-                    Array.isArray(data.items)
-                        ? data.items
-                        : [];
-
-
-                if (!items.length) {
-
-                    renderEmptyWishlist();
-
-                    return;
-
-                }
-
-
-                renderWishlist(items);
-
-
-            } catch (error) {
-
-                console.error(
-                    "Wishlist loading error:",
-                    error
-                );
-
-
-                wishlistContainer.innerHTML = `
-                    <div class="empty-account-state">
-
-                        <h3>
-                            Unable to load wishlist
-                        </h3>
-
-                        <p>
-                            Please refresh the page
-                            and try again.
-                        </p>
-
-                    </div>
-                `;
-
-            }
-
-        }
-
-
-        // ==========================================
-        // RENDER EMPTY
-        // ==========================================
-
-        function renderEmptyWishlist() {
-
-            wishlistContainer.innerHTML = `
-
-                <div class="empty-account-state">
-
-                    <div class="empty-account-icon">
-                        ♡
-                    </div>
-
-                    <h3>
-                        Your wishlist is empty
-                    </h3>
-
-                    <p>
-                        Save products you love
-                        and they'll appear here.
-                    </p>
-
-                    <a
-                        href="../shop.html"
-                        class="account-button"
-                    >
-                        Explore the shop
-                    </a>
-
-                </div>
-
-            `;
-
-        }
-
-
-        // ==========================================
-        // RENDER WISHLIST
-        // ==========================================
-
-        function renderWishlist(items) {
-
-            wishlistContainer.innerHTML = `
-
-                <div class="wishlist-grid">
-
-                    ${items.map(product => `
-
-                        <article
-                            class="wishlist-card"
-                            data-id="${escapeHTML(product.id)}"
-                        >
-
-                            <a
-                                href="../product.html?id=${encodeURIComponent(product.id)}"
-                                class="wishlist-image"
-                            >
-
-                                <img
-                                    src="${escapeHTML(product.image || "")}"
-                                    alt="${escapeHTML(product.name)}"
-                                    loading="lazy"
-                                >
-
-                            </a>
-
-
-                            <div class="wishlist-info">
-
-                                <span>
-                                    ${escapeHTML(
-                                        product.category || ""
-                                    )}
-                                </span>
-
-                                <h3>
-                                    ${escapeHTML(
-                                        product.name
-                                    )}
-                                </h3>
-
-                                <strong>
-                                    ${formatPrice(
-                                        product.price
-                                    )}
-                                </strong>
-
-
-                                <div class="wishlist-actions">
-
-                                    <a
-                                        href="../product.html?id=${encodeURIComponent(product.id)}"
-                                        class="account-button"
-                                    >
-                                        View product
-                                    </a>
-
-                                    <button
-                                        type="button"
-                                        class="remove-wishlist"
-                                        data-id="${escapeHTML(product.id)}"
-                                    >
-                                        Remove
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </article>
-
-                    `).join("")}
-
-                </div>
-
-            `;
-
-
-            document
-                .querySelectorAll(
-                    ".remove-wishlist"
-                )
-                .forEach(button => {
-
-                    button.addEventListener(
-                        "click",
-                        () => {
-
-                            removeFromWishlist(
-                                button.dataset.id
-                            );
-
-                        }
-                    );
-
-                });
-
-        }
-
-
-        // ==========================================
-        // REMOVE
-        // ==========================================
-
-        async function removeFromWishlist(
-            productId
-        ) {
-
-            try {
-
-                const wishlistRef =
-                    doc(
-                        db,
-                        "wishlists",
-                        currentUser.uid
-                    );
-
-
-                const snapshot =
-                    await getDoc(
-                        wishlistRef
-                    );
-
-
-                if (!snapshot.exists()) {
-                    return;
-                }
-
-
-                const data =
-                    snapshot.data();
-
-
-                const items =
-                    Array.isArray(data.items)
-                        ? data.items
-                        : [];
-
-
-                const updatedItems =
-                    items.filter(
-                        item =>
-                            item.id !== productId
-                    );
-
-
-                await setDoc(
-                    wishlistRef,
-                    {
-                        items: updatedItems,
-                        updatedAt:
-                            serverTimestamp()
-                    },
-                    {
-                        merge: true
-                    }
-                );
-
-
-                showMessage(
-                    "Removed from your wishlist.",
-                    "success"
-                );
-
-
-                await loadWishlist();
-
-
-            } catch (error) {
-
-                console.error(
-                    "Remove wishlist error:",
-                    error
-                );
-
-
-                showMessage(
-                    "Unable to update your wishlist.",
-                    "error"
-                );
-
-            }
-
-        }
-
-
-        // ==========================================
-        // HELPERS
-        // ==========================================
-
-        function formatPrice(price) {
-
-            return new Intl.NumberFormat(
-                "en-KE",
-                {
-                    style: "currency",
-                    currency: "KES",
-                    maximumFractionDigits: 0
-                }
-            ).format(
-                Number(price) || 0
-            );
-
-        }
-
-
-        function escapeHTML(value) {
-
-            return String(value)
-
-                .replaceAll(
-                    "&",
-                    "&amp;"
-                )
-
-                .replaceAll(
-                    "<",
-                    "&lt;"
-                )
-
-                .replaceAll(
-                    ">",
-                    "&gt;"
-                )
-
-                .replaceAll(
-                    '"',
-                    "&quot;"
-                )
-
-                .replaceAll(
-                    "'",
-                    "&#039;"
-                );
-
-        }
-
-
-        function showMessage(
-            message,
-            type
-        ) {
-
-            wishlistMessage.textContent =
-                message;
-
-            wishlistMessage.className =
-                `admin-message ${type}`;
-
-        }
-
-
-        // ==========================================
-        // CART COUNT
-        // ==========================================
-
-        function updateCartCount() {
-
-            const cart =
-                JSON.parse(
-                    localStorage.getItem(
-                        "reviveCart"
-                    )
-                ) || [];
-
-
-            const count =
-                cart.reduce(
-                    (total, item) =>
-                        total + item.quantity,
-                    0
-                );
-
-
-            const cartCount =
-                document.getElementById(
-                    "cartCount"
-                );
-
-
-            if (cartCount) {
-
-                cartCount.textContent =
-                    count;
-
-            }
-
-        }
-
-
-        document.getElementById(
-            "year"
-        ).textContent =
-            new Date().getFullYear();
-
-
-        updateCartCount();
-
-    </script>
+    <script
+        type="module"
+        src="../js/wishlist.js"
+    ></script>
 
 </body>
 
