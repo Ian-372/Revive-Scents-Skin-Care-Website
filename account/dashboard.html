@@ -12,68 +12,425 @@
 
 <body>
 
-    <header>
-        <a href="../index.html">REVIVE</a>
+    <!-- HEADER -->
 
-        <button id="logoutButton">
-            Logout
-        </button>
+    <header class="account-header">
+
+        <a href="../index.html" class="account-brand">
+            <span class="brand-symbol">RS</span>
+
+            <span>
+                <strong>REVIVE</strong>
+                <small>SCENTS & SKIN CARE</small>
+            </span>
+        </a>
+
+        <nav>
+
+            <a href="../shop.html">
+                Shop
+            </a>
+
+            <a href="../cart.html">
+                Cart
+                <span id="cartCount">0</span>
+            </a>
+
+            <button id="logoutButton" type="button">
+                Logout
+            </button>
+
+        </nav>
+
     </header>
 
-    <main>
 
-        <section class="dashboard-header">
+    <!-- MAIN -->
 
-            <span>MY REVIVE</span>
+    <main class="account-page">
 
-            <h1>
-                Welcome, <span id="customerName">Customer</span>
-            </h1>
 
-            <p>
-                Manage your account, orders and Revive favourites.
-            </p>
+        <!-- WELCOME -->
+
+        <section class="dashboard-hero">
+
+            <div>
+
+                <span class="account-eyebrow">
+                    MY REVIVE
+                </span>
+
+                <h1>
+                    Welcome back,
+                    <span id="customerName">
+                        Customer
+                    </span> ♡
+                </h1>
+
+                <p>
+                    Your personal space for everything
+                    REVIVE.
+                </p>
+
+            </div>
+
+            <div class="hero-decoration">
+                ♡
+            </div>
+
+        </section>
+
+
+        <!-- QUICK STATS -->
+
+        <section class="account-stats">
+
+            <a href="orders.html" class="stat-card">
+
+                <span class="stat-icon">
+                    ♧
+                </span>
+
+                <div>
+                    <strong id="orderCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Orders
+                    </span>
+                </div>
+
+            </a>
+
+
+            <a href="wishlist.html" class="stat-card">
+
+                <span class="stat-icon">
+                    ♡
+                </span>
+
+                <div>
+                    <strong id="wishlistCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Wishlist
+                    </span>
+                </div>
+
+            </a>
+
+
+            <a href="addresses.html" class="stat-card">
+
+                <span class="stat-icon">
+                    ⌖
+                </span>
+
+                <div>
+                    <strong id="addressCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Addresses
+                    </span>
+                </div>
+
+            </a>
 
         </section>
 
-        <section class="dashboard-grid">
 
-            <a href="orders.html">
-                <strong>Orders</strong>
-                <span>View your purchases</span>
-            </a>
+        <!-- ACCOUNT OPTIONS -->
 
-            <a href="wishlist.html">
-                <strong>Wishlist</strong>
-                <span>Your saved products</span>
-            </a>
+        <section class="dashboard-section">
 
-            <a href="profile.html">
-                <strong>Profile</strong>
-                <span>Manage your information</span>
-            </a>
+            <div class="section-heading">
 
-            <a href="addresses.html">
-                <strong>Addresses</strong>
-                <span>Manage delivery addresses</span>
-            </a>
+                <div>
+
+                    <span class="account-eyebrow">
+                        YOUR ACCOUNT
+                    </span>
+
+                    <h2>
+                        Manage your REVIVE
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+
+                <!-- ORDERS -->
+
+                <a href="orders.html" class="dashboard-card">
+
+                    <div class="dashboard-card-icon">
+                        ♧
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            My Orders
+                        </strong>
+
+                        <span>
+                            View your purchases and
+                            order details.
+                        </span>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- WISHLIST -->
+
+                <a href="wishlist.html" class="dashboard-card">
+
+                    <div class="dashboard-card-icon">
+                        ♡
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            My Wishlist
+                        </strong>
+
+                        <span>
+                            Keep track of products
+                            you love.
+                        </span>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- PROFILE -->
+
+                <a href="profile.html" class="dashboard-card">
+
+                    <div class="dashboard-card-icon">
+                        ◉
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            My Profile
+                        </strong>
+
+                        <span>
+                            Update your personal
+                            information.
+                        </span>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- ADDRESSES -->
+
+                <a href="addresses.html" class="dashboard-card">
+
+                    <div class="dashboard-card-icon">
+                        ⌖
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            My Addresses
+                        </strong>
+
+                        <span>
+                            Manage your delivery
+                            addresses.
+                        </span>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- SHOP -->
+
+                <a href="../shop.html" class="dashboard-card">
+
+                    <div class="dashboard-card-icon">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Continue Shopping
+                        </strong>
+
+                        <span>
+                            Discover something new
+                            for your routine.
+                        </span>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- CART -->
+
+                <a href="../cart.html" class="dashboard-card">
+
+                    <div class="dashboard-card-icon">
+                        ♡
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            My Cart
+                        </strong>
+
+                        <span>
+                            Review the products
+                            you're ready to buy.
+                        </span>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
 
         </section>
+
+
+        <!-- RECENT ORDERS -->
+
+        <section class="recent-orders">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="account-eyebrow">
+                        RECENT ACTIVITY
+                    </span>
+
+                    <h2>
+                        Your latest orders
+                    </h2>
+
+                </div>
+
+                <a href="orders.html">
+                    View all →
+                </a>
+
+            </div>
+
+
+            <div id="recentOrders">
+
+                <div class="empty-account-state">
+
+                    <div>
+                        ♡
+                    </div>
+
+                    <h3>
+                        No orders yet
+                    </h3>
+
+                    <p>
+                        Your REVIVE purchases will
+                        appear here.
+                    </p>
+
+                    <a
+                        href="../shop.html"
+                        class="account-button"
+                    >
+                        Explore the shop
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
 
     </main>
 
+
+    <!-- FOOTER -->
+
+    <footer class="account-footer">
+
+        <span>
+            © <span id="year"></span>
+            Revive Scents and Skin Care Solutions.
+        </span>
+
+        <span>
+            From concerns to confidence ♡
+        </span>
+
+    </footer>
+
+
     <script type="module">
 
-        import { onAuthStateChanged, signOut }
-        from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import {
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
         import {
             doc,
             getDoc
         } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-        import { auth, db }
-        from "../js/firebase-config.js";
+        import {
+            auth,
+            db
+        } from "../js/firebase-config.js";
 
 
         const customerName =
@@ -83,15 +440,26 @@
             document.getElementById("logoutButton");
 
 
+        // ================================
+        // AUTHENTICATION
+        // ================================
+
         onAuthStateChanged(auth, async (user) => {
 
             if (!user) {
-                window.location.href = "../auth/login.html";
+
+                window.location.href =
+                    "../auth/login.html";
+
                 return;
             }
 
+
             if (!user.emailVerified) {
-                window.location.href = "../auth/verify-email.html";
+
+                window.location.href =
+                    "../auth/verify-email.html";
+
                 return;
             }
 
@@ -99,19 +467,30 @@
             try {
 
                 const userRef =
-                    doc(db, "users", user.uid);
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    );
+
 
                 const userSnap =
                     await getDoc(userRef);
 
+
                 if (userSnap.exists()) {
 
-                    const data = userSnap.data();
+                    const data =
+                        userSnap.data();
+
 
                     customerName.textContent =
-                        data.firstName || user.displayName || "Customer";
+                        data.firstName ||
+                        user.displayName?.split(" ")[0] ||
+                        "Customer";
 
                 }
+
 
             } catch (error) {
 
@@ -125,18 +504,91 @@
         });
 
 
-        logoutButton.addEventListener("click", async () => {
+        // ================================
+        // LOGOUT
+        // ================================
 
-            await signOut(auth);
+        logoutButton.addEventListener(
+            "click",
+            async () => {
 
-            window.location.href =
-                "../auth/login.html";
+                try {
 
-        });
+                    await signOut(auth);
+
+                    window.location.href =
+                        "../auth/login.html";
+
+                } catch (error) {
+
+                    console.error(
+                        "Logout failed:",
+                        error
+                    );
+
+                }
+
+            }
+        );
+
+
+        // ================================
+        // CART COUNT
+        // ================================
+
+        function updateCartCount() {
+
+            const cart =
+                JSON.parse(
+                    localStorage.getItem(
+                        "reviveCart"
+                    )
+                ) || [];
+
+
+            const count =
+                cart.reduce(
+                    (total, item) =>
+                        total + item.quantity,
+                    0
+                );
+
+
+            const cartCount =
+                document.getElementById(
+                    "cartCount"
+                );
+
+
+            if (cartCount) {
+
+                cartCount.textContent =
+                    count;
+
+            }
+
+        }
+
+
+        // ================================
+        // YEAR
+        // ================================
+
+        document.getElementById(
+            "year"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        updateCartCount();
 
     </script>
 
-    <script type="module" src="../js/auth-guard.js"></script>
+
+    <script
+        type="module"
+        src="../js/auth-guard.js"
+    ></script>
 
 </body>
 

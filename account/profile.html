@@ -4,54 +4,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Manage your REVIVE profile and personal information."
+    >
+
     <title>My Profile | REVIVE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="../css/account.css">
 </head>
 
 <body>
 
-    <main class="account-page">
+    <div class="profile-page">
 
-        <a href="dashboard.html">← Back to Dashboard</a>
+        <!-- TOP NAV -->
 
-        <section class="account-card">
+        <header class="profile-header">
 
-            <span>MY REVIVE</span>
-            <h1>My Profile</h1>
+            <a href="../index.html" class="profile-brand">
+                <span class="profile-brand-symbol">RS</span>
 
-            <form id="profileForm">
+                <span>
+                    <strong>REVIVE</strong>
+                    <small>SCENTS &amp; SKIN CARE SOLUTIONS</small>
+                </span>
+            </a>
 
-                <label>
-                    First name
-                    <input type="text" id="firstName" required>
-                </label>
+            <a href="dashboard.html" class="back-dashboard">
+                ← Dashboard
+            </a>
 
-                <label>
-                    Last name
-                    <input type="text" id="lastName" required>
-                </label>
+        </header>
 
-                <label>
-                    Email
-                    <input type="email" id="email" disabled>
-                </label>
 
-                <label>
-                    Phone
-                    <input type="tel" id="phone">
-                </label>
+        <!-- MAIN -->
 
-                <button type="submit" id="saveProfile">
-                    Save changes
-                </button>
+        <main class="profile-main">
 
-                <p id="profileMessage"></p>
+            <div class="profile-intro">
 
-            </form>
+                <span class="eyebrow">
+                    MY REVIVE
+                </span>
 
-        </section>
+                <h1>
+                    Your profile,
+                    <em>your space.</em>
+                </h1>
 
-    </main>
+                <p>
+                    Keep your personal information up to date so your
+                    REVIVE experience stays personal.
+                </p>
+
+            </div>
+
+
+            <section class="profile-layout">
+
+                <!-- PROFILE SUMMARY -->
+
+                <aside class="profile-sidebar">
+
+                    <div class="profile-avatar" id="profileAvatar">
+                        <span>R</span>
+                    </div>
+
+                    <h2 id="profileDisplayName">
+                        My Profile
+                    </h2>
+
+                    <p id="profileEmail">
+                        Your REVIVE account
+                    </p>
+
+                    <div class="profile-divider"></div>
+
+                    <nav class="account-links">
+
+                        <a
+                            href="dashboard.html"
+                            class="account-link"
+                        >
+                            <span>⌂</span>
+                            Dashboard
+                        </a>
+
+                        <a
+                            href="profile.html"
+                            class="account-link active"
+                        >
+                            <span>♡</span>
+                            My Profile
+                        </a>
+
+                        <a
+                            href="wishlist.html"
+                            class="account-link"
+                        >
+                            <span>♡</span>
+                            Wishlist
+                        </a>
+
+                        <a
+                            href="addresses.html"
+                            class="account-link"
+                        >
+                            <span>⌖</span>
+                            Addresses
+                        </a>
+
+                        <a
+                            href="orders.html"
+                            class="account-link"
+                        >
+                            <span>▤</span>
+                            My Orders
+                        </a>
+
+                    </nav>
+
+                </aside>
+
+
+                <!-- PROFILE FORM -->
+
+                <section class="profile-card">
+
+                    <div class="profile-card-heading">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                PERSONAL INFORMATION
+                            </span>
+
+                            <h2>
+                                Tell us about
+                                <em>you.</em>
+                            </h2>
+
+                        </div>
+
+                        <span class="profile-card-icon">
+                            ♡
+                        </span>
+
+                    </div>
+
+
+                    <form id="profileForm">
+
+                        <div class="profile-form-grid">
+
+                            <label class="profile-field">
+
+                                <span>
+                                    First name
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    placeholder="Your first name"
+                                    autocomplete="given-name"
+                                    required
+                                >
+
+                            </label>
+
+
+                            <label class="profile-field">
+
+                                <span>
+                                    Last name
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    placeholder="Your last name"
+                                    autocomplete="family-name"
+                                    required
+                                >
+
+                            </label>
+
+
+                            <label class="profile-field full">
+
+                                <span>
+                                    Email address
+                                </span>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    autocomplete="email"
+                                    disabled
+                                >
+
+                                <small>
+                                    Your email address is connected to
+                                    your REVIVE account.
+                                </small>
+
+                            </label>
+
+
+                            <label class="profile-field full">
+
+                                <span>
+                                    Phone number
+                                </span>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    placeholder="e.g. 0701 743 478"
+                                    autocomplete="tel"
+                                >
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="profile-form-footer">
+
+                            <p id="profileMessage"></p>
+
+                            <button
+                                type="submit"
+                                id="saveProfile"
+                                class="profile-save-button"
+                            >
+                                Save changes
+                                <span>→</span>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer class="profile-footer">
+
+            <span>
+                © <span id="year"></span> REVIVE
+            </span>
+
+            <span>
+                From concerns to confidence ♡
+            </span>
+
+        </footer>
+
+    </div>
+
 
     <script type="module">
 
@@ -72,118 +300,263 @@
             from "../js/firebase-config.js";
 
 
-        const form = document.getElementById("profileForm");
-        const message = document.getElementById("profileMessage");
-        const saveButton = document.getElementById("saveProfile");
+        const form =
+            document.getElementById("profileForm");
+
+        const message =
+            document.getElementById("profileMessage");
+
+        const saveButton =
+            document.getElementById("saveProfile");
+
+
+        const firstNameInput =
+            document.getElementById("firstName");
+
+        const lastNameInput =
+            document.getElementById("lastName");
+
+        const phoneInput =
+            document.getElementById("phone");
+
+        const emailInput =
+            document.getElementById("email");
+
+        const profileDisplayName =
+            document.getElementById("profileDisplayName");
+
+        const profileEmail =
+            document.getElementById("profileEmail");
+
+        const profileAvatar =
+            document.getElementById("profileAvatar");
 
 
         onAuthStateChanged(auth, async (user) => {
 
             if (!user) {
-                window.location.href = "../auth/login.html";
+
+                window.location.href =
+                    "../auth/login.html";
+
                 return;
             }
+
 
             if (!user.emailVerified) {
-                window.location.href = "../auth/verify-email.html";
+
+                window.location.href =
+                    "../auth/verify-email.html";
+
                 return;
             }
 
-            document.getElementById("email").value = user.email || "";
 
-            const userRef = doc(db, "users", user.uid);
-            const snapshot = await getDoc(userRef);
+            emailInput.value =
+                user.email || "";
+
+
+            profileEmail.textContent =
+                user.email || "REVIVE account";
+
+
+            const userRef =
+                doc(db, "users", user.uid);
+
+
+            const snapshot =
+                await getDoc(userRef);
+
 
             if (snapshot.exists()) {
 
-                const data = snapshot.data();
+                const data =
+                    snapshot.data();
 
-                document.getElementById("firstName").value =
+
+                firstNameInput.value =
                     data.firstName || "";
 
-                document.getElementById("lastName").value =
+
+                lastNameInput.value =
                     data.lastName || "";
 
-                document.getElementById("phone").value =
+
+                phoneInput.value =
                     data.phone || "";
+
+
+                updateProfilePreview(
+                    data.firstName,
+                    data.lastName
+                );
 
             } else {
 
-                await setDoc(userRef, {
-
-                    firstName: "",
-                    lastName: "",
-                    email: user.email,
-                    phone: "",
-                    role: "customer",
-                    emailVerified: user.emailVerified,
-                    createdAt: serverTimestamp(),
-                    updatedAt: serverTimestamp()
-
-                });
-
-            }
-        });
-
-
-        form.addEventListener("submit", async (event) => {
-
-            event.preventDefault();
-
-            const user = auth.currentUser;
-
-            if (!user) return;
-
-            const firstName =
-                document.getElementById("firstName").value.trim();
-
-            const lastName =
-                document.getElementById("lastName").value.trim();
-
-            const phone =
-                document.getElementById("phone").value.trim();
-
-            try {
-
-                saveButton.disabled = true;
-                saveButton.textContent = "Saving...";
-
-                await updateDoc(
-                    doc(db, "users", user.uid),
+                await setDoc(
+                    userRef,
                     {
-                        firstName,
-                        lastName,
-                        phone,
-                        updatedAt: serverTimestamp()
+                        firstName: "",
+                        lastName: "",
+                        email: user.email,
+                        phone: "",
+                        role: "customer",
+                        emailVerified:
+                            user.emailVerified,
+                        createdAt:
+                            serverTimestamp(),
+                        updatedAt:
+                            serverTimestamp()
                     }
                 );
 
-                await updateProfile(user, {
-                    displayName: `${firstName} ${lastName}`
-                });
-
-                message.textContent =
-                    "Profile updated successfully.";
-
-                message.className = "success";
-
-            } catch (error) {
-
-                console.error(error);
-
-                message.textContent =
-                    "Unable to update your profile.";
-
-                message.className = "error";
-
-            } finally {
-
-                saveButton.disabled = false;
-                saveButton.textContent = "Save changes";
-
             }
 
         });
+
+
+        function updateProfilePreview(
+            firstName,
+            lastName
+        ) {
+
+            const first =
+                (firstName || "").trim();
+
+            const last =
+                (lastName || "").trim();
+
+
+            const fullName =
+                `${first} ${last}`.trim();
+
+
+            if (fullName) {
+
+                profileDisplayName.textContent =
+                    fullName;
+
+                profileAvatar.innerHTML =
+                    `<span>${first.charAt(0).toUpperCase()}</span>`;
+
+            }
+
+        }
+
+
+        form.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+
+                const user =
+                    auth.currentUser;
+
+
+                if (!user) return;
+
+
+                const firstName =
+                    firstNameInput.value.trim();
+
+
+                const lastName =
+                    lastNameInput.value.trim();
+
+
+                const phone =
+                    phoneInput.value.trim();
+
+
+                if (!firstName || !lastName) {
+
+                    message.textContent =
+                        "Please enter your first and last name.";
+
+                    message.className =
+                        "error";
+
+                    return;
+
+                }
+
+
+                try {
+
+                    saveButton.disabled =
+                        true;
+
+                    saveButton.innerHTML =
+                        "Saving...";
+
+
+                    await updateDoc(
+                        doc(
+                            db,
+                            "users",
+                            user.uid
+                        ),
+                        {
+                            firstName,
+                            lastName,
+                            phone,
+                            updatedAt:
+                                serverTimestamp()
+                        }
+                    );
+
+
+                    await updateProfile(
+                        user,
+                        {
+                            displayName:
+                                `${firstName} ${lastName}`
+                        }
+                    );
+
+
+                    updateProfilePreview(
+                        firstName,
+                        lastName
+                    );
+
+
+                    message.textContent =
+                        "Your profile has been updated successfully.";
+
+                    message.className =
+                        "success";
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+
+                    message.textContent =
+                        "Unable to update your profile.";
+
+                    message.className =
+                        "error";
+
+                } finally {
+
+                    saveButton.disabled =
+                        false;
+
+                    saveButton.innerHTML =
+                        `Save changes <span>→</span>`;
+
+                }
+
+            }
+        );
+
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
 
     </script>
 

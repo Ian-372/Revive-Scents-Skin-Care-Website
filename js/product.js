@@ -1,14 +1,24 @@
-import { products } from "../data/products.js";
+import {
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-const container = document.getElementById("productContainer");
+import { db } from "./firebase-config.js";
 
-const params = new URLSearchParams(window.location.search);
-const productId = params.get("id");
 
-const product = products.find(
-    item => item.id === productId
-);
+const container =
+    document.getElementById("productContainer");
 
+const params =
+    new URLSearchParams(window.location.search);
+
+const productId =
+    params.get("id");
+
+
+// =====================================================
+// FORMAT PRICE
+// =====================================================
 
 function formatPrice(price) {
 
@@ -16,98 +26,285 @@ function formatPrice(price) {
         style: "currency",
         currency: "KES",
         maximumFractionDigits: 0
-    }).format(price);
+    }).format(Number(price) || 0);
 
 }
 
 
-function renderProduct() {
+// =====================================================
+// ESCAPE HTML
+// =====================================================
 
-    if (!product) {
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+// =====================================================
+// LOAD PRODUCT
+// =====================================================
+
+async function loadProduct() {
+
+    if (!productId) {
+
+        renderNotFound();
+        return;
+
+    }
+
+
+    try {
+
+        const productRef =
+            doc(
+                db,
+                "products",
+                productId
+            );
+
+
+        const snapshot =
+            await getDoc(productRef);
+
+
+        if (!snapshot.exists()) {
+
+            renderNotFound();
+            return;
+
+        }
+
+
+        const product = {
+
+            id: snapshot.id,
+
+            ...snapshot.data()
+
+        };
+
+
+        /*
+         * Don't allow inactive products
+         * to be purchased/viewed directly.
+         */
+
+        if (product.active === false) {
+
+            renderNotFound();
+            return;
+
+        }
+
+
+        renderProduct(product);
+
+
+    } catch (error) {
+
+        console.error(
+            "Failed to load product:",
+            error
+        );
+
 
         container.innerHTML = `
+
             <div class="product-not-found">
 
-                <h1>Product not found</h1>
+                <h1>
+                    Something went wrong
+                </h1>
 
                 <p>
-                    Sorry, we couldn't find that Revive product.
+                    We couldn't load this product.
+                    Please try again.
                 </p>
 
-                <a href="shop.html" class="btn btn-primary">
+                <a
+                    href="shop.html"
+                    class="btn btn-primary"
+                >
                     Return to Shop
                 </a>
 
             </div>
+
         `;
 
-        return;
     }
 
+}
 
-    document.title = `${product.name} | REVIVE`;
+
+// =====================================================
+// PRODUCT NOT FOUND
+// =====================================================
+
+function renderNotFound() {
+
+    document.title =
+        "Product Not Found | REVIVE";
+
+
+    container.innerHTML = `
+
+        <div class="product-not-found">
+
+            <h1>
+                Product not found
+            </h1>
+
+            <p>
+                Sorry, we couldn't find that
+                Revive product.
+            </p>
+
+            <a
+                href="shop.html"
+                class="btn btn-primary"
+            >
+                Return to Shop
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+// =====================================================
+// RENDER PRODUCT
+// =====================================================
+
+function renderProduct(product) {
+
+    document.title =
+        `${product.name} | REVIVE`;
+
+
+    const stock =
+        Number(product.stock) || 0;
 
 
     container.innerHTML = `
 
         <div class="product-detail">
 
+
+            <!-- IMAGE -->
+
             <div class="product-detail-image">
 
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                >
+                ${
+                    product.image
+
+                        ? `
+                            <img
+                                src="${escapeHTML(product.image)}"
+                                alt="${escapeHTML(product.name)}"
+                            >
+                          `
+
+                        : `
+                            <div class="product-image-placeholder">
+                                REVIVE
+                            </div>
+                          `
+                }
 
             </div>
 
 
+            <!-- INFORMATION -->
+
             <div class="product-detail-info">
 
+
                 <span class="eyebrow">
-                    ${product.category}
+
+                    ${escapeHTML(
+                        product.category || "REVIVE"
+                    )}
+
                 </span>
 
+
                 <h1>
-                    ${product.name}
+
+                    ${escapeHTML(
+                        product.name ||
+                        "Unnamed Product"
+                    )}
+
                 </h1>
 
+
                 <strong class="product-price">
-                    ${formatPrice(product.price)}
+
+                    ${formatPrice(
+                        product.price
+                    )}
+
                 </strong>
 
+
                 <p class="product-description">
-                    ${product.description}
+
+                    ${escapeHTML(
+                        product.description ||
+                        "A Revive care solution."
+                    )}
+
                 </p>
 
+
+                <!-- STOCK -->
 
                 <div class="product-stock">
 
                     ${
-                        product.stock > 0
-                        ? `✓ ${product.stock} available`
-                        : `Out of stock`
+                        stock > 0
+
+                            ? `✓ ${stock} available`
+
+                            : "Out of stock"
                     }
 
                 </div>
 
+
+                <!-- QUANTITY -->
 
                 <div class="quantity-control">
 
                     <button
                         type="button"
                         id="decreaseQuantity"
+                        ${stock <= 0 ? "disabled" : ""}
                     >
                         −
                     </button>
+
 
                     <span id="quantity">
                         1
                     </span>
 
+
                     <button
                         type="button"
                         id="increaseQuantity"
+                        ${stock <= 0 ? "disabled" : ""}
                     >
                         +
                     </button>
@@ -115,13 +312,21 @@ function renderProduct() {
                 </div>
 
 
+                <!-- ADD TO CART -->
+
                 <button
                     type="button"
                     class="btn btn-primary add-to-cart"
                     id="addToCart"
-                    ${product.stock <= 0 ? "disabled" : ""}
+                    ${stock <= 0 ? "disabled" : ""}
                 >
-                    Add to Cart →
+
+                    ${
+                        stock > 0
+                            ? "Add to Cart →"
+                            : "Out of Stock"
+                    }
+
                 </button>
 
 
@@ -131,146 +336,290 @@ function renderProduct() {
                 ></div>
 
 
+                <!-- DETAILS -->
+
                 <div class="product-details">
 
-                    <div>
-                        <strong>Category</strong>
-                        <span>${product.category}</span>
-                    </div>
 
                     <div>
-                        <strong>Availability</strong>
+
+                        <strong>
+                            Category
+                        </strong>
+
                         <span>
-                            ${product.stock > 0 ? "In stock" : "Out of stock"}
+                            ${escapeHTML(
+                                product.category || "-"
+                            )}
                         </span>
+
                     </div>
+
+
+                    <div>
+
+                        <strong>
+                            Availability
+                        </strong>
+
+                        <span>
+
+                            ${
+                                stock > 0
+                                    ? "In stock"
+                                    : "Out of stock"
+                            }
+
+                        </span>
+
+                    </div>
+
 
                 </div>
 
             </div>
 
         </div>
+
     `;
 
 
-    setupCart();
+    setupCart(product);
+
 }
 
 
-function setupCart() {
+// =====================================================
+// CART
+// =====================================================
+
+function setupCart(product) {
 
     let quantity = 1;
 
+
+    const stock =
+        Number(product.stock) || 0;
+
+
     const quantityDisplay =
-        document.getElementById("quantity");
-
-    const decrease =
-        document.getElementById("decreaseQuantity");
-
-    const increase =
-        document.getElementById("increaseQuantity");
-
-    const addButton =
-        document.getElementById("addToCart");
-
-    const message =
-        document.getElementById("productMessage");
-
-
-    decrease.addEventListener("click", () => {
-
-        if (quantity > 1) {
-            quantity--;
-            quantityDisplay.textContent = quantity;
-        }
-
-    });
-
-
-    increase.addEventListener("click", () => {
-
-        if (quantity < product.stock) {
-            quantity++;
-            quantityDisplay.textContent = quantity;
-        }
-
-    });
-
-
-    addButton.addEventListener("click", () => {
-
-        let cart =
-            JSON.parse(localStorage.getItem("reviveCart")) || [];
-
-
-        const existing =
-            cart.find(item => item.id === product.id);
-
-
-        if (existing) {
-
-            existing.quantity += quantity;
-
-        } else {
-
-            cart.push({
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                image: product.image,
-                quantity
-            });
-
-        }
-
-
-        localStorage.setItem(
-            "reviveCart",
-            JSON.stringify(cart)
+        document.getElementById(
+            "quantity"
         );
 
 
-        updateCartCount();
+    const decrease =
+        document.getElementById(
+            "decreaseQuantity"
+        );
 
 
-        message.textContent =
-            "Added to your cart ✓";
+    const increase =
+        document.getElementById(
+            "increaseQuantity"
+        );
 
-        message.className =
-            "product-message success";
 
-    });
+    const addButton =
+        document.getElementById(
+            "addToCart"
+        );
+
+
+    const message =
+        document.getElementById(
+            "productMessage"
+        );
+
+
+    if (!addButton) return;
+
+
+    decrease.addEventListener(
+        "click",
+        () => {
+
+            if (quantity > 1) {
+
+                quantity--;
+
+                quantityDisplay.textContent =
+                    quantity;
+
+            }
+
+        }
+    );
+
+
+    increase.addEventListener(
+        "click",
+        () => {
+
+            if (quantity < stock) {
+
+                quantity++;
+
+                quantityDisplay.textContent =
+                    quantity;
+
+            }
+
+        }
+    );
+
+
+    addButton.addEventListener(
+        "click",
+        () => {
+
+            if (stock <= 0) return;
+
+
+            let cart =
+                JSON.parse(
+                    localStorage.getItem(
+                        "reviveCart"
+                    )
+                ) || [];
+
+
+            const existing =
+                cart.find(
+                    item =>
+                        item.id === product.id
+                );
+
+
+            if (existing) {
+
+                const newQuantity =
+                    existing.quantity +
+                    quantity;
+
+
+                if (newQuantity > stock) {
+
+                    message.textContent =
+                        `Only ${stock} available.`;
+
+                    message.className =
+                        "product-message error";
+
+                    return;
+
+                }
+
+
+                existing.quantity =
+                    newQuantity;
+
+            } else {
+
+                cart.push({
+
+                    id:
+                        product.id,
+
+                    name:
+                        product.name,
+
+                    price:
+                        Number(product.price) || 0,
+
+                    image:
+                        product.image || "",
+
+                    quantity
+
+                });
+
+            }
+
+
+            localStorage.setItem(
+                "reviveCart",
+                JSON.stringify(cart)
+            );
+
+
+            updateCartCount();
+
+
+            message.textContent =
+                "Added to your cart ✓";
+
+
+            message.className =
+                "product-message success";
+
+        }
+    );
 
 }
 
+
+// =====================================================
+// CART COUNT
+// =====================================================
 
 function updateCartCount() {
 
     const cart =
-        JSON.parse(localStorage.getItem("reviveCart")) || [];
+        JSON.parse(
+            localStorage.getItem(
+                "reviveCart"
+            )
+        ) || [];
+
 
     const count =
         cart.reduce(
-            (total, item) => total + item.quantity,
+            (total, item) =>
+                total +
+                Number(item.quantity || 0),
             0
         );
 
+
     const cartCount =
-        document.getElementById("cartCount");
+        document.getElementById(
+            "cartCount"
+        );
+
 
     if (cartCount) {
-        cartCount.textContent = count;
+
+        cartCount.textContent =
+            count;
+
     }
 
 }
 
 
-const year = document.getElementById("year");
+// =====================================================
+// FOOTER YEAR
+// =====================================================
+
+const year =
+    document.getElementById(
+        "year"
+    );
+
 
 if (year) {
-    year.textContent = new Date().getFullYear();
+
+    year.textContent =
+        new Date().getFullYear();
+
 }
 
 
-renderProduct();
+// =====================================================
+// START
+// =====================================================
+
 updateCartCount();
+
+loadProduct();
