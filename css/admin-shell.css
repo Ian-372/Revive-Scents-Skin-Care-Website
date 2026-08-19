@@ -1,0 +1,192 @@
+/* Shared REVIVE administration shell and visual theme. */
+:root {
+    --admin-pink: #c9577d;
+    --admin-pink-dark: #9f365d;
+    --admin-pink-soft: #fcecf2;
+    --admin-cream: #fff8fb;
+    --admin-ink: #33252b;
+    --admin-sidebar-width: 265px;
+    --cream: #fff8fb;
+    --cream-dark: #f9e4ed;
+    --paper: #ffffff;
+    --ink: #33252b;
+    --muted: #8d777f;
+    --soft: #b59da7;
+    --line: #f0dce3;
+    --border: rgba(201, 87, 125, .16);
+    --rose: #c9577d;
+    --rose-dark: #9f365d;
+    --rose-soft: #fcecf2;
+    --brown: #c9577d;
+    --brown-dark: #9f365d;
+    --brown-soft: #f8d8e3;
+}
+
+body {
+    background-color: var(--admin-cream);
+    color: var(--admin-ink);
+}
+
+/* Keep every existing admin sidebar visually and structurally consistent. */
+.admin-sidebar,
+.customers-sidebar,
+.orders-sidebar,
+.admin-app-sidebar {
+    width: var(--admin-sidebar-width);
+    background: linear-gradient(165deg, #8f164c 0%, #b83f70 48%, #df7da4 100%);
+    color: #fff;
+}
+
+.orders-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    height: 100vh;
+    z-index: 100;
+}
+
+.orders-main {
+    width: calc(100% - var(--admin-sidebar-width));
+    margin-left: var(--admin-sidebar-width);
+}
+
+.admin-sidebar .admin-nav-link.active,
+.customers-sidebar .admin-nav-link.active,
+.orders-sidebar .nav-link.active,
+.admin-app-nav a.active {
+    background: rgba(255, 255, 255, .2);
+    box-shadow: inset 3px 0 0 #fff;
+}
+
+.admin-sidebar .admin-nav-link:hover,
+.customers-sidebar .admin-nav-link:hover,
+.orders-sidebar .nav-link:hover,
+.admin-app-nav a:hover {
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+}
+
+/* Shared shell used by Products and Settings. */
+.admin-app-shell { min-height: 100vh; display: flex; }
+.admin-app-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    height: 100vh;
+    padding: 28px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 100;
+}
+.admin-app-brand { display: flex; align-items: center; gap: 12px; padding: 4px 10px 28px; }
+.admin-app-mark { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.45); border-radius: 50%; font: 700 1.35rem "Cormorant Garamond", serif; }
+.admin-app-brand strong { display: block; letter-spacing: .14em; font-size: .85rem; }
+.admin-app-brand small { display: block; margin-top: 2px; font-size: .48rem; letter-spacing: .14em; opacity: .82; }
+.admin-app-nav { display: grid; gap: 6px; }
+.admin-app-nav a { display: flex; align-items: center; gap: 12px; min-height: 45px; padding: 0 13px; border-radius: 11px; color: rgba(255,255,255,.82); font-size: .78rem; font-weight: 700; }
+.admin-app-nav .nav-icon { width: 18px; text-align: center; font-size: 1rem; }
+.admin-app-nav .nav-label { margin: 13px 12px 3px; font-size: .55rem; font-weight: 700; letter-spacing: .14em; opacity: .6; }
+.admin-app-footer { margin-top: auto; padding: 20px 10px 0; border-top: 1px solid rgba(255,255,255,.18); font-size: .7rem; }
+.admin-app-main { width: calc(100% - var(--admin-sidebar-width)); max-width: none; min-height: 100vh; margin: 0 0 0 var(--admin-sidebar-width); padding: 34px 5%; }
+
+/* Pink accents for pages that previously used the brown neutral palette. */
+.admin-sidebar, .customers-sidebar, .orders-sidebar { --rose: var(--admin-pink); --rose-dark: var(--admin-pink-dark); }
+.admin-main, .customers-main, .orders-main, .admin-app-main { background: transparent; }
+
+@media (max-width: 900px) {
+    :root { --admin-sidebar-width: 76px; }
+    .orders-main { width: calc(100% - var(--admin-sidebar-width)); }
+
+    .orders-sidebar { padding: 22px 10px; }
+    .orders-sidebar .brand-copy,
+    .orders-sidebar .admin-profile > div:last-child,
+    .orders-sidebar .nav-section { display: none; }
+    .orders-sidebar .admin-brand,
+    .orders-sidebar .admin-profile { justify-content: center; padding-inline: 0; }
+    .orders-sidebar .admin-navigation { display: flex; flex-direction: column; gap: 6px; }
+    .orders-sidebar .nav-link { justify-content: center; gap: 0; padding: 0; font-size: 0; }
+    .orders-sidebar .nav-link .nav-icon { display: block; font-size: 17px; }
+}
+
+@media (max-width: 650px) {
+    .admin-sidebar,
+    .customers-sidebar,
+    .orders-sidebar,
+    .admin-app-sidebar {
+        position: fixed;
+        inset: auto 0 0 0;
+        width: 100%;
+        height: 68px;
+        min-height: 68px;
+        padding: 7px 8px;
+        flex-direction: row;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .admin-sidebar .admin-brand,
+    .admin-sidebar .admin-profile,
+    .admin-sidebar .sidebar-bottom,
+    .customers-sidebar .admin-brand,
+    .customers-sidebar .admin-profile,
+    .customers-sidebar .sidebar-bottom,
+    .orders-sidebar .admin-brand,
+    .orders-sidebar .admin-profile,
+    .orders-sidebar .sidebar-bottom,
+    .admin-app-brand,
+    .admin-app-footer { display: none; }
+
+    .admin-navigation,
+    .admin-app-nav {
+        width: 100%;
+        display: flex !important;
+        align-items: center;
+        justify-content: space-around;
+        gap: 3px;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow: visible !important;
+    }
+
+    .admin-navigation .nav-label,
+    .admin-navigation .nav-section,
+    .admin-app-nav .nav-label { display: none; }
+
+    .admin-nav-link,
+    .orders-sidebar .nav-link,
+    .admin-app-nav a {
+        display: flex !important;
+        flex: 1 1 0;
+        width: auto;
+        max-width: 64px;
+        min-height: 52px;
+        padding: 5px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2px;
+        border-radius: 10px;
+        font-size: 7px !important;
+        text-align: center;
+    }
+
+    .admin-nav-link span:not(.nav-icon) {
+        display: block !important;
+        font-size: 7px !important;
+    }
+
+    .admin-nav-link .nav-icon,
+    .orders-sidebar .nav-link .nav-icon,
+    .admin-app-nav .nav-icon { display: block !important; font-size: 16px !important; }
+
+    .admin-main,
+    .customers-main,
+    .orders-main,
+    .admin-app-main {
+        width: 100%;
+        margin-left: 0;
+        padding-bottom: 92px;
+    }
+}
+
+@media (max-width: 390px) {
+    .admin-nav-link, .orders-sidebar .nav-link, .admin-app-nav a { max-width: 58px; }
+}

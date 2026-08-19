@@ -9,28 +9,31 @@
 
     <link rel="stylesheet" href="../css/admin.css">
 <link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/admin-shell.css">
 </head>
 
 <body>
 
-    <header class="admin-header">
+    <div class="admin-app-shell">
+        <aside class="admin-app-sidebar">
+            <a href="dashboard.html" class="admin-app-brand">
+                <span class="admin-app-mark">RS</span>
+                <span><strong>REVIVE</strong><small>ADMINISTRATION</small></span>
+            </a>
+            <nav class="admin-app-nav" aria-label="Admin navigation">
+                <span class="nav-label">OVERVIEW</span>
+                <a href="dashboard.html"><span class="nav-icon">⌂</span>Dashboard</a>
+                <span class="nav-label">STORE</span>
+                <a href="products.html" class="active"><span class="nav-icon">▦</span>Products</a>
+                <a href="orders.html"><span class="nav-icon">▤</span>Orders</a>
+                <a href="customers.html"><span class="nav-icon">♧</span>Customers</a>
+                <span class="nav-label">SYSTEM</span>
+                <a href="settings.html"><span class="nav-icon">⚙</span>Settings</a>
+            </nav>
+            <a href="../index.html" class="admin-app-footer">↗ View REVIVE store</a>
+        </aside>
 
-        <div>
-            <strong>REVIVE</strong>
-            <span>ADMIN</span>
-        </div>
-
-        <nav>
-            <a href="index.html">Dashboard</a>
-            <a href="products.html" class="active">Products</a>
-            <a href="orders.html">Orders</a>
-            <a href="customers.html">Customers</a>
-        </nav>
-
-    </header>
-
-
-    <main class="admin-page">
+    <main class="admin-page admin-app-main">
 
         <div class="admin-heading">
 
@@ -84,6 +87,7 @@
         </section>
 
     </main>
+    </div>
 
 
     <!-- PRODUCT MODAL -->
