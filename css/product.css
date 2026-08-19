@@ -1,0 +1,111 @@
+.product-page {
+    max-width: 1200px;
+    margin: auto;
+    padding: 140px 6% 80px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 40px;
+    text-decoration: none;
+}
+
+.product-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.product-detail-image {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.product-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-detail-info h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    margin: 10px 0;
+}
+
+.product-price {
+    display: block;
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.product-description {
+    line-height: 1.8;
+    max-width: 550px;
+}
+
+.product-stock {
+    margin: 25px 0;
+    font-weight: 600;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin: 25px 0;
+}
+
+.quantity-control button {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #ddd;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.add-to-cart {
+    border: none;
+    cursor: pointer;
+}
+
+.product-message {
+    margin-top: 15px;
+}
+
+.product-message.success {
+    font-weight: 600;
+}
+
+.product-details {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+}
+
+.product-details div {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-not-found {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+@media (max-width: 768px) {
+
+    .product-detail {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .product-page {
+        padding-top: 110px;
+    }
+
+}
