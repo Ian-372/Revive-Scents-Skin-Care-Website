@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Account | REVIVE</title>
+
+    <link rel="stylesheet" href="../css/account.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="../index.html">REVIVE</a>
+
+        <button id="logoutButton">
+            Logout
+        </button>
+    </header>
+
+    <main>
+
+        <section class="dashboard-header">
+
+            <span>MY REVIVE</span>
+
+            <h1>
+                Welcome, <span id="customerName">Customer</span>
+            </h1>
+
+            <p>
+                Manage your account, orders and Revive favourites.
+            </p>
+
+        </section>
+
+        <section class="dashboard-grid">
+
+            <a href="orders.html">
+                <strong>Orders</strong>
+                <span>View your purchases</span>
+            </a>
+
+            <a href="wishlist.html">
+                <strong>Wishlist</strong>
+                <span>Your saved products</span>
+            </a>
+
+            <a href="profile.html">
+                <strong>Profile</strong>
+                <span>Manage your information</span>
+            </a>
+
+            <a href="addresses.html">
+                <strong>Addresses</strong>
+                <span>Manage delivery addresses</span>
+            </a>
+
+        </section>
+
+    </main>
+
+    <script type="module">
+
+        import { onAuthStateChanged, signOut }
+        from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+        import {
+            doc,
+            getDoc
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+        import { auth, db }
+        from "../js/firebase-config.js";
+
+
+        const customerName =
+            document.getElementById("customerName");
+
+        const logoutButton =
+            document.getElementById("logoutButton");
+
+
+        onAuthStateChanged(auth, async (user) => {
+
+            if (!user) {
+                window.location.href = "../auth/login.html";
+                return;
+            }
+
+            if (!user.emailVerified) {
+                window.location.href = "../auth/verify-email.html";
+                return;
+            }
+
+
+            try {
+
+                const userRef =
+                    doc(db, "users", user.uid);
+
+                const userSnap =
+                    await getDoc(userRef);
+
+                if (userSnap.exists()) {
+
+                    const data = userSnap.data();
+
+                    customerName.textContent =
+                        data.firstName || user.displayName || "Customer";
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Unable to load customer profile:",
+                    error
+                );
+
+            }
+
+        });
+
+
+        logoutButton.addEventListener("click", async () => {
+
+            await signOut(auth);
+
+            window.location.href =
+                "../auth/login.html";
+
+        });
+
+    </script>
+
+    <script type="module" src="../js/auth-guard.js"></script>
+
+</body>
+
+</html>

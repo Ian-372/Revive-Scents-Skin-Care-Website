@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | REVIVE</title>
+    <link rel="stylesheet" href="../css/account.css">
+</head>
+
+<body>
+
+    <main class="account-page">
+
+        <a href="dashboard.html">← Back to Dashboard</a>
+
+        <section class="account-card">
+
+            <span>MY REVIVE</span>
+            <h1>My Profile</h1>
+
+            <form id="profileForm">
+
+                <label>
+                    First name
+                    <input type="text" id="firstName" required>
+                </label>
+
+                <label>
+                    Last name
+                    <input type="text" id="lastName" required>
+                </label>
+
+                <label>
+                    Email
+                    <input type="email" id="email" disabled>
+                </label>
+
+                <label>
+                    Phone
+                    <input type="tel" id="phone">
+                </label>
+
+                <button type="submit" id="saveProfile">
+                    Save changes
+                </button>
+
+                <p id="profileMessage"></p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script type="module">
+
+        import {
+            onAuthStateChanged,
+            updateProfile
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+        import {
+            doc,
+            getDoc,
+            updateDoc,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+        import { auth, db }
+            from "../js/firebase-config.js";
+
+
+        const form = document.getElementById("profileForm");
+        const message = document.getElementById("profileMessage");
+        const saveButton = document.getElementById("saveProfile");
+
+
+        onAuthStateChanged(auth, async (user) => {
+
+            if (!user) {
+                window.location.href = "../auth/login.html";
+                return;
+            }
+
+            if (!user.emailVerified) {
+                window.location.href = "../auth/verify-email.html";
+                return;
+            }
+
+            document.getElementById("email").value = user.email || "";
+
+            const userRef = doc(db, "users", user.uid);
+            const snapshot = await getDoc(userRef);
+
+            if (snapshot.exists()) {
+
+                const data = snapshot.data();
+
+                document.getElementById("firstName").value =
+                    data.firstName || "";
+
+                document.getElementById("lastName").value =
+                    data.lastName || "";
+
+                document.getElementById("phone").value =
+                    data.phone || "";
+
+            } else {
+
+                await setDoc(userRef, {
+
+                    firstName: "",
+                    lastName: "",
+                    email: user.email,
+                    phone: "",
+                    role: "customer",
+                    emailVerified: user.emailVerified,
+                    createdAt: serverTimestamp(),
+                    updatedAt: serverTimestamp()
+
+                });
+
+            }
+        });
+
+
+        form.addEventListener("submit", async (event) => {
+
+            event.preventDefault();
+
+            const user = auth.currentUser;
+
+            if (!user) return;
+
+            const firstName =
+                document.getElementById("firstName").value.trim();
+
+            const lastName =
+                document.getElementById("lastName").value.trim();
+
+            const phone =
+                document.getElementById("phone").value.trim();
+
+            try {
+
+                saveButton.disabled = true;
+                saveButton.textContent = "Saving...";
+
+                await updateDoc(
+                    doc(db, "users", user.uid),
+                    {
+                        firstName,
+                        lastName,
+                        phone,
+                        updatedAt: serverTimestamp()
+                    }
+                );
+
+                await updateProfile(user, {
+                    displayName: `${firstName} ${lastName}`
+                });
+
+                message.textContent =
+                    "Profile updated successfully.";
+
+                message.className = "success";
+
+            } catch (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    "Unable to update your profile.";
+
+                message.className = "error";
+
+            } finally {
+
+                saveButton.disabled = false;
+                saveButton.textContent = "Save changes";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
