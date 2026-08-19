@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="REVIVE administration dashboard."
+    >
+
+    <title>Admin Dashboard | REVIVE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+</head>
+
+<body>
+
+<div class="admin-shell">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-mark">
+                RS
+            </div>
+
+            <div>
+                <strong>REVIVE</strong>
+
+                <span>
+                    ADMINISTRATION
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="admin-profile">
+
+            <div class="admin-avatar">
+                R
+            </div>
+
+            <div>
+
+                <strong>
+                    Administrator
+                </strong>
+
+                <span>
+                    Store Manager
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="admin-navigation">
+
+            <span class="nav-label">
+                OVERVIEW
+            </span>
+
+            <a
+                href="dashboard.html"
+                class="admin-nav-link active"
+            >
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+
+            <span class="nav-label">
+                STORE
+            </span>
+
+            <a
+                href="products.html"
+                class="admin-nav-link"
+            >
+                <span class="nav-icon">▦</span>
+                Products
+            </a>
+
+            <a
+                href="orders.html"
+                class="admin-nav-link"
+            >
+                <span class="nav-icon">▤</span>
+                Orders
+
+                <span
+                    class="nav-badge"
+                    id="pendingOrderBadge"
+                >
+                    0
+                </span>
+            </a>
+
+            <a
+                href="customers.html"
+                class="admin-nav-link"
+            >
+                <span class="nav-icon">♧</span>
+                Customers
+            </a>
+
+
+            <span class="nav-label">
+                SYSTEM
+            </span>
+
+            <a
+                href="settings.html"
+                class="admin-nav-link"
+            >
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="../index.html"
+                class="view-store"
+            >
+                <span>↗</span>
+                View REVIVE store
+            </a>
+
+            <button
+                type="button"
+                id="adminLogout"
+                class="admin-logout"
+            >
+                <span>↪</span>
+                Sign out
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="admin-main">
+
+        <!-- TOP BAR -->
+
+        <header class="admin-topbar">
+
+            <div>
+
+                <span class="admin-eyebrow">
+                    REVIVE ADMIN
+                </span>
+
+                <h1>
+                    Good morning,
+                    <em>Administrator.</em>
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="admin-date">
+
+                    <span>
+                        TODAY
+                    </span>
+
+                    <strong id="currentDate">
+                        --
+                    </strong>
+
+                </div>
+
+                <div class="topbar-avatar">
+                    R
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==========================================
+             WELCOME STRIP
+        =========================================== -->
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <span class="welcome-label">
+                    STORE OVERVIEW
+                </span>
+
+                <h2>
+                    Everything REVIVE,
+                    <em>at a glance.</em>
+                </h2>
+
+                <p>
+                    Monitor your products, customers,
+                    orders and store activity from one place.
+                </p>
+
+            </div>
+
+            <div class="welcome-decoration">
+                ♡
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             STAT CARDS
+        =========================================== -->
+
+        <section class="dashboard-stats">
+
+            <article class="dashboard-stat">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        TOTAL SALES
+                    </span>
+
+                    <span class="stat-symbol">
+                        KSh
+                    </span>
+
+                </div>
+
+                <strong id="totalSales">
+                    KSh 0
+                </strong>
+
+                <div class="stat-bottom">
+
+                    <span
+                        class="stat-change positive"
+                        id="salesChange"
+                    >
+                        —
+                    </span>
+
+                    <span>
+                        all-time revenue
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="dashboard-stat">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        ORDERS
+                    </span>
+
+                    <span class="stat-symbol">
+                        ▤
+                    </span>
+
+                </div>
+
+                <strong id="totalOrders">
+                    0
+                </strong>
+
+                <div class="stat-bottom">
+
+                    <span
+                        class="stat-change"
+                        id="orderChange"
+                    >
+                        —
+                    </span>
+
+                    <span>
+                        total orders
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="dashboard-stat">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        CUSTOMERS
+                    </span>
+
+                    <span class="stat-symbol">
+                        ♧
+                    </span>
+
+                </div>
+
+                <strong id="totalCustomers">
+                    0
+                </strong>
+
+                <div class="stat-bottom">
+
+                    <span
+                        class="stat-change"
+                        id="customerChange"
+                    >
+                        —
+                    </span>
+
+                    <span>
+                        registered accounts
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="dashboard-stat">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        PRODUCTS
+                    </span>
+
+                    <span class="stat-symbol">
+                        ✦
+                    </span>
+
+                </div>
+
+                <strong id="totalProducts">
+                    0
+                </strong>
+
+                <div class="stat-bottom">
+
+                    <span
+                        class="stat-change"
+                        id="stockAlert"
+                    >
+                        —
+                    </span>
+
+                    <span>
+                        active catalogue
+                    </span>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- ==========================================
+             DASHBOARD GRID
+        =========================================== -->
+
+        <section class="dashboard-content-grid">
+
+
+            <!-- SALES OVERVIEW -->
+
+            <article class="dashboard-panel sales-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="panel-eyebrow">
+                            PERFORMANCE
+                        </span>
+
+                        <h2>
+                            Sales overview
+                        </h2>
+
+                    </div>
+
+                    <select id="salesPeriod">
+
+                        <option value="7">
+                            Last 7 days
+                        </option>
+
+                        <option value="30">
+                            Last 30 days
+                        </option>
+
+                        <option value="90">
+                            Last 90 days
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="sales-summary">
+
+                    <strong id="periodSales">
+                        KSh 0
+                    </strong>
+
+                    <span>
+                        revenue during selected period
+                    </span>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas id="salesChart"></canvas>
+
+                    <div
+                        class="chart-empty"
+                        id="chartEmpty"
+                    >
+                        <span>⌁</span>
+
+                        <p>
+                            Sales data will appear here
+                            once orders are placed.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ORDER STATUS -->
+
+            <article class="dashboard-panel order-status-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="panel-eyebrow">
+                            ORDERS
+                        </span>
+
+                        <h2>
+                            Order status
+                        </h2>
+
+                    </div>
+
+                    <a href="orders.html">
+                        View all →
+                    </a>
+
+                </div>
+
+
+                <div class="order-status-list">
+
+                    <div class="order-status-item">
+
+                        <div class="status-info">
+
+                            <span class="status-dot pending"></span>
+
+                            <span>
+                                Pending
+                            </span>
+
+                        </div>
+
+                        <strong id="pendingOrders">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="order-status-item">
+
+                        <div class="status-info">
+
+                            <span class="status-dot confirmed"></span>
+
+                            <span>
+                                Confirmed
+                            </span>
+
+                        </div>
+
+                        <strong id="confirmedOrders">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="order-status-item">
+
+                        <div class="status-info">
+
+                            <span class="status-dot processing"></span>
+
+                            <span>
+                                Processing
+                            </span>
+
+                        </div>
+
+                        <strong id="processingOrders">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="order-status-item">
+
+                        <div class="status-info">
+
+                            <span class="status-dot completed"></span>
+
+                            <span>
+                                Completed
+                            </span>
+
+                        </div>
+
+                        <strong id="completedOrders">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="order-status-item">
+
+                        <div class="status-info">
+
+                            <span class="status-dot cancelled"></span>
+
+                            <span>
+                                Cancelled
+                            </span>
+
+                        </div>
+
+                        <strong id="cancelledOrders">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- ==========================================
+             LOWER GRID
+        =========================================== -->
+
+        <section class="dashboard-lower-grid">
+
+
+            <!-- RECENT ORDERS -->
+
+            <article class="dashboard-panel recent-orders-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="panel-eyebrow">
+                            RECENT ACTIVITY
+                        </span>
+
+                        <h2>
+                            Latest orders
+                        </h2>
+
+                    </div>
+
+                    <a href="orders.html">
+                        Manage orders →
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="recent-orders-table"
+                    id="recentOrders"
+                >
+
+                    <div class="dashboard-loading">
+                        Loading recent orders...
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- INVENTORY -->
+
+            <article class="dashboard-panel inventory-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="panel-eyebrow">
+                            INVENTORY
+                        </span>
+
+                        <h2>
+                            Stock attention
+                        </h2>
+
+                    </div>
+
+                    <a href="products.html">
+                        Products →
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="inventory-list"
+                    id="inventoryList"
+                >
+
+                    <div class="dashboard-loading">
+                        Checking inventory...
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- ==========================================
+             QUICK ACTIONS
+        =========================================== -->
+
+        <section class="quick-actions-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="admin-eyebrow">
+                        SHORTCUTS
+                    </span>
+
+                    <h2>
+                        Quick actions
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+                <a
+                    href="products.html"
+                    class="quick-action"
+                >
+
+                    <span class="quick-icon">
+                        +
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Add product
+                        </strong>
+
+                        <span>
+                            Add something new to REVIVE.
+                        </span>
+
+                    </div>
+
+                    <span class="quick-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="orders.html"
+                    class="quick-action"
+                >
+
+                    <span class="quick-icon">
+                        ▤
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Review orders
+                        </strong>
+
+                        <span>
+                            Check and manage recent purchases.
+                        </span>
+
+                    </div>
+
+                    <span class="quick-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="customers.html"
+                    class="quick-action"
+                >
+
+                    <span class="quick-icon">
+                        ♧
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Customers
+                        </strong>
+
+                        <span>
+                            View your REVIVE customer base.
+                        </span>
+
+                    </div>
+
+                    <span class="quick-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="settings.html"
+                    class="quick-action"
+                >
+
+                    <span class="quick-icon">
+                        ⚙
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Store settings
+                        </strong>
+
+                        <span>
+                            Configure your administration.
+                        </span>
+
+                    </div>
+
+                    <span class="quick-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             FOOTER
+        =========================================== -->
+
+        <footer class="admin-footer">
+
+            <span>
+                © <span id="adminYear"></span>
+                REVIVE Scents & Skin Care Solutions.
+            </span>
+
+            <span>
+                Admin Console · Secure Area
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- CHART.JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/chart.js"
+></script>
+
+
+<!-- DASHBOARD SCRIPT -->
+
+<script
+    type="module"
+    src="../js/dashboard.js"
+></script>
+
+</body>
+</html>
