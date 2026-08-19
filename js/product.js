@@ -1,19 +1,36 @@
 import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
     doc,
-    getDoc
+    getDoc,
+    setDoc,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-import { db } from "./firebase-config.js";
+import {
+    auth,
+    db
+} from "./firebase-config.js";
 
 
 const container =
     document.getElementById("productContainer");
 
+
 const params =
-    new URLSearchParams(window.location.search);
+    new URLSearchParams(
+        window.location.search
+    );
+
 
 const productId =
     params.get("id");
+
+
+let currentUser = null;
+let currentProduct = null;
 
 
 // =====================================================
@@ -22,33 +39,22 @@ const productId =
 
 function formatPrice(price) {
 
-    return new Intl.NumberFormat("en-KE", {
-        style: "currency",
-        currency: "KES",
-        maximumFractionDigits: 0
-    }).format(Number(price) || 0);
+    return new Intl.NumberFormat(
+        "en-KE",
+        {
+            style: "currency",
+            currency: "KES",
+            maximumFractionDigits: 0
+        }
+    ).format(
+        Number(price) || 0
+    );
 
 }
 
 
 // =====================================================
-// ESCAPE HTML
-// =====================================================
-
-function escapeHTML(value) {
-
-    return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-}
-
-
-// =====================================================
-// LOAD PRODUCT
+// LOAD PRODUCT FROM FIRESTORE
 // =====================================================
 
 async function loadProduct() {
@@ -56,6 +62,7 @@ async function loadProduct() {
     if (!productId) {
 
         renderNotFound();
+
         return;
 
     }
@@ -78,40 +85,36 @@ async function loadProduct() {
         if (!snapshot.exists()) {
 
             renderNotFound();
+
             return;
 
         }
 
 
-        const product = {
-
+        currentProduct = {
             id: snapshot.id,
-
             ...snapshot.data()
-
         };
 
 
-        /*
-         * Don't allow inactive products
-         * to be purchased/viewed directly.
-         */
-
-        if (product.active === false) {
+        if (
+            currentProduct.active === false
+        ) {
 
             renderNotFound();
+
             return;
 
         }
 
 
-        renderProduct(product);
+        renderProduct();
 
 
     } catch (error) {
 
         console.error(
-            "Failed to load product:",
+            "Product loading error:",
             error
         );
 
@@ -121,12 +124,12 @@ async function loadProduct() {
             <div class="product-not-found">
 
                 <h1>
-                    Something went wrong
+                    Unable to load product
                 </h1>
 
                 <p>
-                    We couldn't load this product.
-                    Please try again.
+                    Please refresh the page
+                    and try again.
                 </p>
 
                 <a
@@ -151,10 +154,6 @@ async function loadProduct() {
 
 function renderNotFound() {
 
-    document.title =
-        "Product Not Found | REVIVE";
-
-
     container.innerHTML = `
 
         <div class="product-not-found">
@@ -164,8 +163,8 @@ function renderNotFound() {
             </h1>
 
             <p>
-                Sorry, we couldn't find that
-                Revive product.
+                Sorry, we couldn't find
+                that REVIVE product.
             </p>
 
             <a
@@ -186,14 +185,14 @@ function renderNotFound() {
 // RENDER PRODUCT
 // =====================================================
 
-function renderProduct(product) {
+function renderProduct() {
+
+    const product =
+        currentProduct;
+
 
     document.title =
         `${product.name} | REVIVE`;
-
-
-    const stock =
-        Number(product.stock) || 0;
 
 
     container.innerHTML = `
@@ -201,31 +200,19 @@ function renderProduct(product) {
         <div class="product-detail">
 
 
-            <!-- IMAGE -->
-
             <div class="product-detail-image">
 
-                ${
-                    product.image
-
-                        ? `
-                            <img
-                                src="${escapeHTML(product.image)}"
-                                alt="${escapeHTML(product.name)}"
-                            >
-                          `
-
-                        : `
-                            <div class="product-image-placeholder">
-                                REVIVE
-                            </div>
-                          `
-                }
+                <img
+                    src="${escapeHTML(
+                        product.image || ""
+                    )}"
+                    alt="${escapeHTML(
+                        product.name
+                    )}"
+                >
 
             </div>
 
-
-            <!-- INFORMATION -->
 
             <div class="product-detail-info">
 
@@ -233,7 +220,7 @@ function renderProduct(product) {
                 <span class="eyebrow">
 
                     ${escapeHTML(
-                        product.category || "REVIVE"
+                        product.category || ""
                     )}
 
                 </span>
@@ -242,8 +229,7 @@ function renderProduct(product) {
                 <h1>
 
                     ${escapeHTML(
-                        product.name ||
-                        "Unnamed Product"
+                        product.name
                     )}
 
                 </h1>
@@ -261,36 +247,30 @@ function renderProduct(product) {
                 <p class="product-description">
 
                     ${escapeHTML(
-                        product.description ||
-                        "A Revive care solution."
+                        product.description || ""
                     )}
 
                 </p>
 
 
-                <!-- STOCK -->
-
                 <div class="product-stock">
 
                     ${
-                        stock > 0
+                        Number(product.stock) > 0
 
-                            ? `✓ ${stock} available`
+                            ? `✓ ${Number(product.stock)} available`
 
-                            : "Out of stock"
+                            : `Out of stock`
                     }
 
                 </div>
 
-
-                <!-- QUANTITY -->
 
                 <div class="quantity-control">
 
                     <button
                         type="button"
                         id="decreaseQuantity"
-                        ${stock <= 0 ? "disabled" : ""}
                     >
                         −
                     </button>
@@ -304,7 +284,6 @@ function renderProduct(product) {
                     <button
                         type="button"
                         id="increaseQuantity"
-                        ${stock <= 0 ? "disabled" : ""}
                     >
                         +
                     </button>
@@ -312,22 +291,43 @@ function renderProduct(product) {
                 </div>
 
 
-                <!-- ADD TO CART -->
+                <div class="product-actions">
 
-                <button
-                    type="button"
-                    class="btn btn-primary add-to-cart"
-                    id="addToCart"
-                    ${stock <= 0 ? "disabled" : ""}
-                >
 
-                    ${
-                        stock > 0
-                            ? "Add to Cart →"
-                            : "Out of Stock"
-                    }
+                    <button
+                        type="button"
+                        class="btn btn-primary add-to-cart"
+                        id="addToCart"
+                        ${
+                            product.stock <= 0
+                                ? "disabled"
+                                : ""
+                        }
+                    >
 
-                </button>
+                        Add to Cart →
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="wishlist-button"
+                        id="wishlistButton"
+                    >
+
+                        <span id="wishlistIcon">
+                            ♡
+                        </span>
+
+                        <span id="wishlistText">
+                            Add to Wishlist
+                        </span>
+
+                    </button>
+
+
+                </div>
 
 
                 <div
@@ -335,8 +335,6 @@ function renderProduct(product) {
                     id="productMessage"
                 ></div>
 
-
-                <!-- DETAILS -->
 
                 <div class="product-details">
 
@@ -365,7 +363,7 @@ function renderProduct(product) {
                         <span>
 
                             ${
-                                stock > 0
+                                Number(product.stock) > 0
                                     ? "In stock"
                                     : "Out of stock"
                             }
@@ -384,7 +382,9 @@ function renderProduct(product) {
     `;
 
 
-    setupCart(product);
+    setupCart();
+
+    setupWishlist();
 
 }
 
@@ -393,13 +393,9 @@ function renderProduct(product) {
 // CART
 // =====================================================
 
-function setupCart(product) {
+function setupCart() {
 
     let quantity = 1;
-
-
-    const stock =
-        Number(product.stock) || 0;
 
 
     const quantityDisplay =
@@ -432,9 +428,6 @@ function setupCart(product) {
         );
 
 
-    if (!addButton) return;
-
-
     decrease.addEventListener(
         "click",
         () => {
@@ -456,7 +449,10 @@ function setupCart(product) {
         "click",
         () => {
 
-            if (quantity < stock) {
+            if (
+                quantity <
+                Number(currentProduct.stock)
+            ) {
 
                 quantity++;
 
@@ -473,9 +469,6 @@ function setupCart(product) {
         "click",
         () => {
 
-            if (stock <= 0) return;
-
-
             let cart =
                 JSON.parse(
                     localStorage.getItem(
@@ -487,7 +480,8 @@ function setupCart(product) {
             const existing =
                 cart.find(
                     item =>
-                        item.id === product.id
+                        item.id ===
+                        currentProduct.id
                 );
 
 
@@ -498,10 +492,13 @@ function setupCart(product) {
                     quantity;
 
 
-                if (newQuantity > stock) {
+                if (
+                    newQuantity >
+                    Number(currentProduct.stock)
+                ) {
 
                     message.textContent =
-                        `Only ${stock} available.`;
+                        "You cannot add more than the available stock.";
 
                     message.className =
                         "product-message error";
@@ -519,16 +516,16 @@ function setupCart(product) {
                 cart.push({
 
                     id:
-                        product.id,
+                        currentProduct.id,
 
                     name:
-                        product.name,
+                        currentProduct.name,
 
                     price:
-                        Number(product.price) || 0,
+                        currentProduct.price,
 
                     image:
-                        product.image || "",
+                        currentProduct.image || "",
 
                     quantity
 
@@ -560,6 +557,348 @@ function setupCart(product) {
 
 
 // =====================================================
+// WISHLIST
+// =====================================================
+
+async function setupWishlist() {
+
+    const button =
+        document.getElementById(
+            "wishlistButton"
+        );
+
+
+    if (!button) {
+        return;
+    }
+
+
+    if (!currentUser) {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    "auth/login.html";
+
+            }
+        );
+
+
+        return;
+
+    }
+
+
+    await updateWishlistButton();
+
+
+    button.addEventListener(
+        "click",
+        toggleWishlist
+    );
+
+}
+
+
+// =====================================================
+// UPDATE WISHLIST BUTTON
+// =====================================================
+
+async function updateWishlistButton() {
+
+    const button =
+        document.getElementById(
+            "wishlistButton"
+        );
+
+
+    const icon =
+        document.getElementById(
+            "wishlistIcon"
+        );
+
+
+    const text =
+        document.getElementById(
+            "wishlistText"
+        );
+
+
+    if (
+        !button ||
+        !currentUser
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const wishlistRef =
+            doc(
+                db,
+                "wishlists",
+                currentUser.uid
+            );
+
+
+        const snapshot =
+            await getDoc(
+                wishlistRef
+            );
+
+
+        if (!snapshot.exists()) {
+
+            return;
+
+        }
+
+
+        const data =
+            snapshot.data();
+
+
+        const items =
+            Array.isArray(data.items)
+                ? data.items
+                : [];
+
+
+        const exists =
+            items.some(
+                item =>
+                    item.id ===
+                    currentProduct.id
+            );
+
+
+        if (exists) {
+
+            button.classList.add(
+                "active"
+            );
+
+            icon.textContent =
+                "♥";
+
+            text.textContent =
+                "Remove from Wishlist";
+
+        } else {
+
+            button.classList.remove(
+                "active"
+            );
+
+            icon.textContent =
+                "♡";
+
+            text.textContent =
+                "Add to Wishlist";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Wishlist check error:",
+            error
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// TOGGLE WISHLIST
+// =====================================================
+
+async function toggleWishlist() {
+
+    if (!currentUser) {
+
+        window.location.href =
+            "auth/login.html";
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "wishlistButton"
+        );
+
+
+    const message =
+        document.getElementById(
+            "productMessage"
+        );
+
+
+    button.disabled = true;
+
+
+    try {
+
+        const wishlistRef =
+            doc(
+                db,
+                "wishlists",
+                currentUser.uid
+            );
+
+
+        const snapshot =
+            await getDoc(
+                wishlistRef
+            );
+
+
+        let items = [];
+
+
+        if (snapshot.exists()) {
+
+            const data =
+                snapshot.data();
+
+
+            items =
+                Array.isArray(data.items)
+                    ? data.items
+                    : [];
+
+        }
+
+
+        const existingIndex =
+            items.findIndex(
+                item =>
+                    item.id ===
+                    currentProduct.id
+            );
+
+
+        if (existingIndex !== -1) {
+
+            items.splice(
+                existingIndex,
+                1
+            );
+
+
+            message.textContent =
+                "Removed from your wishlist.";
+
+
+            message.className =
+                "product-message success";
+
+        } else {
+
+            items.push({
+
+                id:
+                    currentProduct.id,
+
+                name:
+                    currentProduct.name,
+
+                price:
+                    currentProduct.price,
+
+                image:
+                    currentProduct.image || "",
+
+                category:
+                    currentProduct.category || ""
+
+            });
+
+
+            message.textContent =
+                "Added to your wishlist ♡";
+
+
+            message.className =
+                "product-message success";
+
+        }
+
+
+        await setDoc(
+            wishlistRef,
+            {
+                items,
+                updatedAt:
+                    serverTimestamp()
+            },
+            {
+                merge: true
+            }
+        );
+
+
+        await updateWishlistButton();
+
+
+    } catch (error) {
+
+        console.error(
+            "Wishlist update error:",
+            error
+        );
+
+
+        message.textContent =
+            "Unable to update your wishlist.";
+
+        message.className =
+            "product-message error";
+
+    } finally {
+
+        button.disabled = false;
+
+    }
+
+}
+
+
+// =====================================================
+// AUTH STATE
+// =====================================================
+
+onAuthStateChanged(
+    auth,
+    async (user) => {
+
+        currentUser = user;
+
+        /*
+         * If the product has already rendered,
+         * refresh the wishlist button.
+         */
+
+        if (currentProduct) {
+
+            await setupWishlist();
+
+        }
+
+    }
+);
+
+
+// =====================================================
 // CART COUNT
 // =====================================================
 
@@ -576,8 +915,7 @@ function updateCartCount() {
     const count =
         cart.reduce(
             (total, item) =>
-                total +
-                Number(item.quantity || 0),
+                total + item.quantity,
             0
         );
 
@@ -599,19 +937,37 @@ function updateCartCount() {
 
 
 // =====================================================
-// FOOTER YEAR
+// HTML ESCAPING
 // =====================================================
 
-const year =
-    document.getElementById(
-        "year"
-    );
+function escapeHTML(value) {
 
+    return String(value)
 
-if (year) {
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
 
-    year.textContent =
-        new Date().getFullYear();
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
@@ -619,6 +975,12 @@ if (year) {
 // =====================================================
 // START
 // =====================================================
+
+document.getElementById(
+    "year"
+).textContent =
+    new Date().getFullYear();
+
 
 updateCartCount();
 

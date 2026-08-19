@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Cart | REVIVE</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a href="index.html" class="brand">
+
+        <span class="brand-symbol">
+            RS
+        </span>
+
+        <span class="brand-copy">
+
+            <strong>REVIVE</strong>
+
+            <small>
+                SCENTS &amp; SKIN CARE SOLUTIONS
+            </small>
+
+        </span>
+
+    </a>
+
+
+    <nav class="main-nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        <a href="index.html#quiz">
+            Skin Quiz
+        </a>
+
+        <a href="account/dashboard.html">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-cta active">
+            Cart
+            <span id="cartCount">0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="cart-page">
+
+    <section class="cart-heading">
+
+        <span class="eyebrow">
+            REVIVE
+        </span>
+
+        <h1>
+            Your Cart
+        </h1>
+
+        <p>
+            Review the products you've selected before checkout.
+        </p>
+
+    </section>
+
+
+    <section class="cart-layout">
+
+        <div class="cart-items-section">
+
+            <div id="cartItems">
+
+                <div class="cart-loading">
+                    Loading your cart...
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <aside class="cart-summary">
+
+            <span class="eyebrow">
+                ORDER SUMMARY
+            </span>
+
+            <h2>
+                Your Order
+            </h2>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Items
+                </span>
+
+                <strong id="summaryItems">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <strong id="cartSubtotal">
+                    KSh 0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <strong id="deliveryFee">
+                    Calculated at checkout
+                </strong>
+
+            </div>
+
+
+            <div class="summary-total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="cartTotal">
+                    KSh 0
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="checkoutButton"
+                class="btn btn-primary"
+                disabled
+            >
+                Proceed to Checkout →
+            </button>
+
+
+            <a
+                href="shop.html"
+                class="continue-shopping"
+            >
+                ← Continue Shopping
+            </a>
+
+        </aside>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="footer-bottom">
+
+        <span>
+            © <span id="year"></span>
+            Revive Scents and Skin Care Solutions.
+        </span>
+
+        <span>
+            From concerns to confidence ♡
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script type="module" src="js/cart.js"></script>
+
+</body>
+
+</html>

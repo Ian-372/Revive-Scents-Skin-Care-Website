@@ -12,20 +12,34 @@
 
 <body>
 
-    <!-- HEADER -->
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
     <header class="account-header">
 
         <a href="../index.html" class="account-brand">
-            <span class="brand-symbol">RS</span>
 
-            <span>
-                <strong>REVIVE</strong>
-                <small>SCENTS & SKIN CARE</small>
+            <span class="brand-symbol">
+                RS
             </span>
+
+            <span class="brand-copy">
+
+                <strong>
+                    REVIVE
+                </strong>
+
+                <small>
+                    SCENTS &amp; SKIN CARE
+                </small>
+
+            </span>
+
         </a>
 
-        <nav>
+
+        <nav class="account-nav">
 
             <a href="../shop.html">
                 Shop
@@ -36,7 +50,10 @@
                 <span id="cartCount">0</span>
             </a>
 
-            <button id="logoutButton" type="button">
+            <button
+                id="logoutButton"
+                type="button"
+            >
                 Logout
             </button>
 
@@ -45,16 +62,20 @@
     </header>
 
 
-    <!-- MAIN -->
+    <!-- =========================================
+         MAIN ACCOUNT AREA
+    ========================================== -->
 
     <main class="account-page">
 
 
-        <!-- WELCOME -->
+        <!-- =====================================
+             DASHBOARD HERO
+        ====================================== -->
 
         <section class="dashboard-hero">
 
-            <div>
+            <div class="dashboard-hero-content">
 
                 <span class="account-eyebrow">
                     MY REVIVE
@@ -64,7 +85,8 @@
                     Welcome back,
                     <span id="customerName">
                         Customer
-                    </span> ♡
+                    </span>
+                    ♡
                 </h1>
 
                 <p>
@@ -74,24 +96,41 @@
 
             </div>
 
-            <div class="hero-decoration">
+
+            <div
+                class="hero-decoration"
+                aria-hidden="true"
+            >
                 ♡
             </div>
 
         </section>
 
 
-        <!-- QUICK STATS -->
+
+        <!-- =====================================
+             QUICK STATS
+        ====================================== -->
 
         <section class="account-stats">
 
-            <a href="orders.html" class="stat-card">
 
-                <span class="stat-icon">
+            <!-- ORDERS -->
+
+            <a
+                href="orders.html"
+                class="stat-card"
+            >
+
+                <span
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ♧
                 </span>
 
                 <div>
+
                     <strong id="orderCount">
                         0
                     </strong>
@@ -99,18 +138,29 @@
                     <span>
                         Orders
                     </span>
+
                 </div>
 
             </a>
 
 
-            <a href="wishlist.html" class="stat-card">
 
-                <span class="stat-icon">
+            <!-- WISHLIST -->
+
+            <a
+                href="wishlist.html"
+                class="stat-card"
+            >
+
+                <span
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ♡
                 </span>
 
                 <div>
+
                     <strong id="wishlistCount">
                         0
                     </strong>
@@ -118,18 +168,29 @@
                     <span>
                         Wishlist
                     </span>
+
                 </div>
 
             </a>
 
 
-            <a href="addresses.html" class="stat-card">
 
-                <span class="stat-icon">
+            <!-- ADDRESSES -->
+
+            <a
+                href="addresses.html"
+                class="stat-card"
+            >
+
+                <span
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ⌖
                 </span>
 
                 <div>
+
                     <strong id="addressCount">
                         0
                     </strong>
@@ -137,6 +198,7 @@
                     <span>
                         Addresses
                     </span>
+
                 </div>
 
             </a>
@@ -144,7 +206,10 @@
         </section>
 
 
-        <!-- ACCOUNT OPTIONS -->
+
+        <!-- =====================================
+             ACCOUNT OPTIONS
+        ====================================== -->
 
         <section class="dashboard-section">
 
@@ -165,18 +230,25 @@
             </div>
 
 
+
             <div class="dashboard-grid">
 
 
                 <!-- ORDERS -->
 
-                <a href="orders.html" class="dashboard-card">
+                <a
+                    href="orders.html"
+                    class="dashboard-card"
+                >
 
-                    <div class="dashboard-card-icon">
+                    <div
+                        class="dashboard-card-icon"
+                        aria-hidden="true"
+                    >
                         ♧
                     </div>
 
-                    <div>
+                    <div class="dashboard-card-content">
 
                         <strong>
                             My Orders
@@ -189,22 +261,32 @@
 
                     </div>
 
-                    <span class="card-arrow">
+                    <span
+                        class="card-arrow"
+                        aria-hidden="true"
+                    >
                         →
                     </span>
 
                 </a>
 
 
+
                 <!-- WISHLIST -->
 
-                <a href="wishlist.html" class="dashboard-card">
+                <a
+                    href="wishlist.html"
+                    class="dashboard-card"
+                >
 
-                    <div class="dashboard-card-icon">
+                    <div
+                        class="dashboard-card-icon"
+                        aria-hidden="true"
+                    >
                         ♡
                     </div>
 
-                    <div>
+                    <div class="dashboard-card-content">
 
                         <strong>
                             My Wishlist
@@ -217,22 +299,32 @@
 
                     </div>
 
-                    <span class="card-arrow">
+                    <span
+                        class="card-arrow"
+                        aria-hidden="true"
+                    >
                         →
                     </span>
 
                 </a>
 
 
+
                 <!-- PROFILE -->
 
-                <a href="profile.html" class="dashboard-card">
+                <a
+                    href="profile.html"
+                    class="dashboard-card"
+                >
 
-                    <div class="dashboard-card-icon">
+                    <div
+                        class="dashboard-card-icon"
+                        aria-hidden="true"
+                    >
                         ◉
                     </div>
 
-                    <div>
+                    <div class="dashboard-card-content">
 
                         <strong>
                             My Profile
@@ -245,22 +337,32 @@
 
                     </div>
 
-                    <span class="card-arrow">
+                    <span
+                        class="card-arrow"
+                        aria-hidden="true"
+                    >
                         →
                     </span>
 
                 </a>
 
 
+
                 <!-- ADDRESSES -->
 
-                <a href="addresses.html" class="dashboard-card">
+                <a
+                    href="addresses.html"
+                    class="dashboard-card"
+                >
 
-                    <div class="dashboard-card-icon">
+                    <div
+                        class="dashboard-card-icon"
+                        aria-hidden="true"
+                    >
                         ⌖
                     </div>
 
-                    <div>
+                    <div class="dashboard-card-content">
 
                         <strong>
                             My Addresses
@@ -273,22 +375,32 @@
 
                     </div>
 
-                    <span class="card-arrow">
+                    <span
+                        class="card-arrow"
+                        aria-hidden="true"
+                    >
                         →
                     </span>
 
                 </a>
 
 
+
                 <!-- SHOP -->
 
-                <a href="../shop.html" class="dashboard-card">
+                <a
+                    href="../shop.html"
+                    class="dashboard-card"
+                >
 
-                    <div class="dashboard-card-icon">
+                    <div
+                        class="dashboard-card-icon"
+                        aria-hidden="true"
+                    >
                         ✦
                     </div>
 
-                    <div>
+                    <div class="dashboard-card-content">
 
                         <strong>
                             Continue Shopping
@@ -301,22 +413,32 @@
 
                     </div>
 
-                    <span class="card-arrow">
+                    <span
+                        class="card-arrow"
+                        aria-hidden="true"
+                    >
                         →
                     </span>
 
                 </a>
 
 
+
                 <!-- CART -->
 
-                <a href="../cart.html" class="dashboard-card">
+                <a
+                    href="../cart.html"
+                    class="dashboard-card"
+                >
 
-                    <div class="dashboard-card-icon">
+                    <div
+                        class="dashboard-card-icon"
+                        aria-hidden="true"
+                    >
                         ♡
                     </div>
 
-                    <div>
+                    <div class="dashboard-card-content">
 
                         <strong>
                             My Cart
@@ -329,7 +451,10 @@
 
                     </div>
 
-                    <span class="card-arrow">
+                    <span
+                        class="card-arrow"
+                        aria-hidden="true"
+                    >
                         →
                     </span>
 
@@ -340,7 +465,10 @@
         </section>
 
 
-        <!-- RECENT ORDERS -->
+
+        <!-- =====================================
+             RECENT ORDERS
+        ====================================== -->
 
         <section class="recent-orders">
 
@@ -369,7 +497,10 @@
 
                 <div class="empty-account-state">
 
-                    <div>
+                    <div
+                        class="empty-account-icon"
+                        aria-hidden="true"
+                    >
                         ♡
                     </div>
 
@@ -395,16 +526,19 @@
 
         </section>
 
-
     </main>
 
 
-    <!-- FOOTER -->
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
 
     <footer class="account-footer">
 
         <span>
-            © <span id="year"></span>
+            ©
+            <span id="year"></span>
             Revive Scents and Skin Care Solutions.
         </span>
 
@@ -415,6 +549,11 @@
     </footer>
 
 
+
+    <!-- =========================================
+         DASHBOARD JAVASCRIPT
+    ========================================== -->
+
     <script type="module">
 
         import {
@@ -422,10 +561,12 @@
             signOut
         } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
+
         import {
             doc,
             getDoc
         } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
 
         import {
             auth,
@@ -433,80 +574,121 @@
         } from "../js/firebase-config.js";
 
 
+
+        // =========================================
+        // ELEMENTS
+        // =========================================
+
         const customerName =
-            document.getElementById("customerName");
+            document.getElementById(
+                "customerName"
+            );
+
 
         const logoutButton =
-            document.getElementById("logoutButton");
+            document.getElementById(
+                "logoutButton"
+            );
 
 
-        // ================================
+        const cartCount =
+            document.getElementById(
+                "cartCount"
+            );
+
+
+        const year =
+            document.getElementById(
+                "year"
+            );
+
+
+
+        // =========================================
         // AUTHENTICATION
-        // ================================
+        // =========================================
 
-        onAuthStateChanged(auth, async (user) => {
+        onAuthStateChanged(
+            auth,
+            async (user) => {
 
-            if (!user) {
+                if (!user) {
 
-                window.location.href =
-                    "../auth/login.html";
+                    window.location.href =
+                        "../auth/login.html";
 
-                return;
-            }
+                    return;
 
-
-            if (!user.emailVerified) {
-
-                window.location.href =
-                    "../auth/verify-email.html";
-
-                return;
-            }
+                }
 
 
-            try {
+                if (!user.emailVerified) {
 
-                const userRef =
-                    doc(
-                        db,
-                        "users",
-                        user.uid
+                    window.location.href =
+                        "../auth/verify-email.html";
+
+                    return;
+
+                }
+
+
+                try {
+
+                    const userRef =
+                        doc(
+                            db,
+                            "users",
+                            user.uid
+                        );
+
+
+                    const userSnap =
+                        await getDoc(
+                            userRef
+                        );
+
+
+                    if (userSnap.exists()) {
+
+                        const data =
+                            userSnap.data();
+
+
+                        customerName.textContent =
+                            data.firstName ||
+                            user.displayName?.split(" ")[0] ||
+                            "Customer";
+
+                    } else {
+
+                        customerName.textContent =
+                            user.displayName?.split(" ")[0] ||
+                            "Customer";
+
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        "Unable to load customer profile:",
+                        error
                     );
 
 
-                const userSnap =
-                    await getDoc(userRef);
-
-
-                if (userSnap.exists()) {
-
-                    const data =
-                        userSnap.data();
-
-
                     customerName.textContent =
-                        data.firstName ||
                         user.displayName?.split(" ")[0] ||
                         "Customer";
 
                 }
 
-
-            } catch (error) {
-
-                console.error(
-                    "Unable to load customer profile:",
-                    error
-                );
-
             }
+        );
 
-        });
 
 
-        // ================================
+        // =========================================
         // LOGOUT
-        // ================================
+        // =========================================
 
         logoutButton.addEventListener(
             "click",
@@ -514,7 +696,15 @@
 
                 try {
 
+                    logoutButton.disabled =
+                        true;
+
+                    logoutButton.textContent =
+                        "Logging out...";
+
+
                     await signOut(auth);
+
 
                     window.location.href =
                         "../auth/login.html";
@@ -526,64 +716,99 @@
                         error
                     );
 
+
+                    logoutButton.disabled =
+                        false;
+
+                    logoutButton.textContent =
+                        "Logout";
+
                 }
 
             }
         );
 
 
-        // ================================
+
+        // =========================================
         // CART COUNT
-        // ================================
+        // =========================================
 
         function updateCartCount() {
 
-            const cart =
-                JSON.parse(
-                    localStorage.getItem(
-                        "reviveCart"
-                    )
-                ) || [];
+            try {
+
+                const cart =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "reviveCart"
+                        )
+                    ) || [];
 
 
-            const count =
-                cart.reduce(
-                    (total, item) =>
-                        total + item.quantity,
-                    0
+                const count =
+                    cart.reduce(
+                        (
+                            total,
+                            item
+                        ) => {
+
+                            return total +
+                                (
+                                    Number(
+                                        item.quantity
+                                    ) || 0
+                                );
+
+                        },
+                        0
+                    );
+
+
+                if (cartCount) {
+
+                    cartCount.textContent =
+                        count;
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Unable to update cart count:",
+                    error
                 );
-
-
-            const cartCount =
-                document.getElementById(
-                    "cartCount"
-                );
-
-
-            if (cartCount) {
-
-                cartCount.textContent =
-                    count;
 
             }
 
         }
 
 
-        // ================================
-        // YEAR
-        // ================================
 
-        document.getElementById(
-            "year"
-        ).textContent =
-            new Date().getFullYear();
+        // =========================================
+        // CURRENT YEAR
+        // =========================================
 
+        if (year) {
+
+            year.textContent =
+                new Date().getFullYear();
+
+        }
+
+
+
+        // =========================================
+        // INITIALIZE
+        // =========================================
 
         updateCartCount();
 
     </script>
 
+
+
+    <!-- AUTH GUARD -->
 
     <script
         type="module"

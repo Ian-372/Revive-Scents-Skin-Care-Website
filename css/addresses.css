@@ -1,0 +1,1257 @@
+/* =========================================================
+   REVIVE — ADDRESSES
+========================================================= */
+
+:root {
+    --pink-50: #fff8fa;
+    --pink-100: #fdecef;
+    --pink-200: #f8d7df;
+    --pink-300: #efb7c5;
+    --pink-400: #df8fa4;
+
+    --rose: #c96f87;
+    --rose-dark: #a9566e;
+
+    --wine: #4b2633;
+    --text: #38262d;
+    --muted: #8b747c;
+
+    --white: #ffffff;
+
+    --border: rgba(201, 111, 135, 0.16);
+
+    --shadow:
+        0 18px 55px rgba(100, 46, 63, 0.08);
+
+    --radius: 24px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family: "DM Sans", sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 5% 5%,
+            rgba(248, 215, 223, 0.65),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 95% 20%,
+            rgba(239, 183, 197, 0.3),
+            transparent 28%
+        ),
+        var(--pink-50);
+
+    line-height: 1.6;
+}
+
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+button,
+input {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.addresses-page {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.addresses-header {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding: 25px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.addresses-brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.brand-symbol {
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--pink-200),
+            var(--pink-100)
+        );
+
+    color: var(--wine);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+.addresses-brand strong {
+    display: block;
+
+    color: var(--wine);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 23px;
+
+    line-height: 1;
+
+    letter-spacing: .08em;
+}
+
+
+.addresses-brand small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .13em;
+}
+
+
+.header-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.header-actions a {
+    padding: 9px 15px;
+
+    border-radius: 999px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: .25s ease;
+}
+
+
+.header-actions a:hover {
+    background: var(--pink-100);
+
+    color: var(--wine);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.addresses-main {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding: 70px 0 90px;
+
+    flex: 1;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.addresses-intro {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 42px;
+}
+
+
+.eyebrow {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: var(--rose-dark);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: .18em;
+}
+
+
+.addresses-intro h1 {
+    color: var(--wine);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(48px, 7vw, 76px);
+
+    line-height: .92;
+
+    font-weight: 600;
+
+    letter-spacing: -.035em;
+}
+
+
+.addresses-intro h1 em {
+    color: var(--rose);
+
+    font-weight: 500;
+}
+
+
+.addresses-intro p {
+    max-width: 600px;
+
+    margin-top: 20px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+========================================================= */
+
+.add-address-button,
+.empty-add-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--rose),
+            var(--rose-dark)
+        );
+
+    color: white;
+
+    padding: 14px 21px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 12px 28px rgba(169, 86, 110, .2);
+
+    transition: .25s ease;
+}
+
+
+.add-address-button span {
+    font-size: 20px;
+
+    line-height: 0;
+}
+
+
+.add-address-button:hover,
+.empty-add-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 34px rgba(169, 86, 110, .28);
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.address-message {
+    min-height: 0;
+
+    margin-bottom: 15px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.address-message.success {
+    color: #5d8a68;
+}
+
+
+.address-message.error {
+    color: #b54d63;
+}
+
+
+/* =========================================================
+   ADDRESS LIST
+========================================================= */
+
+.addresses-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.address-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(255,249,251,.96)
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+
+.address-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    right: -70px;
+    top: -70px;
+
+    border-radius: 50%;
+
+    background: var(--pink-100);
+
+    opacity: .7;
+}
+
+
+.address-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 25px 65px rgba(100,46,63,.12);
+
+    border-color: var(--pink-300);
+}
+
+
+.address-card.default-address {
+    border-color: var(--pink-300);
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.address-card-top {
+    position: relative;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 25px 25px 18px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.address-label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.address-icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--pink-100);
+
+    color: var(--rose);
+
+    font-size: 19px;
+}
+
+
+.address-label strong {
+    display: block;
+
+    color: var(--wine);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 22px;
+
+    line-height: 1.1;
+}
+
+
+.default-badge {
+    display: inline-block;
+
+    margin-top: 4px;
+
+    padding: 3px 7px;
+
+    border-radius: 999px;
+
+    background: var(--pink-200);
+
+    color: var(--rose-dark);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .1em;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.address-actions {
+    position: relative;
+
+    display: flex;
+
+    gap: 5px;
+}
+
+
+.address-actions button {
+    border: none;
+
+    background: transparent;
+
+    padding: 6px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition: .2s ease;
+}
+
+
+.address-actions .edit-address:hover {
+    color: var(--rose-dark);
+}
+
+
+.address-actions .delete-address:hover {
+    color: #b54d63;
+}
+
+
+/* =========================================================
+   CARD BODY
+========================================================= */
+
+.address-card-body {
+    padding: 24px 25px;
+
+    position: relative;
+}
+
+
+.recipient-name {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--wine);
+
+    font-size: 14px;
+}
+
+
+.address-card-body p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+.recipient-phone {
+    margin-top: 8px;
+
+    color: var(--wine) !important;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   DELIVERY NOTE
+========================================================= */
+
+.delivery-note {
+    margin-top: 17px;
+
+    padding: 10px 13px;
+
+    border-left: 3px solid var(--pink-300);
+
+    background: var(--pink-50);
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+.delivery-note span {
+    margin-right: 5px;
+
+    color: var(--rose-dark);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CARD FOOTER
+========================================================= */
+
+.address-card-footer {
+    padding: 0 25px 20px;
+}
+
+
+.make-default {
+    border: none;
+
+    background: transparent;
+
+    color: var(--rose-dark);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition: .2s ease;
+}
+
+
+.make-default:hover {
+    color: var(--wine);
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-addresses {
+    grid-column: 1 / -1;
+
+    min-height: 380px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 50px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.96),
+            rgba(255,248,250,.9)
+        );
+
+    border: 1px dashed var(--pink-300);
+
+    border-radius: var(--radius);
+}
+
+
+.empty-heart {
+    width: 75px;
+    height: 75px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 50%;
+
+    background: var(--pink-100);
+
+    color: var(--rose);
+
+    font-size: 32px;
+}
+
+
+.empty-addresses h2 {
+    margin-top: 3px;
+
+    color: var(--wine);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 36px;
+
+    font-weight: 600;
+}
+
+
+.empty-addresses p {
+    max-width: 430px;
+
+    margin: 8px auto 23px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.addresses-loading {
+    grid-column: 1 / -1;
+
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--muted);
+}
+
+
+.loading-circle {
+    width: 30px;
+    height: 30px;
+
+    margin-bottom: 14px;
+
+    border: 3px solid var(--pink-200);
+
+    border-top-color: var(--rose);
+
+    border-radius: 50%;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.address-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+.address-modal.open {
+    display: flex;
+}
+
+
+.modal-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(54, 26, 35, .48);
+
+    backdrop-filter: blur(7px);
+}
+
+
+.address-modal-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(650px, 100%);
+
+    max-height: calc(100vh - 40px);
+
+    overflow-y: auto;
+
+    padding: 38px;
+
+    background: var(--white);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 35px 100px rgba(45, 18, 28, .25);
+
+    animation:
+        modalIn .25s ease;
+}
+
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+.modal-close {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    width: 35px;
+    height: 35px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--pink-100);
+
+    color: var(--wine);
+
+    font-size: 22px;
+
+    transition: .2s ease;
+}
+
+
+.modal-close:hover {
+    background: var(--pink-200);
+
+    transform: rotate(5deg);
+}
+
+
+.address-modal-content h2 {
+    color: var(--wine);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 40px;
+
+    line-height: 1;
+
+    font-weight: 600;
+}
+
+
+.modal-description {
+    margin-top: 9px;
+
+    margin-bottom: 28px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+
+.form-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.form-field.full {
+    grid-column: 1 / -1;
+}
+
+
+.form-field > span {
+    color: var(--wine);
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.form-field input {
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: #fff;
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    transition: .2s ease;
+}
+
+
+.form-field input:focus {
+    border-color: var(--pink-400);
+
+    box-shadow:
+        0 0 0 4px rgba(239,183,197,.16);
+}
+
+
+/* =========================================================
+   DEFAULT CHECKBOX
+========================================================= */
+
+.default-checkbox {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 20px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.default-checkbox input {
+    accent-color: var(--rose);
+
+    width: 16px;
+    height: 16px;
+}
+
+
+/* =========================================================
+   MODAL ACTIONS
+========================================================= */
+
+.modal-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 30px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+.cancel-button {
+    padding: 12px 18px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+
+    background: white;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.cancel-button:hover {
+    background: var(--pink-50);
+
+    color: var(--wine);
+}
+
+
+.save-address-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--rose),
+            var(--rose-dark)
+        );
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 10px 25px rgba(169,86,110,.2);
+}
+
+
+.save-address-button span {
+    font-size: 17px;
+}
+
+
+.save-address-button:disabled {
+    opacity: .6;
+
+    cursor: wait;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.addresses-footer {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding: 23px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .addresses-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .addresses-header {
+        width: calc(100% - 28px);
+    }
+
+
+    .addresses-brand small {
+        display: none;
+    }
+
+
+    .header-actions a:first-child {
+        display: none;
+    }
+
+
+    .addresses-main {
+        width: calc(100% - 28px);
+
+        padding: 50px 0 65px;
+    }
+
+
+    .addresses-intro {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .addresses-intro h1 {
+        font-size: 50px;
+    }
+
+
+    .add-address-button {
+        width: 100%;
+    }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .form-field.full {
+        grid-column: auto;
+    }
+
+
+    .address-modal-content {
+        padding: 30px 20px;
+    }
+
+
+    .address-modal-content h2 {
+        font-size: 34px;
+    }
+
+
+    .modal-actions {
+        flex-direction: column-reverse;
+    }
+
+
+    .modal-actions button {
+        width: 100%;
+    }
+
+
+    .addresses-footer {
+        width: calc(100% - 28px);
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 5px;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .address-card-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .address-actions {
+        width: 100%;
+
+        justify-content: flex-end;
+    }
+
+}

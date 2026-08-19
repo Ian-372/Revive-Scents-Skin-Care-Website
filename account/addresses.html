@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Manage your REVIVE delivery addresses."
+    >
+
+    <title>My Addresses | REVIVE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../css/addresses.css">
+</head>
+
+<body>
+
+<div class="addresses-page">
+
+    <!-- HEADER -->
+
+    <header class="addresses-header">
+
+        <a href="../index.html" class="addresses-brand">
+
+            <span class="brand-symbol">
+                RS
+            </span>
+
+            <span>
+                <strong>REVIVE</strong>
+                <small>SCENTS &amp; SKIN CARE SOLUTIONS</small>
+            </span>
+
+        </a>
+
+        <div class="header-actions">
+
+            <a href="../shop.html">
+                Shop
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="addresses-main">
+
+        <!-- INTRO -->
+
+        <section class="addresses-intro">
+
+            <div>
+
+                <span class="eyebrow">
+                    MY REVIVE
+                </span>
+
+                <h1>
+                    Your delivery
+                    <em>addresses.</em>
+                </h1>
+
+                <p>
+                    Save your favourite delivery locations so
+                    checking out is quick and effortless.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                id="addAddressButton"
+                class="add-address-button"
+            >
+                <span>+</span>
+                Add address
+            </button>
+
+        </section>
+
+
+        <!-- MESSAGE -->
+
+        <div
+            id="addressMessage"
+            class="address-message"
+            aria-live="polite"
+        ></div>
+
+
+        <!-- ADDRESS CONTENT -->
+
+        <section class="addresses-content">
+
+            <div
+                id="addressesList"
+                class="addresses-list"
+            >
+
+                <div class="addresses-loading">
+
+                    <div class="loading-circle"></div>
+
+                    <p>
+                        Loading your addresses...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ADDRESS MODAL -->
+
+    <div
+        class="address-modal"
+        id="addressModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+        <section
+            class="address-modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="addressModalTitle"
+        >
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeAddressModal"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+            <span class="eyebrow">
+                DELIVERY DETAILS
+            </span>
+
+            <h2 id="addressModalTitle">
+                Add an address
+            </h2>
+
+            <p class="modal-description">
+                Where should we deliver your REVIVE order?
+            </p>
+
+
+            <form id="addressForm">
+
+                <input
+                    type="hidden"
+                    id="addressId"
+                >
+
+
+                <div class="form-grid">
+
+                    <!-- LABEL -->
+
+                    <label class="form-field full">
+
+                        <span>
+                            Address name
+                        </span>
+
+                        <input
+                            type="text"
+                            id="addressLabel"
+                            placeholder="e.g. Home, Campus, Work"
+                            maxlength="40"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- FULL NAME -->
+
+                    <label class="form-field">
+
+                        <span>
+                            Recipient first name
+                        </span>
+
+                        <input
+                            type="text"
+                            id="recipientFirstName"
+                            autocomplete="given-name"
+                            required
+                        >
+
+                    </label>
+
+
+                    <label class="form-field">
+
+                        <span>
+                            Recipient last name
+                        </span>
+
+                        <input
+                            type="text"
+                            id="recipientLastName"
+                            autocomplete="family-name"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- PHONE -->
+
+                    <label class="form-field full">
+
+                        <span>
+                            Phone number
+                        </span>
+
+                        <input
+                            type="tel"
+                            id="recipientPhone"
+                            placeholder="e.g. 0712 345 678"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- COUNTY -->
+
+                    <label class="form-field">
+
+                        <span>
+                            County
+                        </span>
+
+                        <input
+                            type="text"
+                            id="county"
+                            placeholder="e.g. Kakamega"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- TOWN -->
+
+                    <label class="form-field">
+
+                        <span>
+                            Town / City
+                        </span>
+
+                        <input
+                            type="text"
+                            id="town"
+                            placeholder="e.g. Kakamega"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- AREA -->
+
+                    <label class="form-field full">
+
+                        <span>
+                            Area / Estate
+                        </span>
+
+                        <input
+                            type="text"
+                            id="area"
+                            placeholder="e.g. Milimani"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- BUILDING -->
+
+                    <label class="form-field">
+
+                        <span>
+                            Building / Street
+                        </span>
+
+                        <input
+                            type="text"
+                            id="building"
+                            placeholder="Optional"
+                        >
+
+                    </label>
+
+
+                    <!-- DELIVERY NOTE -->
+
+                    <label class="form-field">
+
+                        <span>
+                            Delivery note
+                        </span>
+
+                        <input
+                            type="text"
+                            id="deliveryNote"
+                            placeholder="e.g. Call on arrival"
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <label class="default-checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="isDefault"
+                    >
+
+                    <span>
+                        Make this my default delivery address
+                    </span>
+
+                </label>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelAddress"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-address-button"
+                        id="saveAddressButton"
+                    >
+                        Save address
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="addresses-footer">
+
+        <span>
+            © <span id="year"></span> REVIVE
+        </span>
+
+        <span>
+            From concerns to confidence ♡
+        </span>
+
+    </footer>
+
+
+    <script type="module" src="../js/addresses.js"></script>
+
+</div>
+
+</body>
+</html>
