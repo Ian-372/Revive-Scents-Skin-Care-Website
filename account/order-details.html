@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="View your REVIVE order details."
+    >
+
+    <title>Order Details | REVIVE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/order-details.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="order-details-page">
+
+
+    <!-- HEADER -->
+
+    <header class="order-header">
+
+        <a
+            href="../index.html"
+            class="order-brand"
+        >
+
+            <span class="brand-symbol">
+                RS
+            </span>
+
+            <span>
+
+                <strong>
+                    REVIVE
+                </strong>
+
+                <small>
+                    SCENTS &amp; SKIN CARE SOLUTIONS
+                </small>
+
+            </span>
+
+        </a>
+
+
+        <nav class="order-nav">
+
+            <a href="../shop.html">
+                Shop
+            </a>
+
+            <a href="../cart.html">
+                Cart
+                <span id="cartCount">0</span>
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- MAIN -->
+
+    <main class="order-details-main">
+
+
+        <!-- BACK -->
+
+        <a
+            href="orders.html"
+            class="back-orders"
+        >
+            ← Back to My Orders
+        </a>
+
+
+
+        <!-- LOADING -->
+
+        <section
+            id="orderLoading"
+            class="order-loading"
+        >
+
+            <div class="loading-circle"></div>
+
+            <p>
+                Loading your order...
+            </p>
+
+        </section>
+
+
+
+        <!-- ERROR -->
+
+        <section
+            id="orderError"
+            class="order-state hidden"
+        >
+
+            <div class="state-icon">
+                !
+            </div>
+
+            <span class="eyebrow">
+                ORDER NOT FOUND
+            </span>
+
+            <h1>
+                We couldn't find that order.
+            </h1>
+
+            <p>
+                The order may no longer exist or
+                you may not have permission to view it.
+            </p>
+
+            <a
+                href="orders.html"
+                class="primary-button"
+            >
+                Back to Orders
+            </a>
+
+        </section>
+
+
+
+        <!-- ORDER CONTENT -->
+
+        <div
+            id="orderContent"
+            class="hidden"
+        >
+
+
+            <!-- ORDER HERO -->
+
+            <section class="order-hero">
+
+                <div>
+
+                    <span class="eyebrow">
+                        REVIVE ORDER
+                    </span>
+
+                    <h1>
+                        Order
+                        <span id="orderNumber">
+                            —
+                        </span>
+                    </h1>
+
+                    <p id="orderDate">
+                        —
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="orderStatus"
+                    class="order-status"
+                >
+                    —
+                </div>
+
+            </section>
+
+
+
+            <!-- STATUS TIMELINE -->
+
+            <section class="order-progress">
+
+                <div class="progress-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            ORDER JOURNEY
+                        </span>
+
+                        <h2>
+                            We're taking care of it.
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline">
+
+                    <div
+                        class="timeline-step"
+                        data-status="pending"
+                    >
+
+                        <div class="timeline-dot">
+                            ✓
+                        </div>
+
+                        <span>
+                            Order placed
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="timeline-line"
+                    ></div>
+
+
+                    <div
+                        class="timeline-step"
+                        data-status="confirmed"
+                    >
+
+                        <div class="timeline-dot">
+                            ✓
+                        </div>
+
+                        <span>
+                            Confirmed
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="timeline-line"
+                    ></div>
+
+
+                    <div
+                        class="timeline-step"
+                        data-status="processing"
+                    >
+
+                        <div class="timeline-dot">
+                            ✓
+                        </div>
+
+                        <span>
+                            Preparing
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="timeline-line"
+                    ></div>
+
+
+                    <div
+                        class="timeline-step"
+                        data-status="shipped"
+                    >
+
+                        <div class="timeline-dot">
+                            ✓
+                        </div>
+
+                        <span>
+                            On the way
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="timeline-line"
+                    ></div>
+
+
+                    <div
+                        class="timeline-step"
+                        data-status="completed"
+                    >
+
+                        <div class="timeline-dot">
+                            ✓
+                        </div>
+
+                        <span>
+                            Delivered
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- TWO COLUMN -->
+
+            <section class="order-layout">
+
+
+                <!-- LEFT -->
+
+                <div class="order-left">
+
+
+                    <!-- PRODUCTS -->
+
+                    <section class="order-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    YOUR PURCHASE
+                                </span>
+
+                                <h2>
+                                    Order items
+                                </h2>
+
+                            </div>
+
+                            <span
+                                id="itemCount"
+                                class="item-count"
+                            >
+                                0 items
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            id="orderItems"
+                            class="order-items"
+                        ></div>
+
+                    </section>
+
+
+
+                    <!-- DELIVERY -->
+
+                    <section class="order-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    DELIVERY
+                                </span>
+
+                                <h2>
+                                    Delivery address
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="deliveryAddress"
+                            class="delivery-address"
+                        >
+                            —
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- PAYMENT -->
+
+                    <section class="order-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    PAYMENT
+                                </span>
+
+                                <h2>
+                                    Payment information
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="paymentInformation"
+                            class="payment-information"
+                        >
+                            —
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+
+                <!-- RIGHT -->
+
+                <aside class="order-right">
+
+
+                    <!-- SUMMARY -->
+
+                    <section class="summary-card">
+
+                        <span class="eyebrow">
+                            ORDER SUMMARY
+                        </span>
+
+                        <h2>
+                            Your total
+                        </h2>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Subtotal
+                            </span>
+
+                            <strong id="subtotal">
+                                KES 0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Delivery
+                            </span>
+
+                            <strong id="deliveryFee">
+                                KES 0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-divider"></div>
+
+
+                        <div class="summary-total">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong id="orderTotal">
+                                KES 0
+                            </strong>
+
+                        </div>
+
+
+                        <div
+                            id="paymentStatus"
+                            class="payment-status"
+                        >
+                            —
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- CUSTOMER -->
+
+                    <section class="customer-card">
+
+                        <span class="eyebrow">
+                            ORDERED BY
+                        </span>
+
+                        <h3 id="customerName">
+                            —
+                        </h3>
+
+                        <p id="customerEmail">
+                            —
+                        </p>
+
+                        <p id="customerPhone">
+                            —
+                        </p>
+
+                    </section>
+
+
+                </aside>
+
+            </section>
+
+
+
+            <!-- FOOTER ACTIONS -->
+
+            <section class="order-actions">
+
+                <a
+                    href="../shop.html"
+                    class="secondary-button"
+                >
+                    Continue Shopping
+                </a>
+
+                <a
+                    href="orders.html"
+                    class="primary-button"
+                >
+                    Back to My Orders
+                </a>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="order-footer">
+
+        <span>
+            ©
+            <span id="year"></span>
+            REVIVE
+        </span>
+
+        <span>
+            From concerns to confidence ♡
+        </span>
+
+    </footer>
+
+</div>
+
+
+
+<script
+    type="module"
+    src="../js/order-details.js"
+></script>
+
+</body>
+
+</html>
