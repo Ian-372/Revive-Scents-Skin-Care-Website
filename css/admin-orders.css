@@ -1,0 +1,2407 @@
+/* =====================================================
+   REVIVE ADMIN — ORDERS
+   ===================================================== */
+
+:root {
+
+    --cream: #f6f2ec;
+    --paper: #fffdf9;
+    --white: #ffffff;
+
+    --ink: #292522;
+    --muted: #81786f;
+    --soft: #aaa097;
+
+    --rose: #a56d68;
+    --rose-dark: #85534f;
+    --rose-soft: #ead8d4;
+
+    --gold-soft: #eee2c8;
+
+    --green: #617c68;
+    --green-soft: #dce8de;
+
+    --orange: #a77a4b;
+    --orange-soft: #eee1ce;
+
+    --red: #a45e5e;
+    --red-soft: #efd9d9;
+
+    --blue: #657b8e;
+    --blue-soft: #dce5eb;
+
+    --line: rgba(41, 37, 34, 0.10);
+
+    --shadow:
+        0 18px 50px rgba(53, 43, 37, 0.08);
+}
+
+
+/* =====================================================
+   RESET
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    color: var(--ink);
+
+    background: var(--cream);
+}
+
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+button,
+select {
+    cursor: pointer;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   SHELL
+   ===================================================== */
+
+.orders-shell {
+
+    min-height: 100vh;
+
+    display: flex;
+}
+
+
+/* =====================================================
+   SIDEBAR
+   ===================================================== */
+
+.orders-sidebar {
+
+    width: 250px;
+
+    flex-shrink: 0;
+
+    min-height: 100vh;
+
+    padding: 27px 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #292522;
+
+    color: white;
+
+    position: sticky;
+
+    top: 0;
+
+    height: 100vh;
+}
+
+
+.admin-brand {
+
+    padding: 0 8px 28px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.09);
+}
+
+
+.brand-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.brand-mark {
+
+    width: 43px;
+    height: 43px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--rose),
+            var(--rose-dark)
+        );
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.brand-copy {
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.brand-copy strong {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 20px;
+
+    letter-spacing: 0.10em;
+}
+
+
+.brand-copy small {
+
+    margin-top: 2px;
+
+    color: rgba(255,255,255,0.45);
+
+    font-size: 7px;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* =====================================================
+   ADMIN PROFILE
+   ===================================================== */
+
+.admin-profile {
+
+    margin: 23px 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.admin-avatar {
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: var(--rose-soft);
+
+    background:
+        rgba(234,216,212,0.13);
+
+    border:
+        1px solid
+        rgba(234,216,212,0.18);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 17px;
+}
+
+
+.admin-profile div:last-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.admin-profile strong {
+
+    font-size: 11px;
+}
+
+
+.admin-profile span {
+
+    color: rgba(255,255,255,0.43);
+
+    font-size: 9px;
+}
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+.admin-navigation {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.nav-section {
+
+    margin: 18px 10px 6px;
+
+    color: rgba(255,255,255,0.34);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+}
+
+
+.nav-link {
+
+    min-height: 43px;
+
+    padding: 0 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    border-radius: 10px;
+
+    color: rgba(255,255,255,0.62);
+
+    font-size: 11px;
+
+    transition:
+        color .2s ease,
+        background .2s ease;
+}
+
+
+.nav-link:hover {
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.06);
+}
+
+
+.nav-link.active {
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(165,109,104,0.25),
+            rgba(165,109,104,0.09)
+        );
+}
+
+
+.nav-icon {
+
+    width: 19px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,0.48);
+}
+
+
+.nav-link.active .nav-icon {
+
+    color: var(--rose-soft);
+}
+
+
+.nav-badge {
+
+    margin-left: auto;
+
+    min-width: 20px;
+    height: 20px;
+
+    padding: 0 6px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 999px;
+
+    color: white;
+
+    background: var(--rose);
+
+    font-size: 8px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   SIDEBAR BOTTOM
+   ===================================================== */
+
+.sidebar-bottom {
+
+    margin-top: auto;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.view-store,
+.admin-logout {
+
+    width: 100%;
+
+    min-height: 39px;
+
+    padding: 0 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    color: rgba(255,255,255,0.55);
+
+    background: transparent;
+
+    font-size: 10px;
+
+    text-align: left;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+
+.view-store:hover,
+.admin-logout:hover {
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.06);
+}
+
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+
+.orders-main {
+
+    min-width: 0;
+
+    flex: 1;
+
+    padding: 0 42px 30px;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   TOPBAR
+   ===================================================== */
+
+.orders-topbar {
+
+    min-height: 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--line);
+}
+
+
+.admin-eyebrow {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--rose);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .18em;
+}
+
+
+.orders-topbar h1 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 36px;
+
+    font-weight: 600;
+
+    line-height: 1;
+}
+
+
+.orders-topbar h1 em {
+
+    color: var(--rose);
+
+    font-weight: 500;
+}
+
+
+.topbar-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+.date-box {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 2px;
+}
+
+
+.date-box span {
+
+    color: var(--soft);
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: .16em;
+}
+
+
+.date-box strong {
+
+    font-size: 10px;
+}
+
+
+.top-avatar {
+
+    width: 39px;
+    height: 39px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: var(--rose-dark);
+
+    background: var(--rose-soft);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   INTRO
+   ===================================================== */
+
+.orders-intro {
+
+    margin-top: 34px;
+
+    padding: 30px 34px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border: 1px solid var(--line);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #fffdf9,
+            #f4e9e5
+        );
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+.intro-label {
+
+    color: var(--rose-dark);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .18em;
+}
+
+
+.orders-intro h2 {
+
+    margin-top: 7px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 34px;
+
+    font-weight: 600;
+}
+
+
+.orders-intro h2 em {
+
+    color: var(--rose);
+
+    font-weight: 500;
+}
+
+
+.orders-intro p {
+
+    max-width: 650px;
+
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+.intro-decoration {
+
+    width: 80px;
+    height: 80px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: rgba(133,83,79,0.55);
+
+    border: 1px solid
+        rgba(165,109,104,0.20);
+
+    font-size: 26px;
+}
+
+
+/* =====================================================
+   STATISTICS
+   ===================================================== */
+
+.order-stats {
+
+    margin-top: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 12px;
+}
+
+
+.order-stat {
+
+    min-height: 105px;
+
+    padding: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 15px;
+
+    background: var(--paper);
+
+    box-shadow:
+        0 8px 25px
+        rgba(53,43,37,0.035);
+}
+
+
+.stat-icon {
+
+    width: 39px;
+    height: 39px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    color: var(--rose-dark);
+
+    background: var(--rose-soft);
+
+    font-size: 13px;
+}
+
+
+.order-stat.pending .stat-icon {
+
+    color: var(--orange);
+
+    background: var(--orange-soft);
+}
+
+
+.order-stat.confirmed .stat-icon {
+
+    color: var(--blue);
+
+    background: var(--blue-soft);
+}
+
+
+.order-stat.completed .stat-icon {
+
+    color: var(--green);
+
+    background: var(--green-soft);
+}
+
+
+.order-stat.revenue .stat-icon {
+
+    color: var(--rose-dark);
+
+    background: var(--gold-soft);
+
+    font-size: 8px;
+
+    font-weight: 700;
+}
+
+
+.order-stat div:last-child {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.order-stat span {
+
+    color: var(--soft);
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: .12em;
+}
+
+
+.order-stat strong {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   TOOLBAR
+   ===================================================== */
+
+.orders-toolbar {
+
+    margin-top: 28px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.toolbar-search {
+
+    min-width: 280px;
+
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 0 13px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 10px;
+
+    background: var(--paper);
+}
+
+
+.toolbar-search > span {
+
+    color: var(--soft);
+
+    font-size: 17px;
+}
+
+
+.toolbar-search input {
+
+    width: 100%;
+
+    border: 0;
+
+    outline: 0;
+
+    color: var(--ink);
+
+    background: transparent;
+
+    font-size: 10px;
+}
+
+
+.toolbar-search input::placeholder {
+
+    color: #aaa29b;
+}
+
+
+.toolbar-filters {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.toolbar-filters select {
+
+    height: 43px;
+
+    padding: 0 28px 0 12px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 10px;
+
+    outline: 0;
+
+    color: var(--muted);
+
+    background: var(--paper);
+
+    font-size: 9px;
+}
+
+
+.refresh-button {
+
+    width: 43px;
+    height: 43px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 10px;
+
+    color: var(--muted);
+
+    background: var(--paper);
+
+    font-size: 18px;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+
+.refresh-button:hover {
+
+    background: var(--rose-soft);
+
+    transform: rotate(20deg);
+}
+
+
+/* =====================================================
+   MESSAGE
+   ===================================================== */
+
+.orders-message {
+
+    min-height: 0;
+
+    margin-top: 10px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.orders-message.success {
+
+    color: var(--green);
+}
+
+
+.orders-message.error {
+
+    color: var(--red);
+}
+
+
+/* =====================================================
+   ORDERS PANEL
+   ===================================================== */
+
+.orders-panel {
+
+    margin-top: 15px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 18px;
+
+    background: var(--paper);
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+
+.panel-heading {
+
+    min-height: 75px;
+
+    padding: 17px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--line);
+}
+
+
+.panel-eyebrow {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--rose);
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: .16em;
+}
+
+
+.panel-heading h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 24px;
+
+    font-weight: 600;
+}
+
+
+.result-count {
+
+    padding: 7px 10px;
+
+    border-radius: 999px;
+
+    color: var(--muted);
+
+    background: var(--cream);
+
+    font-size: 8px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   TABLE
+   ===================================================== */
+
+.table-wrapper {
+
+    overflow-x: auto;
+}
+
+
+.orders-table {
+
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: collapse;
+}
+
+
+.orders-table th {
+
+    padding: 12px 18px;
+
+    color: var(--soft);
+
+    background:
+        rgba(246,242,236,0.55);
+
+    border-bottom: 1px solid var(--line);
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: .13em;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+
+.orders-table td {
+
+    padding: 15px 18px;
+
+    border-bottom: 1px solid var(--line);
+
+    font-size: 10px;
+
+    vertical-align: middle;
+}
+
+
+.orders-table tbody tr {
+
+    transition:
+        background .2s ease;
+}
+
+
+.orders-table tbody tr:hover {
+
+    background:
+        rgba(234,216,212,0.15);
+}
+
+
+.orders-table tbody tr:last-child td {
+
+    border-bottom: 0;
+}
+
+
+/* =====================================================
+   ORDER NUMBER
+   ===================================================== */
+
+.order-number {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.order-number strong {
+
+    color: var(--ink);
+
+    font-size: 10px;
+}
+
+
+.order-number span {
+
+    color: var(--soft);
+
+    font-size: 8px;
+}
+
+
+/* =====================================================
+   CUSTOMER
+   ===================================================== */
+
+.customer-cell {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.customer-avatar {
+
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    color: var(--rose-dark);
+
+    background: var(--rose-soft);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-weight: 700;
+}
+
+
+.customer-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.customer-info strong {
+
+    font-size: 9px;
+}
+
+
+.customer-info span {
+
+    max-width: 180px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color: var(--soft);
+
+    font-size: 8px;
+}
+
+
+/* =====================================================
+   PRICE
+   ===================================================== */
+
+.order-price {
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   BADGES
+   ===================================================== */
+
+.order-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 6px 8px;
+
+    border-radius: 999px;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+.status-pending {
+
+    color: var(--orange);
+
+    background: var(--orange-soft);
+}
+
+
+.status-confirmed {
+
+    color: var(--blue);
+
+    background: var(--blue-soft);
+}
+
+
+.status-processing {
+
+    color: var(--rose-dark);
+
+    background: var(--rose-soft);
+}
+
+
+.status-completed {
+
+    color: var(--green);
+
+    background: var(--green-soft);
+}
+
+
+.status-cancelled {
+
+    color: var(--red);
+
+    background: var(--red-soft);
+}
+
+
+.payment-paid {
+
+    color: var(--green);
+
+    background: var(--green-soft);
+}
+
+
+.payment-pending {
+
+    color: var(--orange);
+
+    background: var(--orange-soft);
+}
+
+
+.payment-failed {
+
+    color: var(--red);
+
+    background: var(--red-soft);
+}
+
+
+/* =====================================================
+   VIEW BUTTON
+   ===================================================== */
+
+.view-order-button {
+
+    padding: 7px 10px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 8px;
+
+    color: var(--rose-dark);
+
+    background: transparent;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    transition:
+        background .2s ease,
+        border .2s ease;
+}
+
+
+.view-order-button:hover {
+
+    border-color: var(--rose-soft);
+
+    background: var(--rose-soft);
+}
+
+
+/* =====================================================
+   LOADING
+   ===================================================== */
+
+.loading-cell {
+
+    height: 230px;
+
+    text-align: center;
+}
+
+
+.loading-cell > span {
+
+    display: block;
+
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+.loading-spinner {
+
+    width: 26px;
+    height: 26px;
+
+    margin: auto;
+
+    border: 2px solid var(--rose-soft);
+
+    border-top-color: var(--rose);
+
+    border-radius: 50%;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
+   EMPTY
+   ===================================================== */
+
+.empty-orders {
+
+    padding: 70px 20px;
+
+    text-align: center;
+}
+
+
+.empty-orders-icon {
+
+    width: 55px;
+    height: 55px;
+
+    margin: auto;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: var(--rose);
+
+    background: var(--rose-soft);
+
+    font-size: 21px;
+}
+
+
+.empty-orders h3 {
+
+    margin-top: 16px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+}
+
+
+.empty-orders p {
+
+    max-width: 360px;
+
+    margin: 7px auto 0;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   MOBILE ORDERS
+   ===================================================== */
+
+.mobile-orders {
+
+    display: none;
+
+    padding: 12px;
+}
+
+
+.mobile-order-card {
+
+    padding: 15px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 13px;
+
+    background: white;
+}
+
+
+.mobile-order-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+
+.mobile-order-customer {
+
+    display: flex;
+
+    gap: 9px;
+
+    align-items: center;
+}
+
+
+.mobile-order-details {
+
+    margin-top: 15px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid var(--line);
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+
+.mobile-order-details span {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--soft);
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: .1em;
+}
+
+
+.mobile-order-details strong {
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.admin-footer {
+
+    margin-top: 30px;
+
+    padding: 20px 0;
+
+    border-top: 1px solid var(--line);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: var(--soft);
+
+    font-size: 8px;
+}
+
+
+/* =====================================================
+   MODAL
+   ===================================================== */
+
+.order-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+}
+
+
+.order-modal.open {
+
+    display: block;
+}
+
+
+.modal-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(41,37,34,0.48);
+
+    backdrop-filter:
+        blur(5px);
+}
+
+
+.order-modal-card {
+
+    width: min(
+        680px,
+        calc(100% - 30px)
+    );
+
+    max-height:
+        calc(100vh - 40px);
+
+    overflow-y: auto;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 22px;
+
+    background: var(--paper);
+
+    box-shadow:
+        0 35px 100px
+        rgba(0,0,0,0.22);
+
+    animation:
+        modalIn .22s ease;
+}
+
+
+@keyframes modalIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -47%);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%);
+
+    }
+
+}
+
+
+/* =====================================================
+   MODAL HEADER
+   ===================================================== */
+
+.modal-header {
+
+    padding: 25px 27px 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--line);
+}
+
+
+.modal-header h2 {
+
+    margin-top: 4px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: 600;
+}
+
+
+.modal-header p {
+
+    margin-top: 3px;
+
+    color: var(--soft);
+
+    font-size: 9px;
+}
+
+
+.close-modal {
+
+    width: 34px;
+    height: 34px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    color: var(--muted);
+
+    background: var(--cream);
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    transition:
+        background .2s ease;
+}
+
+
+.close-modal:hover {
+
+    background: var(--rose-soft);
+
+    color: var(--rose-dark);
+}
+
+
+/* =====================================================
+   DETAIL SECTIONS
+   ===================================================== */
+
+.detail-section {
+
+    padding: 20px 27px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+
+.detail-heading {
+
+    display: block;
+
+    margin-bottom: 13px;
+
+    color: var(--rose);
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: .16em;
+}
+
+
+.customer-detail-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 15px;
+}
+
+
+.customer-detail-grid div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.customer-detail-grid small {
+
+    color: var(--soft);
+
+    font-size: 8px;
+}
+
+
+.customer-detail-grid strong {
+
+    font-size: 10px;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =====================================================
+   ITEMS
+   ===================================================== */
+
+.detail-items {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.detail-item {
+
+    padding: 10px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-radius: 10px;
+
+    background: var(--cream);
+}
+
+
+.detail-item-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 0;
+}
+
+
+.detail-item-image {
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    background: var(--rose-soft);
+}
+
+
+.detail-item-name {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.detail-item-name strong {
+
+    font-size: 9px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.detail-item-name span {
+
+    color: var(--soft);
+
+    font-size: 8px;
+}
+
+
+.detail-item-price {
+
+    flex-shrink: 0;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   DELIVERY
+   ===================================================== */
+
+.delivery-detail {
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    color: var(--muted);
+
+    background: var(--cream);
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   PAYMENT
+   ===================================================== */
+
+.payment-detail-section {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.payment-detail-section > div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.payment-detail-section .detail-heading {
+
+    margin: 0;
+}
+
+
+.payment-detail-section > div:first-child strong {
+
+    font-size: 10px;
+}
+
+
+.modal-total {
+
+    color: var(--rose-dark);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+}
+
+
+/* =====================================================
+   STATUS UPDATE
+   ===================================================== */
+
+.modal-status-section {
+
+    padding: 20px 27px 27px;
+}
+
+
+.modal-status-section > label {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .1em;
+}
+
+
+.status-update-row {
+
+    display: flex;
+
+    gap: 9px;
+}
+
+
+.status-update-row select {
+
+    flex: 1;
+
+    height: 42px;
+
+    padding: 0 11px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 9px;
+
+    outline: 0;
+
+    color: var(--ink);
+
+    background: white;
+
+    font-size: 9px;
+}
+
+
+.save-status-button {
+
+    padding: 0 17px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    color: white;
+
+    background: var(--rose-dark);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    transition:
+        opacity .2s ease;
+}
+
+
+.save-status-button:hover {
+
+    opacity: .88;
+}
+
+
+.save-status-button:disabled {
+
+    opacity: .5;
+
+    cursor: not-allowed;
+}
+
+
+.status-message {
+
+    min-height: 15px;
+
+    margin-top: 8px;
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+
+.status-message.success {
+
+    color: var(--green);
+}
+
+
+.status-message.error {
+
+    color: var(--red);
+}
+
+
+/* =====================================================
+   BODY MODAL LOCK
+   ===================================================== */
+
+body.modal-open {
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 1200px) {
+
+    .order-stats {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 1000px) {
+
+    .orders-sidebar {
+
+        width: 215px;
+    }
+
+
+    .orders-main {
+
+        padding-left: 25px;
+
+        padding-right: 25px;
+    }
+
+
+    .orders-toolbar {
+
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    .toolbar-search {
+
+        width: 100%;
+    }
+
+
+    .toolbar-filters {
+
+        flex-wrap: wrap;
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .orders-shell {
+
+        display: block;
+    }
+
+
+    .orders-sidebar {
+
+        width: 100%;
+
+        height: auto;
+
+        min-height: auto;
+
+        position: relative;
+
+        padding: 15px;
+    }
+
+
+    .admin-brand {
+
+        border: 0;
+
+        padding-bottom: 15px;
+    }
+
+
+    .admin-profile {
+
+        display: none;
+    }
+
+
+    .admin-navigation {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 5px;
+    }
+
+
+    .nav-section {
+
+        display: none;
+    }
+
+
+    .nav-link {
+
+        justify-content: center;
+
+        padding: 9px;
+
+        min-height: 38px;
+    }
+
+
+    .nav-link .nav-icon {
+
+        display: none;
+    }
+
+
+    .sidebar-bottom {
+
+        display: none;
+    }
+
+
+    .orders-main {
+
+        padding:
+            0 15px 25px;
+    }
+
+
+    .orders-topbar {
+
+        min-height: 80px;
+    }
+
+
+    .orders-topbar h1 {
+
+        font-size: 29px;
+    }
+
+
+    .date-box {
+
+        display: none;
+    }
+
+
+    .orders-intro {
+
+        padding: 23px;
+
+    }
+
+
+    .intro-decoration {
+
+        display: none;
+    }
+
+
+    .order-stats {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .order-stat.revenue {
+
+        grid-column: span 2;
+    }
+
+
+    .table-wrapper {
+
+        display: none;
+    }
+
+
+    .mobile-orders {
+
+        display: block;
+    }
+
+
+    .admin-footer {
+
+        flex-direction: column;
+
+        gap: 7px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .orders-topbar {
+
+        align-items: flex-start;
+
+        padding: 20px 0;
+    }
+
+
+    .top-avatar {
+
+        width: 34px;
+        height: 34px;
+    }
+
+
+    .orders-intro h2 {
+
+        font-size: 29px;
+    }
+
+
+    .orders-intro p {
+
+        font-size: 10px;
+    }
+
+
+    .order-stats {
+
+        gap: 8px;
+    }
+
+
+    .order-stat {
+
+        min-height: 90px;
+
+        padding: 12px;
+    }
+
+
+    .stat-icon {
+
+        width: 34px;
+        height: 34px;
+    }
+
+
+    .order-stat strong {
+
+        font-size: 21px;
+    }
+
+
+    .toolbar-filters {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .toolbar-filters select {
+
+        width: 100%;
+    }
+
+
+    .refresh-button {
+
+        width: 100%;
+    }
+
+
+    .customer-detail-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .status-update-row {
+
+        flex-direction: column;
+    }
+
+
+    .status-update-row select,
+    .save-status-button {
+
+        height: 42px;
+
+        width: 100%;
+    }
+
+}

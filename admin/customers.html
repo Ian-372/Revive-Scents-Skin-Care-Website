@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="REVIVE customer management dashboard."
+    >
+
+    <title>Customers | REVIVE Admin</title>
+
+
+    <!-- FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/customers.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="customers-shell">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="customers-sidebar">
+
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-mark">
+                RS
+            </div>
+
+            <div>
+
+                <strong>
+                    REVIVE
+                </strong>
+
+                <span>
+                    ADMINISTRATION
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADMIN PROFILE -->
+
+        <div class="admin-profile">
+
+            <div class="admin-avatar">
+                R
+            </div>
+
+            <div>
+
+                <strong>
+                    Administrator
+                </strong>
+
+                <span>
+                    Store Manager
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="admin-navigation">
+
+
+            <span class="nav-label">
+                OVERVIEW
+            </span>
+
+
+            <a
+                href="dashboard.html"
+                class="admin-nav-link"
+            >
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                Dashboard
+
+            </a>
+
+
+            <span class="nav-label">
+                STORE
+            </span>
+
+
+            <a
+                href="products.html"
+                class="admin-nav-link"
+            >
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                Products
+
+            </a>
+
+
+            <a
+                href="orders.html"
+                class="admin-nav-link"
+            >
+
+                <span class="nav-icon">
+                    ▤
+                </span>
+
+                Orders
+
+                <span
+                    class="nav-badge"
+                    id="pendingOrderBadge"
+                >
+                    0
+                </span>
+
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="admin-nav-link active"
+            >
+
+                <span class="nav-icon">
+                    ♧
+                </span>
+
+                Customers
+
+            </a>
+
+
+            <span class="nav-label">
+                SYSTEM
+            </span>
+
+
+            <a
+                href="settings.html"
+                class="admin-nav-link"
+            >
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                Settings
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+
+            <a
+                href="../index.html"
+                class="view-store"
+            >
+
+                <span>
+                    ↗
+                </span>
+
+                View REVIVE store
+
+            </a>
+
+
+            <button
+                type="button"
+                id="adminLogout"
+                class="admin-logout"
+            >
+
+                <span>
+                    ↪
+                </span>
+
+                Sign out
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="customers-main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="customers-topbar">
+
+
+            <div>
+
+                <span class="admin-eyebrow">
+                    REVIVE ADMIN
+                </span>
+
+                <h1>
+                    Your customers,
+                    <em>your community.</em>
+                </h1>
+
+                <p>
+                    Understand and manage the people
+                    who choose REVIVE.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+
+                <div class="admin-date">
+
+                    <span>
+                        TODAY
+                    </span>
+
+                    <strong id="currentDate">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="topbar-avatar">
+                    R
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             CUSTOMER OVERVIEW
+        ================================================== -->
+
+        <section class="customer-overview">
+
+
+            <div class="overview-intro">
+
+                <span class="section-eyebrow">
+                    CUSTOMER OVERVIEW
+                </span>
+
+                <h2>
+                    The people behind
+                    <em>REVIVE.</em>
+                </h2>
+
+            </div>
+
+
+            <div class="customer-stats">
+
+
+                <article class="customer-stat">
+
+                    <div class="customer-stat-icon">
+                        ♧
+                    </div>
+
+                    <div>
+
+                        <span>
+                            TOTAL CUSTOMERS
+                        </span>
+
+                        <strong id="totalCustomers">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="customer-stat">
+
+                    <div class="customer-stat-icon">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <span>
+                            NEW THIS MONTH
+                        </span>
+
+                        <strong id="newCustomers">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="customer-stat">
+
+                    <div class="customer-stat-icon">
+                        ▤
+                    </div>
+
+                    <div>
+
+                        <span>
+                            CUSTOMERS WITH ORDERS
+                        </span>
+
+                        <strong id="orderingCustomers">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="customer-stat">
+
+                    <div class="customer-stat-icon">
+                        ♡
+                    </div>
+
+                    <div>
+
+                        <span>
+                            ACTIVE ACCOUNTS
+                        </span>
+
+                        <strong id="activeCustomers">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CUSTOMER MANAGEMENT
+        ================================================== -->
+
+        <section class="customer-panel">
+
+
+            <div class="panel-heading">
+
+
+                <div>
+
+                    <span class="panel-eyebrow">
+                        CUSTOMER DIRECTORY
+                    </span>
+
+                    <h2>
+                        All customers
+                    </h2>
+
+                </div>
+
+
+                <div class="customer-tools">
+
+                    <div class="customer-search">
+
+                        <span>
+                            ⌕
+                        </span>
+
+                        <input
+                            type="search"
+                            id="customerSearch"
+                            placeholder="Search customers..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <select id="customerFilter">
+
+                        <option value="all">
+                            All customers
+                        </option>
+
+                        <option value="recent">
+                            Recently joined
+                        </option>
+
+                        <option value="orders">
+                            With orders
+                        </option>
+
+                        <option value="no-orders">
+                            No orders yet
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="customerMessage"
+                class="customer-message"
+            ></div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="customers-table-wrapper">
+
+
+                <table class="customers-table">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                CUSTOMER
+                            </th>
+
+                            <th>
+                                CONTACT
+                            </th>
+
+                            <th>
+                                JOINED
+                            </th>
+
+                            <th>
+                                ORDERS
+                            </th>
+
+                            <th>
+                                STATUS
+                            </th>
+
+                            <th>
+                                ACTION
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="customersTable">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="table-loading"
+                            >
+
+                                <div class="loading-spinner"></div>
+
+                                Loading customers...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                id="customersEmpty"
+                class="customers-empty"
+                hidden
+            >
+
+                <div class="empty-icon">
+                    ♡
+                </div>
+
+                <h3>
+                    No customers found
+                </h3>
+
+                <p>
+                    Try changing your search or filter.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CUSTOMER DETAIL MODAL
+        ================================================== -->
+
+        <div
+            class="customer-modal"
+            id="customerModal"
+            aria-hidden="true"
+        >
+
+
+            <div
+                class="modal-overlay"
+                id="customerModalOverlay"
+            ></div>
+
+
+            <div
+                class="customer-modal-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="customerModalTitle"
+            >
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeCustomerModal"
+                    aria-label="Close customer details"
+                >
+                    ×
+                </button>
+
+
+                <!-- MODAL HEADER -->
+
+                <div class="customer-detail-header">
+
+
+                    <div
+                        class="customer-detail-avatar"
+                        id="customerDetailAvatar"
+                    >
+                        R
+                    </div>
+
+
+                    <div>
+
+                        <span class="panel-eyebrow">
+                            CUSTOMER PROFILE
+                        </span>
+
+                        <h2 id="customerModalTitle">
+                            Customer
+                        </h2>
+
+                        <p id="customerModalEmail">
+                            —
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- CUSTOMER INFO -->
+
+                <div class="customer-detail-grid">
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            PHONE
+                        </span>
+
+                        <strong id="customerDetailPhone">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            MEMBER SINCE
+                        </span>
+
+                        <strong id="customerDetailJoined">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            ORDERS
+                        </span>
+
+                        <strong id="customerDetailOrders">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            ACCOUNT
+                        </span>
+
+                        <strong id="customerDetailStatus">
+                            Active
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- RECENT ORDERS -->
+
+                <div class="customer-orders-section">
+
+
+                    <div class="modal-section-heading">
+
+                        <div>
+
+                            <span class="panel-eyebrow">
+                                PURCHASE HISTORY
+                            </span>
+
+                            <h3>
+                                Recent orders
+                            </h3>
+
+                        </div>
+
+                        <a
+                            href="orders.html"
+                            id="customerOrdersLink"
+                        >
+                            View all →
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="customer-orders"
+                        id="customerOrders"
+                    >
+
+                        <div class="detail-loading">
+                            Loading orders...
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="customers-footer">
+
+
+            <span>
+
+                ©
+                <span id="adminYear"></span>
+
+                REVIVE Scents &amp;
+                Skin Care Solutions.
+
+            </span>
+
+
+            <span>
+                Admin Console · Secure Area
+            </span>
+
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+
+<script
+    type="module"
+    src="../js/customers.js"
+></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,889 @@
+/* =====================================================
+   REVIVE ADMIN ENTRY
+   ===================================================== */
+
+:root {
+
+    --cream: #f7f3ed;
+    --paper: #fffdf9;
+    --ink: #292522;
+    --muted: #81786f;
+
+    --rose: #a56d68;
+    --rose-dark: #85534f;
+    --rose-soft: #ead8d4;
+
+    --line: rgba(41, 37, 34, 0.10);
+
+    --success: #617c68;
+    --danger: #a45e5e;
+
+    --shadow:
+        0 30px 80px rgba(58, 43, 37, 0.10);
+
+    --radius: 24px;
+}
+
+
+/* =====================================================
+   RESET
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    color: var(--ink);
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(234, 216, 212, 0.65),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(226, 213, 196, 0.50),
+            transparent 30%
+        ),
+        var(--cream);
+
+    overflow-x: hidden;
+}
+
+
+button,
+a {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   MAIN SHELL
+   ===================================================== */
+
+.admin-entry {
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   DECORATIVE ORBS
+   ===================================================== */
+
+.entry-orb {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(1px);
+
+    opacity: 0.55;
+}
+
+
+.orb-one {
+
+    width: 420px;
+    height: 420px;
+
+    top: -230px;
+    right: -120px;
+
+    border: 1px solid rgba(165, 109, 104, 0.20);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(234, 216, 212, 0.55),
+            transparent 70%
+        );
+}
+
+
+.orb-two {
+
+    width: 300px;
+    height: 300px;
+
+    bottom: -160px;
+    left: -100px;
+
+    border: 1px solid rgba(165, 109, 104, 0.15);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(226, 213, 196, 0.45),
+            transparent 70%
+        );
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.entry-header {
+
+    width: min(
+        1180px,
+        calc(100% - 48px)
+    );
+
+    margin: 0 auto;
+
+    padding: 30px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+.entry-brand {
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+
+.brand-mark {
+
+    width: 46px;
+    height: 46px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--rose),
+            var(--rose-dark)
+        );
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    box-shadow:
+        0 10px 25px
+        rgba(133, 83, 79, 0.18);
+}
+
+
+.brand-text {
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.brand-text strong {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+    letter-spacing: 0.12em;
+}
+
+
+.brand-text small {
+
+    margin-top: 2px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 0.16em;
+}
+
+
+.secure-label {
+
+    padding: 8px 12px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 999px;
+
+    color: var(--muted);
+
+    background:
+        rgba(255,255,255,0.45);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+}
+
+
+/* =====================================================
+   CONTENT
+   ===================================================== */
+
+.entry-content {
+
+    width: min(
+        1180px,
+        calc(100% - 48px)
+    );
+
+    margin: auto;
+
+    padding: 60px 0 50px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(380px, 480px);
+
+    align-items: center;
+
+    gap: 100px;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =====================================================
+   COPY
+   ===================================================== */
+
+.entry-copy {
+
+    max-width: 610px;
+}
+
+
+.entry-eyebrow {
+
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: var(--rose-dark);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.20em;
+}
+
+
+.entry-copy h1 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(48px, 6vw, 76px);
+
+    line-height: 0.94;
+
+    font-weight: 600;
+
+    letter-spacing: -0.035em;
+}
+
+
+.entry-copy h1 em {
+
+    display: block;
+
+    color: var(--rose);
+
+    font-weight: 500;
+}
+
+
+.entry-copy p {
+
+    max-width: 530px;
+
+    margin-top: 28px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   ACCESS CARD
+   ===================================================== */
+
+.admin-access-card {
+
+    position: relative;
+
+    padding: 36px;
+
+    border: 1px solid
+        rgba(41, 37, 34, 0.09);
+
+    border-radius: var(--radius);
+
+    background:
+        rgba(255, 253, 249, 0.78);
+
+    box-shadow: var(--shadow);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    overflow: hidden;
+}
+
+
+.admin-access-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    top: -100px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(234, 216, 212, 0.60);
+}
+
+
+.access-symbol {
+
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 27px;
+
+    border-radius: 18px;
+
+    color: var(--rose-dark);
+
+    background: var(--rose-soft);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-weight: 700;
+
+    font-size: 19px;
+
+    position: relative;
+}
+
+
+.access-eyebrow {
+
+    display: block;
+
+    color: var(--rose);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+}
+
+
+.access-content h2 {
+
+    margin-top: 7px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 34px;
+
+    font-weight: 600;
+}
+
+
+.access-content p {
+
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   ACCESS STATUS
+   ===================================================== */
+
+.access-status {
+
+    margin-top: 26px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--line);
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+.status-indicator {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #c4bdb6;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(196, 189, 182, 0.18);
+}
+
+
+.status-indicator.ready {
+
+    background: var(--success);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(97, 124, 104, 0.13);
+}
+
+
+.status-indicator.error {
+
+    background: var(--danger);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(164, 94, 94, 0.13);
+}
+
+
+/* =====================================================
+   ENTER BUTTON
+   ===================================================== */
+
+.enter-button {
+
+    width: 100%;
+
+    margin-top: 24px;
+
+    padding: 16px 18px;
+
+    border: 0;
+
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--rose),
+            var(--rose-dark)
+        );
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 12px 25px
+        rgba(133, 83, 79, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.enter-button:hover:not(:disabled) {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 17px 30px
+        rgba(133, 83, 79, 0.25);
+}
+
+
+.enter-button strong {
+
+    font-size: 19px;
+
+    font-weight: 400;
+}
+
+
+.enter-button:disabled {
+
+    cursor: not-allowed;
+
+    opacity: 0.45;
+
+    box-shadow: none;
+}
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+.logout-button {
+
+    width: 100%;
+
+    margin-top: 11px;
+
+    padding: 12px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 12px;
+
+    color: var(--muted);
+
+    background: transparent;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.logout-button:hover {
+
+    color: var(--ink);
+
+    background: rgba(41, 37, 34, 0.04);
+}
+
+
+/* =====================================================
+   FEATURES
+   ===================================================== */
+
+.entry-features {
+
+    grid-column: 1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 1px;
+
+    border-top: 1px solid var(--line);
+
+    border-bottom: 1px solid var(--line);
+}
+
+
+.feature {
+
+    padding: 23px 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.feature > span {
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    color: var(--rose-dark);
+
+    background: rgba(234, 216, 212, 0.55);
+
+    font-size: 15px;
+}
+
+
+.feature div {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.feature strong {
+
+    font-size: 12px;
+}
+
+
+.feature small {
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.entry-footer {
+
+    width: min(
+        1180px,
+        calc(100% - 48px)
+    );
+
+    margin: auto auto 0;
+
+    padding: 22px 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 1px solid var(--line);
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+.entry-footer a {
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.entry-footer a:hover {
+
+    color: var(--rose-dark);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .entry-content {
+
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+        padding-top: 40px;
+    }
+
+
+    .entry-copy {
+
+        max-width: 650px;
+    }
+
+
+    .entry-features {
+
+        margin-top: 10px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .entry-header {
+
+        width: min(
+            100% - 30px,
+            1180px
+        );
+
+        padding: 20px 0;
+    }
+
+
+    .secure-label {
+
+        display: none;
+    }
+
+
+    .entry-content {
+
+        width: min(
+            100% - 30px,
+            1180px
+        );
+
+        padding: 35px 0;
+    }
+
+
+    .entry-copy h1 {
+
+        font-size: 49px;
+    }
+
+
+    .admin-access-card {
+
+        padding: 27px;
+
+        border-radius: 20px;
+    }
+
+
+    .entry-features {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .feature {
+
+        padding: 17px 0;
+    }
+
+
+    .entry-footer {
+
+        width: min(
+            100% - 30px,
+            1180px
+        );
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+
+    }
+
+}

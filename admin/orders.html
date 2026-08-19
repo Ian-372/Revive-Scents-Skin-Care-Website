@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Manage REVIVE customer orders."
+    >
+
+    <title>Orders | REVIVE Admin</title>
+
+
+    <!-- FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- STYLES -->
+
+    <link
+        rel="stylesheet"
+        href="../css/admin-orders.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="orders-shell">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="orders-sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="admin-brand">
+
+            <a
+                href="dashboard.html"
+                class="brand-link"
+            >
+
+                <span class="brand-mark">
+                    RS
+                </span>
+
+                <span class="brand-copy">
+
+                    <strong>
+                        REVIVE
+                    </strong>
+
+                    <small>
+                        ADMINISTRATION
+                    </small>
+
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- ADMIN -->
+
+        <div class="admin-profile">
+
+            <div class="admin-avatar">
+                R
+            </div>
+
+            <div>
+
+                <strong>
+                    Administrator
+                </strong>
+
+                <span>
+                    Store Manager
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="admin-navigation">
+
+            <span class="nav-section">
+                OVERVIEW
+            </span>
+
+
+            <a
+                href="dashboard.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                Dashboard
+
+            </a>
+
+
+            <span class="nav-section">
+                STORE
+            </span>
+
+
+            <a
+                href="products.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                Products
+
+            </a>
+
+
+            <a
+                href="orders.html"
+                class="nav-link active"
+            >
+
+                <span class="nav-icon">
+                    ▤
+                </span>
+
+                Orders
+
+                <span
+                    class="nav-badge"
+                    id="pendingOrderBadge"
+                >
+                    0
+                </span>
+
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">
+                    ♧
+                </span>
+
+                Customers
+
+            </a>
+
+
+            <span class="nav-section">
+                SYSTEM
+            </span>
+
+
+            <a
+                href="settings.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                Settings
+
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="../index.html"
+                class="view-store"
+            >
+                ↗
+                View REVIVE store
+            </a>
+
+
+            <button
+                type="button"
+                id="adminLogout"
+                class="admin-logout"
+            >
+                ↪
+                Sign out
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="orders-main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="orders-topbar">
+
+            <div>
+
+                <span class="admin-eyebrow">
+                    REVIVE ADMIN
+                </span>
+
+                <h1>
+                    Orders
+                    <em>management.</em>
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="date-box">
+
+                    <span>
+                        TODAY
+                    </span>
+
+                    <strong id="currentDate">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="top-avatar">
+                    R
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE INTRO
+        ================================================== -->
+
+        <section class="orders-intro">
+
+            <div>
+
+                <span class="intro-label">
+                    STORE ORDERS
+                </span>
+
+                <h2>
+                    Keep every purchase
+                    <em>moving.</em>
+                </h2>
+
+                <p>
+                    Review customer purchases, confirm payments,
+                    update fulfilment status and keep track of
+                    everything happening in your REVIVE store.
+                </p>
+
+            </div>
+
+
+            <div class="intro-decoration">
+                ▤
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="order-stats">
+
+
+            <article class="order-stat">
+
+                <div class="stat-icon">
+                    ▤
+                </div>
+
+                <div>
+
+                    <span>
+                        TOTAL ORDERS
+                    </span>
+
+                    <strong id="totalOrders">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="order-stat pending">
+
+                <div class="stat-icon">
+                    ◷
+                </div>
+
+                <div>
+
+                    <span>
+                        PENDING
+                    </span>
+
+                    <strong id="pendingOrders">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="order-stat confirmed">
+
+                <div class="stat-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        CONFIRMED
+                    </span>
+
+                    <strong id="confirmedOrders">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="order-stat completed">
+
+                <div class="stat-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <span>
+                        COMPLETED
+                    </span>
+
+                    <strong id="completedOrders">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="order-stat revenue">
+
+                <div class="stat-icon">
+                    KSh
+                </div>
+
+                <div>
+
+                    <span>
+                        REVENUE
+                    </span>
+
+                    <strong id="totalRevenue">
+                        KSh 0
+                    </strong>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TOOLBAR
+        ================================================== -->
+
+        <section class="orders-toolbar">
+
+            <div class="toolbar-search">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    id="orderSearch"
+                    placeholder="Search order, customer or phone..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="toolbar-filters">
+
+                <select id="statusFilter">
+
+                    <option value="all">
+                        All statuses
+                    </option>
+
+                    <option value="pending">
+                        Pending
+                    </option>
+
+                    <option value="confirmed">
+                        Confirmed
+                    </option>
+
+                    <option value="processing">
+                        Processing
+                    </option>
+
+                    <option value="completed">
+                        Completed
+                    </option>
+
+                    <option value="cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+
+
+                <select id="paymentFilter">
+
+                    <option value="all">
+                        All payments
+                    </option>
+
+                    <option value="paid">
+                        Paid
+                    </option>
+
+                    <option value="pending">
+                        Payment pending
+                    </option>
+
+                    <option value="failed">
+                        Failed
+                    </option>
+
+                </select>
+
+
+                <select id="dateFilter">
+
+                    <option value="all">
+                        All dates
+                    </option>
+
+                    <option value="today">
+                        Today
+                    </option>
+
+                    <option value="7">
+                        Last 7 days
+                    </option>
+
+                    <option value="30">
+                        Last 30 days
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="button"
+                    id="refreshOrders"
+                    class="refresh-button"
+                    title="Refresh orders"
+                >
+                    ↻
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MESSAGE
+        ================================================== -->
+
+        <div
+            id="ordersMessage"
+            class="orders-message"
+        ></div>
+
+
+
+        <!-- =================================================
+             ORDERS TABLE
+        ================================================== -->
+
+        <section class="orders-panel">
+
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span class="panel-eyebrow">
+                        PURCHASES
+                    </span>
+
+                    <h2>
+                        Customer orders
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="resultCount"
+                    class="result-count"
+                >
+                    0 orders
+                </span>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table class="orders-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ORDER
+                            </th>
+
+                            <th>
+                                CUSTOMER
+                            </th>
+
+                            <th>
+                                DATE
+                            </th>
+
+                            <th>
+                                TOTAL
+                            </th>
+
+                            <th>
+                                PAYMENT
+                            </th>
+
+                            <th>
+                                STATUS
+                            </th>
+
+                            <th>
+                                ACTION
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="ordersTable">
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="loading-cell"
+                            >
+
+                                <div class="loading-spinner"></div>
+
+                                <span>
+                                    Loading orders...
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- MOBILE ORDER CARDS -->
+
+            <div
+                id="mobileOrders"
+                class="mobile-orders"
+            ></div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="admin-footer">
+
+            <span>
+
+                ©
+                <span id="adminYear"></span>
+
+                REVIVE Scents &amp; Skin Care Solutions.
+
+            </span>
+
+
+            <span>
+                Admin Console · Orders
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     ORDER DETAILS MODAL
+====================================================== -->
+
+<div
+    class="order-modal"
+    id="orderModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal-overlay"
+        id="modalOverlay"
+    ></div>
+
+
+    <section
+        class="order-modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="orderModalTitle"
+    >
+
+
+        <!-- MODAL HEADER -->
+
+        <header class="modal-header">
+
+            <div>
+
+                <span class="panel-eyebrow">
+                    ORDER DETAILS
+                </span>
+
+                <h2 id="orderModalTitle">
+                    Order
+                </h2>
+
+                <p id="orderModalDate">
+                    --
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="closeOrderModal"
+                class="close-modal"
+                aria-label="Close order details"
+            >
+                ×
+            </button>
+
+        </header>
+
+
+
+        <!-- CUSTOMER -->
+
+        <section class="detail-section">
+
+            <div class="detail-heading">
+
+                <span>
+                    CUSTOMER
+                </span>
+
+            </div>
+
+
+            <div class="customer-detail-grid">
+
+                <div>
+
+                    <small>
+                        Name
+                    </small>
+
+                    <strong id="detailCustomerName">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        Email
+                    </small>
+
+                    <strong id="detailCustomerEmail">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        Phone
+                    </small>
+
+                    <strong id="detailCustomerPhone">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        Order ID
+                    </small>
+
+                    <strong id="detailOrderId">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ITEMS -->
+
+        <section class="detail-section">
+
+            <div class="detail-heading">
+
+                <span>
+                    ITEMS
+                </span>
+
+            </div>
+
+
+            <div
+                id="detailItems"
+                class="detail-items"
+            ></div>
+
+        </section>
+
+
+
+        <!-- DELIVERY -->
+
+        <section class="detail-section">
+
+            <div class="detail-heading">
+
+                <span>
+                    DELIVERY
+                </span>
+
+            </div>
+
+
+            <div
+                id="detailDelivery"
+                class="delivery-detail"
+            >
+                --
+            </div>
+
+        </section>
+
+
+
+        <!-- PAYMENT -->
+
+        <section class="detail-section payment-detail-section">
+
+            <div>
+
+                <span class="detail-heading">
+                    PAYMENT
+                </span>
+
+                <strong id="detailPayment">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span class="detail-heading">
+                    TOTAL
+                </span>
+
+                <strong
+                    id="detailTotal"
+                    class="modal-total"
+                >
+                    KSh 0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- STATUS -->
+
+        <section class="modal-status-section">
+
+            <label for="orderStatus">
+                UPDATE ORDER STATUS
+            </label>
+
+
+            <div class="status-update-row">
+
+                <select id="orderStatus">
+
+                    <option value="pending">
+                        Pending
+                    </option>
+
+                    <option value="confirmed">
+                        Confirmed
+                    </option>
+
+                    <option value="processing">
+                        Processing
+                    </option>
+
+                    <option value="completed">
+                        Completed
+                    </option>
+
+                    <option value="cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="button"
+                    id="saveOrderStatus"
+                    class="save-status-button"
+                >
+                    Update status
+                </button>
+
+            </div>
+
+
+            <p
+                id="statusMessage"
+                class="status-message"
+            ></p>
+
+        </section>
+
+    </section>
+
+</div>
+
+
+
+<!-- SCRIPT -->
+
+<script
+    type="module"
+    src="../js/admin-orders.js"
+></script>
+
+</body>
+
+</html>

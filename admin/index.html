@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="REVIVE administration portal."
+    >
+
+    <title>REVIVE | Administration</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/admin-index.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="admin-entry">
+
+        <!-- BACKGROUND DECORATION -->
+
+        <div class="entry-orb orb-one"></div>
+        <div class="entry-orb orb-two"></div>
+
+
+        <!-- BRAND -->
+
+        <header class="entry-header">
+
+            <a
+                href="../index.html"
+                class="entry-brand"
+            >
+
+                <span class="brand-mark">
+                    RS
+                </span>
+
+                <span class="brand-text">
+
+                    <strong>
+                        REVIVE
+                    </strong>
+
+                    <small>
+                        SCENTS &amp; SKIN CARE SOLUTIONS
+                    </small>
+
+                </span>
+
+            </a>
+
+            <span class="secure-label">
+                SECURE ADMIN AREA
+            </span>
+
+        </header>
+
+
+        <!-- ENTRY CONTENT -->
+
+        <section class="entry-content">
+
+            <div class="entry-copy">
+
+                <span class="entry-eyebrow">
+                    REVIVE ADMINISTRATION
+                </span>
+
+                <h1>
+                    Welcome to your
+                    <em>store console.</em>
+                </h1>
+
+                <p>
+                    Manage your REVIVE catalogue, orders,
+                    customers and store activity from one
+                    central workspace.
+                </p>
+
+            </div>
+
+
+            <!-- ADMIN CARD -->
+
+            <section class="admin-access-card">
+
+                <div class="access-symbol">
+                    RS
+                </div>
+
+                <div class="access-content">
+
+                    <span class="access-eyebrow">
+                        ADMIN PORTAL
+                    </span>
+
+                    <h2>
+                        Administration
+                    </h2>
+
+                    <p id="accessMessage">
+                        Checking your administrator access...
+                    </p>
+
+                </div>
+
+
+                <div class="access-status">
+
+                    <span
+                        class="status-indicator"
+                        id="statusIndicator"
+                    ></span>
+
+                    <span id="statusText">
+                        Verifying
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="enterDashboard"
+                    class="enter-button"
+                    disabled
+                >
+
+                    <span>
+                        Enter dashboard
+                    </span>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="logout-button"
+                    hidden
+                >
+                    Sign out
+                </button>
+
+            </section>
+
+
+            <!-- FEATURES -->
+
+            <div class="entry-features">
+
+                <div class="feature">
+
+                    <span>
+                        ✦
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Store control
+                        </strong>
+
+                        <small>
+                            Products &amp; inventory
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <span>
+                        ▤
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Order management
+                        </strong>
+
+                        <small>
+                            Purchases &amp; fulfilment
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <span>
+                        ♧
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Customer insights
+                        </strong>
+
+                        <small>
+                            Accounts &amp; activity
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="entry-footer">
+
+            <span>
+                © <span id="year"></span>
+                REVIVE Scents &amp; Skin Care Solutions.
+            </span>
+
+            <a href="../index.html">
+                ← Return to store
+            </a>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ADMIN ENTRY SCRIPT -->
+
+    <script
+        type="module"
+        src="../js/admin-index.js"
+    ></script>
+
+</body>
+
+</html>
