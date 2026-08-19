@@ -1,0 +1,75 @@
+/* Shared responsive safeguards. Loaded after every page stylesheet. */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+input,
+select,
+textarea,
+button {
+    max-width: 100%;
+}
+
+/* Prevent long names, email addresses, and grid children from widening a page. */
+main *,
+section *,
+[class*="page"] *,
+[class*="layout"] *,
+[class*="grid"] * {
+    min-width: 0;
+}
+
+.table-wrap,
+.table-container,
+.table-scroll,
+.orders-table-wrap,
+.admin-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 700px) {
+    h1 { font-size: clamp(2.5rem, 12vw, 3.75rem); }
+    h2 { font-size: clamp(2rem, 9vw, 3rem); }
+
+    input,
+    select,
+    textarea {
+        font-size: 16px !important; /* prevents Safari from zooming on focus */
+    }
+
+    .btn,
+    .primary-button,
+    .secondary-button,
+    .checkout-button,
+    .auth-button {
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 420px) {
+    [class*="header"] {
+        padding-inline: 16px !important;
+    }
+
+    [class*="main"],
+    [class*="page"] {
+        max-width: 100%;
+    }
+}
